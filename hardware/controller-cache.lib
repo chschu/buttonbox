@@ -357,11 +357,11 @@ X OUT 5 300 100 100 L 50 50 1 1 w
 ENDDRAW
 ENDDEF
 #
-# ledcontrol_SW_Push_NO_NC_LED
+# controller_SW_Push_NO_NC_LED
 #
-DEF ledcontrol_SW_Push_NO_NC_LED SW 0 0 N Y 1 F N
+DEF controller_SW_Push_NO_NC_LED SW 0 0 N Y 1 F N
 F0 "SW" -25 275 50 H V L CNN
-F1 "ledcontrol_SW_Push_NO_NC_LED" 0 -125 50 H V C CNN
+F1 "controller_SW_Push_NO_NC_LED" 0 -125 50 H V C CNN
 F2 "" 0 300 50 H I C CNN
 F3 "" 0 300 50 H I C CNN
 DRAW

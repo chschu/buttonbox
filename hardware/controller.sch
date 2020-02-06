@@ -710,7 +710,7 @@ Wire Wire Line
 Wire Wire Line
 	1150 6750 1550 6750
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW1
+L controller:SW_Push_NO_NC_LED SW1
 U 1 1 5F65B435
 P 8650 1600
 F 0 "SW1" H 8650 2025 50  0000 C CNN
@@ -730,7 +730,7 @@ Text GLabel 8350 2250 0    50   Input ~ 0
 BTNx1#-
 NoConn ~ 8400 2050
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW2
+L controller:SW_Push_NO_NC_LED SW2
 U 1 1 5F6F8CEF
 P 8650 2250
 F 0 "SW2" H 8650 2675 50  0000 C CNN
@@ -750,7 +750,7 @@ Text GLabel 8350 2900 0    50   Input ~ 0
 BTNx2#-
 NoConn ~ 8400 2700
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW3
+L controller:SW_Push_NO_NC_LED SW3
 U 1 1 5F714105
 P 8650 2900
 F 0 "SW3" H 8650 3325 50  0000 C CNN
@@ -770,7 +770,7 @@ Text GLabel 8350 3550 0    50   Input ~ 0
 BTNx3#-
 NoConn ~ 8400 3350
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW4
+L controller:SW_Push_NO_NC_LED SW4
 U 1 1 5F714114
 P 8650 3550
 F 0 "SW4" H 8650 3975 50  0000 C CNN
@@ -790,7 +790,7 @@ Text GLabel 8350 4200 0    50   Input ~ 0
 BTNx4#-
 NoConn ~ 8400 4000
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW5
+L controller:SW_Push_NO_NC_LED SW5
 U 1 1 5F72F275
 P 8650 4200
 F 0 "SW5" H 8650 4625 50  0000 C CNN
@@ -810,7 +810,7 @@ Text GLabel 8350 4850 0    50   Input ~ 0
 BTNx5#-
 NoConn ~ 8400 4650
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW6
+L controller:SW_Push_NO_NC_LED SW6
 U 1 1 5F72F284
 P 8650 4850
 F 0 "SW6" H 8650 5275 50  0000 C CNN
@@ -830,7 +830,7 @@ Text GLabel 8350 5500 0    50   Input ~ 0
 BTNx6#-
 NoConn ~ 8400 5300
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW7
+L controller:SW_Push_NO_NC_LED SW7
 U 1 1 5F72F293
 P 8650 5500
 F 0 "SW7" H 8650 5925 50  0000 C CNN
@@ -850,7 +850,7 @@ Text GLabel 8950 6050 2    50   Output ~ 0
 BTNx7#C
 NoConn ~ 8400 5950
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW8
+L controller:SW_Push_NO_NC_LED SW8
 U 1 1 5F72F2A2
 P 8650 6150
 F 0 "SW8" H 8650 6575 50  0000 C CNN
@@ -1504,7 +1504,7 @@ Text GLabel 10000 1600 0    50   Input ~ 0
 BTNx8#-
 NoConn ~ 10050 1400
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW9
+L controller:SW_Push_NO_NC_LED SW9
 U 1 1 5E53C282
 P 10300 1600
 F 0 "SW9" H 10300 2025 50  0000 C CNN
@@ -1524,7 +1524,7 @@ Text GLabel 10000 2250 0    50   Input ~ 0
 BTNx9#-
 NoConn ~ 10050 2050
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW10
+L controller:SW_Push_NO_NC_LED SW10
 U 1 1 5E53C28D
 P 10300 2250
 F 0 "SW10" H 10300 2675 50  0000 C CNN
@@ -1544,7 +1544,7 @@ Text GLabel 10000 2900 0    50   Input ~ 0
 BTNxA#-
 NoConn ~ 10050 2700
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW11
+L controller:SW_Push_NO_NC_LED SW11
 U 1 1 5E53C298
 P 10300 2900
 F 0 "SW11" H 10300 3325 50  0000 C CNN
@@ -1564,7 +1564,7 @@ Text GLabel 10000 3550 0    50   Input ~ 0
 BTNxB#-
 NoConn ~ 10050 3350
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW12
+L controller:SW_Push_NO_NC_LED SW12
 U 1 1 5E53C2A3
 P 10300 3550
 F 0 "SW12" H 10300 3975 50  0000 C CNN
@@ -1584,7 +1584,7 @@ Text GLabel 10000 4200 0    50   Input ~ 0
 BTNxC#-
 NoConn ~ 10050 4000
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW13
+L controller:SW_Push_NO_NC_LED SW13
 U 1 1 5E53C2AE
 P 10300 4200
 F 0 "SW13" H 10300 4625 50  0000 C CNN
@@ -1604,7 +1604,7 @@ Text GLabel 10000 4850 0    50   Input ~ 0
 BTNxD#-
 NoConn ~ 10050 4650
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW14
+L controller:SW_Push_NO_NC_LED SW14
 U 1 1 5E53C2B9
 P 10300 4850
 F 0 "SW14" H 10300 5275 50  0000 C CNN
@@ -1624,7 +1624,7 @@ Text GLabel 10000 5500 0    50   Input ~ 0
 BTNxE#-
 NoConn ~ 10050 5300
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW15
+L controller:SW_Push_NO_NC_LED SW15
 U 1 1 5E53C2C4
 P 10300 5500
 F 0 "SW15" H 10300 5925 50  0000 C CNN
@@ -1644,7 +1644,7 @@ Text GLabel 10600 6050 2    50   Output ~ 0
 BTNxF#C
 NoConn ~ 10050 5950
 $Comp
-L ledcontrol:SW_Push_NO_NC_LED SW16
+L controller:SW_Push_NO_NC_LED SW16
 U 1 1 5E53C2CF
 P 10300 6150
 F 0 "SW16" H 10300 6575 50  0000 C CNN
