@@ -1,0 +1,8 @@
+git clone https://github.com/jsreynaud/kicad-action-scripts.git
+
+copy all files except __init__.py from kicad-action-scripts/ViaStitching to /Applications/KiCad/kicad.app/Contents/SharedSupport/scripting/plugins/
+
+In PcbNew: Tools > Scripting Console
+
+import FillArea
+FillArea.FillArea().SetDebug().SetStepMM(2.54).SetSizeMM(0.6).SetDrillMM(0.3).SetClearanceMM(0.2).Run()
