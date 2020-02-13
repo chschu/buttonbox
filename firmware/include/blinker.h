@@ -1,8 +1,6 @@
 #ifndef BLINKER_H
 #define BLINKER_H
 
-#include <PolledTimeout.h>
-
 class Blinker {
 public:
     virtual void on();
@@ -12,6 +10,25 @@ public:
     virtual void begin() = 0;
     virtual void update() = 0;
 };
+
+class PolledCycleTimeout  {
+public:
+    PolledCycleTimeout(uint32_t timeoutCycles) {
+        _timeoutCycles = timeoutCycles;
+        _lastExpiredAtCycles = ESP.getCycleCount();
+    }
+
+    uint32_t expireCount() {
+        uint32_t count = (ESP.getCycleCount() - _lastExpiredAtCycles) / _timeoutCycles;
+        _lastExpiredAtCycles += count * _timeoutCycles;
+        return count;
+    }
+
+private:
+    uint32_t _lastExpiredAtCycles;
+    uint32_t _timeoutCycles;
+};
+
 
 template<typename Renderer>
 class DefaultBlinker : public Blinker {
@@ -28,42 +45,43 @@ public:
 
     void blink(uint16_t periodMillis) {
         _stop_at_target_value = false;
-        // maximum number of nanos per tick: 128500000
-        _tick.reset(new esp8266::polledTimeout::periodicFastNs(1000000LL * periodMillis / (2 * 255)));
+        _timeoutPtr.reset(new PolledCycleTimeout(1LL * F_CPU * periodMillis / 1000 / (2 * 255)));
     }
 
     void begin() {
         _cur_value = 0;
         _target_value = 0;
-        _tick.reset();
+        _timeoutPtr.reset();
 
         Renderer::render(_cur_value);
     }
 
     void update() {
-        if (!_tick) {
-            // no blink in progress, set target value immediately
+        if (!_timeoutPtr) {
+            // no blink in progress; set target value immediately
             if (_cur_value != _target_value) {
                 _cur_value = _target_value;
                 Renderer::render(_cur_value);
             }
-        } else if (*_tick) {
-            // blink in progress, polled timeout has expired
+        } else {
+            // blink in progress; check if there has been at least one expiration
+            // if there is more than one expiration, the blink will be slower than desired
+            if (_timeoutPtr->expireCount()) {
+                // change direction if necessary
+                if (_cur_value == 255) {
+                    _delta = -1;
+                } else if (_cur_value == 0) {
+                    _delta = 1;
+                }
 
-            // change direction if necessary
-            if (_cur_value == 255) {
-                _delta = -1;
-            } else if (_cur_value == 0) {
-                _delta = 1;
-            }
+                // update value and display
+                _cur_value += _delta;
+                Renderer::render(_cur_value);
 
-            // update value
-            _cur_value += _delta;
-            Renderer::render(_cur_value);
-
-            // stop blink at target value
-            if (_stop_at_target_value && _cur_value == _target_value) {
-                _tick.reset();
+                // stop blink at target value
+                if (_stop_at_target_value && _cur_value == _target_value) {
+                    _timeoutPtr.reset();
+                }
             }
         }
     }
@@ -76,7 +94,7 @@ private:
     bool _stop_at_target_value;
     uint8_t _target_value;
 
-    std::unique_ptr<esp8266::polledTimeout::periodicFastNs> _tick;
+    std::unique_ptr<PolledCycleTimeout> _timeoutPtr;
 };
 
 #endif
