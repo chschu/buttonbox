@@ -154,8 +154,8 @@ Parser parser;
 String command;
 
 void loop() {
-    int c = Serial.read();
-    if (c >= 0) {
+    int c;
+    while ((c = Serial.read()) >= 0) {
         command += (char) c;
         if (command.endsWith(".")) {
             parser.processToken(command);
