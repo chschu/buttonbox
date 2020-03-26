@@ -9,92 +9,77 @@ public:
 
     virtual void begin() = 0;
     virtual void update() = 0;
+    virtual bool isOff() = 0;
 };
-
-class PolledCycleTimeout  {
-public:
-    PolledCycleTimeout(uint32_t timeoutCycles) {
-        _timeoutCycles = timeoutCycles;
-        _lastExpiredAtCycles = ESP.getCycleCount();
-    }
-
-    uint32_t expireCount() {
-        uint32_t count = (ESP.getCycleCount() - _lastExpiredAtCycles) / _timeoutCycles;
-        _lastExpiredAtCycles += count * _timeoutCycles;
-        return count;
-    }
-
-private:
-    uint32_t _lastExpiredAtCycles;
-    uint32_t _timeoutCycles;
-};
-
 
 template<typename Renderer>
 class DefaultBlinker : public Blinker {
 public:
     void on() {
-        _target_value = 255;
-        _stop_at_target_value = true;
+        _nextOn = true;
+        _nextOff = false;
     }
 
     void off() {
-        _target_value = 0;
-        _stop_at_target_value = true;
+        _nextOn = false;
+        _nextOff = true;
     }
 
     void blink(uint16_t periodMillis) {
-        _stop_at_target_value = false;
-        _timeoutPtr.reset(new PolledCycleTimeout(1LL * F_CPU * periodMillis / 1000 / (2 * 255)));
+        assert(periodMillis > 0);
+        _nextOn = false;
+        _nextOff = false;
+        _blinking = true;
+        _periodMicros = 1000L * periodMillis;
     }
 
     void begin() {
-        _cur_value = 0;
-        _target_value = 0;
-        _timeoutPtr.reset();
-
-        Renderer::render(_cur_value);
+        _nextOn = false;
+        _nextOff = false;
+        _blinking = false;
+        _phase = 0.0;
+        _phaseUpdatedAtMicros = micros();
     }
 
     void update() {
-        if (!_timeoutPtr) {
-            // no blink in progress; set target value immediately
-            if (_cur_value != _target_value) {
-                _cur_value = _target_value;
-                Renderer::render(_cur_value);
+        unsigned long deltaMicros = micros() - _phaseUpdatedAtMicros;
+        _phaseUpdatedAtMicros += deltaMicros;
+
+        if (_nextOn) {
+            if (!_blinking || deltaMicros >= fmodf(1.5f - _phase, 1.0f) * _periodMicros) {
+                _blinking = false;
+                _nextOn = false;
+                _phase = 0.5f;
             }
-        } else {
-            // blink in progress; check if there has been at least one expiration
-            // if there is more than one expiration, the blink will be slower than desired
-            if (_timeoutPtr->expireCount()) {
-                // change direction if necessary
-                if (_cur_value == 255) {
-                    _delta = -1;
-                } else if (_cur_value == 0) {
-                    _delta = 1;
-                }
-
-                // update value and display
-                _cur_value += _delta;
-                Renderer::render(_cur_value);
-
-                // stop blink at target value
-                if (_stop_at_target_value && _cur_value == _target_value) {
-                    _timeoutPtr.reset();
-                }
+        } else if (_nextOff) {
+            if (!_blinking || deltaMicros >= fmodf(1.0f - _phase, 1.0f) * _periodMicros) {
+                _blinking = false;
+                _nextOff = false;
+                _phase = 0.0f;
             }
         }
+
+        if (_blinking) {
+            _phase = fmodf(_phase + 1.0f * deltaMicros / _periodMicros, 1.0f);
+        }
+
+        Renderer::render(1.0f - fabsf(2.0f * _phase - 1.0f));
+    }
+
+    bool isOff() {
+        return _phase == 0.0f;
     }
 
 private:
-    uint8_t _cur_value;
+    unsigned long _phaseUpdatedAtMicros;
+    float _phase; // [0.0, 1.0)
 
-    int8_t _delta;
+    unsigned long _periodMicros;
 
-    bool _stop_at_target_value;
-    uint8_t _target_value;
+    boolean _blinking;
 
-    std::unique_ptr<PolledCycleTimeout> _timeoutPtr;
+    boolean _nextOn;
+    boolean _nextOff;
 };
 
 #endif

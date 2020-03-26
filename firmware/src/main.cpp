@@ -8,17 +8,63 @@
 
 std::vector<std::shared_ptr<Blinker>> blinkers;
 
+template <uint8_t channel, uint8_t bit_num>
+//using DefaultLedcBlinker = DefaultBlinker<EaseSineOutRenderer<GammaRenderer<LedcWriteRenderer<channel, bit_num>>>>;
+using DefaultLedcBlinker = DefaultBlinker<GammaRenderer<LedcWriteRenderer<channel, bit_num>>>;
+
 void setup() {
     Serial.begin(9600);
 
-    analogWriteRange(255);
+    for (uint8_t ch = 0; ch < 8; ch++) {
+        ledcSetup(ch, 1000, 15);
+    }
 
-    blinkers.push_back(std::make_shared<DefaultBlinker<OnBoardLedRenderer<D4>>>());
-    blinkers.push_back(std::make_shared<DefaultBlinker<OnBoardLedRenderer<D0>>>());
+    ledcAttachPin(4, 0);
+    ledcAttachPin(16, 1); // RX2
+    ledcAttachPin(17, 2); // TX2
+    ledcAttachPin(18, 3);
+    ledcAttachPin(19, 4);
+    ledcAttachPin(21, 5);
+    ledcAttachPin(22, 6);
+    ledcAttachPin(23, 7);
+
+    blinkers.push_back(std::make_shared<DefaultLedcBlinker<0, 15>>());
+    blinkers.push_back(std::make_shared<DefaultLedcBlinker<1, 15>>());
+    blinkers.push_back(std::make_shared<DefaultLedcBlinker<2, 15>>());
+    blinkers.push_back(std::make_shared<DefaultLedcBlinker<3, 15>>());
+    blinkers.push_back(std::make_shared<DefaultLedcBlinker<4, 15>>());
+    blinkers.push_back(std::make_shared<DefaultLedcBlinker<5, 15>>());
+    blinkers.push_back(std::make_shared<DefaultLedcBlinker<6, 15>>());
+    blinkers.push_back(std::make_shared<DefaultLedcBlinker<7, 15>>());
 
     for (auto blinker : blinkers) {
         blinker->begin();
     }
+
+    unsigned long millis0 = millis();
+    int hasBeenOnMask = 0;
+    int isOffMask;
+    do {
+        yield();
+
+        int p = (millis() - millis0) / 100;
+        if (p < blinkers.size()) {
+            blinkers[p]->blink(500);
+        }
+
+        isOffMask = 0;
+        int i = 0;
+        for (auto blinker : blinkers) {
+            blinker->update();
+            if (blinker->isOff()) {
+                isOffMask |= (1 << i);
+            } else {
+                hasBeenOnMask |= (1 << i);
+                blinker->off();
+            }
+            i++;
+        }
+    } while (hasBeenOnMask != (1 << blinkers.size()) - 1 || isOffMask != hasBeenOnMask);
 }
 
 class Parser {
@@ -80,6 +126,10 @@ public:
                     _state = STATE_INIT;
                     return false;
                 }
+            }
+            if (periodMillis == 0) {
+                _state = STATE_INIT;
+                return false;
             }
             blinkers[_varN]->blink(periodMillis);
             _state = STATE_INIT;
