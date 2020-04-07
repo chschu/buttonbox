@@ -1,61 +1,97 @@
 #include <Arduino.h>
 
-#include <memory>
-#include <vector>
+#include <Blinker.h>
 
-#include "blinker.h"
-#include "renderer.h"
+#include "transform.h"
 
-std::vector<std::shared_ptr<Blinker>> blinkers;
+#include <Adafruit_PWMServoDriver.h>
+#include <Adafruit_MCP23017.h>
 
-template <uint8_t channel, uint8_t bit_num>
-//using DefaultLedcBlinker = DefaultBlinker<EaseSineOutRenderer<GammaRenderer<LedcWriteRenderer<channel, bit_num>>>>;
-using DefaultLedcBlinker = DefaultBlinker<GammaRenderer<LedcWriteRenderer<channel, bit_num>>>;
+#define LED_COUNT 16
+
+#if LED_COUNT <= 8
+#define led_mask_t uint8_t
+#elif LED_COUNT <= 16
+#define led_mask_t uint16_t
+#else
+#error LED_COUNT can be at most 16.
+#endif
+
+class PCA9685Blinker : public Blinker {
+public:
+    PCA9685Blinker(Adafruit_PWMServoDriver &pca9685, uint8_t pin)
+        : _pca9685(pca9685), _pin(pin) {
+    }
+protected:
+    void render(float value) override {
+        uint16_t cur = 4095 * Transform::gamma3(value);
+        if (cur != _prev) {
+            _pca9685.setPin(_pin, cur);
+            _prev = cur;
+        }
+    }
+private:
+    Adafruit_PWMServoDriver &_pca9685;
+    uint8_t _pin;
+    uint16_t _prev = UINT16_MAX;
+};
+
+
+Adafruit_PWMServoDriver pca9685;
+Adafruit_MCP23017 mcp23017;
+Blinker *blinkers[LED_COUNT];
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
 
-    for (uint8_t ch = 0; ch < 8; ch++) {
-        ledcSetup(ch, 1000, 15);
+    mcp23017.begin();
+    pca9685.begin();
+
+    // clock must be set after the above "begin" calls, because they set it to 100 kHz
+    Wire.setClock(400000);
+
+    // TODO output disable
+
+    // configure open-drain outputs (default is totem-pole)
+    pca9685.setOutputMode(false);
+
+    // TODO Need to invert PCA9685 outputs? Set Bit 4 (INVRT) of Register 0x01 (MODE2) to 1
+
+    // TODO output enable
+
+    for (int i = 0; i < LED_COUNT; i++) {
+        blinkers[i] = new PCA9685Blinker(pca9685, i);
     }
 
-    ledcAttachPin(4, 0);
-    ledcAttachPin(16, 1); // RX2
-    ledcAttachPin(17, 2); // TX2
-    ledcAttachPin(18, 3);
-    ledcAttachPin(19, 4);
-    ledcAttachPin(21, 5);
-    ledcAttachPin(22, 6);
-    ledcAttachPin(23, 7);
-
-    blinkers.push_back(std::make_shared<DefaultLedcBlinker<0, 15>>());
-    blinkers.push_back(std::make_shared<DefaultLedcBlinker<1, 15>>());
-    blinkers.push_back(std::make_shared<DefaultLedcBlinker<2, 15>>());
-    blinkers.push_back(std::make_shared<DefaultLedcBlinker<3, 15>>());
-    blinkers.push_back(std::make_shared<DefaultLedcBlinker<4, 15>>());
-    blinkers.push_back(std::make_shared<DefaultLedcBlinker<5, 15>>());
-    blinkers.push_back(std::make_shared<DefaultLedcBlinker<6, 15>>());
-    blinkers.push_back(std::make_shared<DefaultLedcBlinker<7, 15>>());
+    mcp23017.setupInterrupts(true, false, LOW);
+    for (int i = 0; i < LED_COUNT; i++) {
+        mcp23017.pinMode(i, INPUT);
+        mcp23017.pullUp(i, HIGH);
+        mcp23017.setupInterruptPin(i, CHANGE);
+    }
 
     for (auto blinker : blinkers) {
-        blinker->begin();
+        blinker->begin(micros());
     }
 
-    unsigned long millis0 = millis();
-    int hasBeenOnMask = 0;
-    int isOffMask;
+    // perform initialization animation
+
+    unsigned long micros0 = micros();
+    led_mask_t hasBeenOnMask = 0;
+    led_mask_t isOffMask;
     do {
+        // TODO Remove yield call? It's probably not required on ATmega8.
         yield();
 
-        int p = (millis() - millis0) / 100;
-        if (p < blinkers.size()) {
+        int p = (micros() - micros0) / 100000;
+        if (p < LED_COUNT) {
             blinkers[p]->blink(500);
         }
 
         isOffMask = 0;
         int i = 0;
         for (auto blinker : blinkers) {
-            blinker->update();
+            blinker->update(micros());
             if (blinker->isOff()) {
                 isOffMask |= (1 << i);
             } else {
@@ -64,106 +100,98 @@ void setup() {
             }
             i++;
         }
-    } while (hasBeenOnMask != (1 << blinkers.size()) - 1 || isOffMask != hasBeenOnMask);
+    } while (hasBeenOnMask != (1 << (LED_COUNT - 1) << 1) + 1 || isOffMask != hasBeenOnMask);
 }
 
 class Parser {
 public:
-    bool processToken(const String &token) {
-        if (_state == STATE_INIT) {
-            if (token == "led.") {
-                _state = STATE_LED;
-                return true;
-            } else {
-                _state = STATE_INIT;
-                return false;
-            }
-        } else if (_state == STATE_LED) {
-            unsigned int varN = 0;
-            int i = 0;
-            char c;
-            while ((c = token[i++]) != '.') {
-                if (c < '0' || c > '9') {
-                    _state = STATE_INIT;
+    bool process(const char ch) {
+        if (_state == STATE_LED_SELECT) {
+            if (ch >= '0' && ch <= '9') {
+                uint8_t tmp = 10 * _led + (ch - '0');
+                 if (tmp < _led || tmp >= LED_COUNT) {
+                    _reset();
                     return false;
                 }
-                varN = 10 * varN + (c - '0');
-                if (varN >= blinkers.size()) {
-                    _state = STATE_INIT;
-                    return false;
-                }
-            }
-            _state = STATE_LED_N;
-            _varN = varN;
-            return true;
-        } else if (_state == STATE_LED_N) {
-            if (token == "on.") {
-                blinkers[_varN]->on();
-                _state = STATE_INIT;
+                _led = tmp;
                 return true;
-            } else if (token == "off.") {
-                blinkers[_varN]->off();
-                _state = STATE_INIT;
+            }
+            if (ch == '+') {
+                blinkers[_led]->on();
+                _reset();
                 return true;
-            } else if (token == "blink.") {
-                _state = STATE_LED_N_BLINK;
+            }
+            if (ch == '-') {
+                blinkers[_led]->off();
+                _reset();
                 return true;
-            } else {
-                _state = STATE_INIT;
-                return false;
             }
-        } else if (_state == STATE_LED_N_BLINK) {
-            unsigned int periodMillis = 0;
-            int i = 0;
-            char c;
-            while ((c = token[i++]) != '.') {
-                if (c < '0' || c > '9') {
-                    _state = STATE_INIT;
-                    return false;
-                }
-                periodMillis = 10 * periodMillis + (c - '0');
-                if (periodMillis > 65535) {
-                    _state = STATE_INIT;
-                    return false;
-                }
+            if (ch == '*') {
+                _state = STATE_BLINK_PERIOD_SELECT;
+                return true;
             }
-            if (periodMillis == 0) {
-                _state = STATE_INIT;
-                return false;
-            }
-            blinkers[_varN]->blink(periodMillis);
-            _state = STATE_INIT;
-            return true;
-        } else {
-            _state = STATE_INIT;
+            _reset();
             return false;
         }
+
+        if (_state == STATE_BLINK_PERIOD_SELECT) {
+            if (ch >= '0' && ch <= '9') {
+                uint16_t tmp = 10 * _blink_period_millis + (ch - '0');
+                if (tmp < _blink_period_millis) {
+                    _reset();
+                    return false;
+                }
+                _blink_period_millis = tmp;
+                return true;
+            }
+            if (ch == '*') {
+                blinkers[_led]->blink(_blink_period_millis);
+                _reset();
+                return true;
+            }
+            _reset();
+            return false;
+        }
+
+        _reset();
+        return false;
     }
+
 private:
     enum {
-        STATE_INIT,
-        STATE_LED,
-        STATE_LED_N,
-        STATE_LED_N_BLINK,
-    } _state = STATE_INIT;
+        STATE_LED_SELECT,
+        STATE_BLINK_PERIOD_SELECT
+    } _state = STATE_LED_SELECT;
 
-    int _varN;
+    uint8_t _led = 0;
+    uint16_t _blink_period_millis = 0;
+
+    void _reset() {
+        _state = STATE_LED_SELECT;
+        _led = 0;
+        _blink_period_millis = 0;
+    }
 };
 
-Parser parser;
-String command;
-
 void loop() {
+    static Parser parser;
+    static int blinker_index = 0;
+
     int c;
     while ((c = Serial.read()) >= 0) {
-        command += (char) c;
-        if (command.endsWith(".")) {
-            parser.processToken(command);
-            command.clear();
-        }
+        parser.process(c);
     }
 
-    for (auto blinker : blinkers) {
-        blinker->update();
+    // minimize time between UART RX polls by updating one blinker at a time
+    blinkers[blinker_index]->update(micros());
+    blinker_index = (blinker_index + 1) % LED_COUNT;
+
+    uint8_t p = mcp23017.getLastInterruptPin();
+    if (p != MCP23017_INT_ERR) {
+        uint8_t v = mcp23017.getLastInterruptPinValue();
+        if (v != MCP23017_INT_ERR) {
+            Serial.print(p);
+            Serial.print(v ? '-' : '+');
+        }
     }
 }
