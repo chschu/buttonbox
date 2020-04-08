@@ -28,7 +28,7 @@ public:
 
 protected:
     void render(float value) override {
-        uint16_t cur = 4095 * Transform::gamma3(value);
+        uint16_t cur = 4095 * Transform::gamma<9, 4>(Transform::ease_sine_in(value));
         if (cur != _prev) {
             _pca9685->setPin(_pin, cur);
             _prev = cur;
@@ -43,7 +43,7 @@ private:
 
 class MCP23017Debouncer : public Debouncer {
 public:
-    MCP23017Debouncer() : Debouncer(10) {
+    MCP23017Debouncer() : Debouncer(10), _mcp23017(nullptr), _pin(0) {
     }
 
     void attach(Adafruit_MCP23017 *mcp23017, uint8_t pin) {
