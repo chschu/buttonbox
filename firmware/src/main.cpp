@@ -1,45 +1,71 @@
 #include <Arduino.h>
 
+#include <Adafruit_PWMServoDriver.h>
+#include <Adafruit_MCP23017.h>
+#include <Debouncer.h>
+
 #include <Blinker.h>
 
 #include "transform.h"
 
-#include <Adafruit_PWMServoDriver.h>
-#include <Adafruit_MCP23017.h>
-
 #define LED_COUNT 16
 
-#if LED_COUNT <= 8
-#define led_mask_t uint8_t
-#elif LED_COUNT <= 16
-#define led_mask_t uint16_t
+#if LED_COUNT >= 1 && LED_COUNT <= 16
+const uint16_t ALL_LED_BITS = (((uint32_t)1) << LED_COUNT) - 1;
 #else
-#error LED_COUNT can be at most 16.
+#error LED_COUNT must be a value from 1 to 16.
 #endif
+
+const char *LED_CHARS = "0123456789ABCDEF";
 
 class PCA9685Blinker : public Blinker {
 public:
-    PCA9685Blinker(Adafruit_PWMServoDriver &pca9685, uint8_t pin)
-        : _pca9685(pca9685), _pin(pin) {
+    void attach(Adafruit_PWMServoDriver *pca9685, uint8_t pin) {
+        _pca9685 = pca9685;
+        _pin = pin;
+        _prev = UINT16_MAX;
     }
+
 protected:
     void render(float value) override {
         uint16_t cur = 4095 * Transform::gamma3(value);
         if (cur != _prev) {
-            _pca9685.setPin(_pin, cur);
+            _pca9685->setPin(_pin, cur);
             _prev = cur;
         }
     }
+
 private:
-    Adafruit_PWMServoDriver &_pca9685;
+    Adafruit_PWMServoDriver *_pca9685;
     uint8_t _pin;
-    uint16_t _prev = UINT16_MAX;
+    uint16_t _prev;
 };
 
+class MCP23017Debouncer : public Debouncer {
+public:
+    MCP23017Debouncer() : Debouncer(10) {
+    }
+
+    void attach(Adafruit_MCP23017 *mcp23017, uint8_t pin) {
+        _mcp23017 = mcp23017;
+        _pin = pin;
+        update();
+    }
+
+    bool update() {
+        return Debouncer::update(_mcp23017->digitalRead(_pin));
+    }
+
+private:
+    Adafruit_MCP23017 *_mcp23017;
+    uint8_t _pin;
+};
 
 Adafruit_PWMServoDriver pca9685;
 Adafruit_MCP23017 mcp23017;
-Blinker *blinkers[LED_COUNT];
+
+PCA9685Blinker blinkers[LED_COUNT];
+MCP23017Debouncer debouncers[LED_COUNT];
 
 void setup() {
     Serial.begin(115200);
@@ -60,56 +86,47 @@ void setup() {
     // TODO output enable
 
     for (int i = 0; i < LED_COUNT; i++) {
-        blinkers[i] = new PCA9685Blinker(pca9685, i);
-    }
+        blinkers[i].attach(&pca9685, i);
+        blinkers[i].begin(micros());
 
-    mcp23017.setupInterrupts(true, false, LOW);
-    for (int i = 0; i < LED_COUNT; i++) {
         mcp23017.pinMode(i, INPUT);
         mcp23017.pullUp(i, HIGH);
-        mcp23017.setupInterruptPin(i, CHANGE);
-    }
-
-    for (auto blinker : blinkers) {
-        blinker->begin(micros());
+        debouncers[i].attach(&mcp23017, i);
     }
 
     // perform initialization animation
-
-    unsigned long micros0 = micros();
-    led_mask_t hasBeenOnMask = 0;
-    led_mask_t isOffMask;
+    unsigned long millis0 = millis();
+    uint16_t flashedLedBits = 0;
+    bool allOff;
     do {
         // TODO Remove yield call? It's probably not required on ATmega8.
         yield();
 
-        int p = (micros() - micros0) / 100000;
+        int p = (millis() - millis0) / 100;
         if (p < LED_COUNT) {
-            blinkers[p]->blink(500);
+            blinkers[p].blink(500);
         }
 
-        isOffMask = 0;
-        int i = 0;
-        for (auto blinker : blinkers) {
-            blinker->update(micros());
-            if (blinker->isOff()) {
-                isOffMask |= (1 << i);
-            } else {
-                hasBeenOnMask |= (1 << i);
-                blinker->off();
+        allOff = true;
+        for (uint8_t i = 0; i < LED_COUNT; i++) {
+            blinkers[i].update(micros());
+            if (!blinkers[i].isOff()) {
+                allOff = false;
+                flashedLedBits |= 1 << i;
+                blinkers[i].off();
             }
-            i++;
         }
-    } while (hasBeenOnMask != (1 << (LED_COUNT - 1) << 1) + 1 || isOffMask != hasBeenOnMask);
+    } while (flashedLedBits != ALL_LED_BITS || !allOff);
 }
 
 class Parser {
 public:
     bool process(const char ch) {
         if (_state == STATE_LED_SELECT) {
-            if (ch >= '0' && ch <= '9') {
-                uint8_t tmp = 10 * _led + (ch - '0');
-                 if (tmp < _led || tmp >= LED_COUNT) {
+            const char *p = strchr(LED_CHARS, ch);
+            if (p) {
+                uint8_t tmp = p - LED_CHARS;
+                if (tmp >= LED_COUNT) {
                     _reset();
                     return false;
                 }
@@ -117,12 +134,12 @@ public:
                 return true;
             }
             if (ch == '+') {
-                blinkers[_led]->on();
+                blinkers[_led].on();
                 _reset();
                 return true;
             }
             if (ch == '-') {
-                blinkers[_led]->off();
+                blinkers[_led].off();
                 _reset();
                 return true;
             }
@@ -145,7 +162,7 @@ public:
                 return true;
             }
             if (ch == '*') {
-                blinkers[_led]->blink(_blink_period_millis);
+                blinkers[_led].blink(_blink_period_millis);
                 _reset();
                 return true;
             }
@@ -175,23 +192,25 @@ private:
 
 void loop() {
     static Parser parser;
-    static int blinker_index = 0;
+    static int i = 0;
 
     int c;
     while ((c = Serial.read()) >= 0) {
         parser.process(c);
     }
 
-    // minimize time between UART RX polls by updating one blinker at a time
-    blinkers[blinker_index]->update(micros());
-    blinker_index = (blinker_index + 1) % LED_COUNT;
+    // minimize time between UART RX polls by updating one blinker and debouncer at a time
+    blinkers[i].update(micros());
 
-    uint8_t p = mcp23017.getLastInterruptPin();
-    if (p != MCP23017_INT_ERR) {
-        uint8_t v = mcp23017.getLastInterruptPinValue();
-        if (v != MCP23017_INT_ERR) {
-            Serial.print(p);
-            Serial.print(v ? '-' : '+');
+    if (debouncers[i].update()) {
+        if (debouncers[i].get()) {
+            Serial.print(LED_CHARS[i]);
+            Serial.print('-');
+        } else {
+            Serial.print(LED_CHARS[i]);
+            Serial.print('+');
         }
     }
+
+    i = (i + 1) % LED_COUNT;
 }
