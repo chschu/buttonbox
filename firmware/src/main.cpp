@@ -11,10 +11,14 @@
 #define LED_COUNT 16
 
 #if LED_COUNT >= 1 && LED_COUNT <= 16
-const uint16_t ALL_LED_BITS = (((uint32_t)1) << LED_COUNT) - 1;
+const uint16_t ALL_LED_BITS = (1L << LED_COUNT) - 1;
 #else
 #error LED_COUNT must be a value from 1 to 16.
 #endif
+
+// configuration for initialization animation
+const unsigned long long INIT_BLINK_OFFSET_MILLIS = 50;
+const uint16_t INIT_BLINK_PERIOD_MILLIS = 500;
 
 const char *LED_CHARS = "0123456789ABCDEF";
 
@@ -28,7 +32,7 @@ public:
 
 protected:
     void render(float value) override {
-        uint16_t cur = 4095 * Transform::gamma<9, 4>(Transform::ease_sine_in(value));
+        uint16_t cur = 4095 * Transform::gamma<9, 4>(value);
         if (cur != _prev) {
             _pca9685->setPin(_pin, cur);
             _prev = cur;
@@ -68,23 +72,13 @@ PCA9685Blinker blinkers[LED_COUNT];
 MCP23017Debouncer debouncers[LED_COUNT];
 
 void setup() {
-    Serial.begin(115200);
-
     mcp23017.begin();
     pca9685.begin();
 
     // clock must be set after the above "begin" calls, because they set it to 100 kHz
     Wire.setClock(400000);
 
-    // TODO output disable
-
-    // configure open-drain outputs (default is totem-pole)
-    pca9685.setOutputMode(false);
-
-    // TODO Need to invert PCA9685 outputs? Set Bit 4 (INVRT) of Register 0x01 (MODE2) to 1
-
-    // TODO output enable
-
+    // initialize output blinkers and input debouncers
     for (int i = 0; i < LED_COUNT; i++) {
         blinkers[i].attach(&pca9685, i);
         blinkers[i].begin(micros());
@@ -96,27 +90,23 @@ void setup() {
 
     // perform initialization animation
     unsigned long millis0 = millis();
-    uint16_t flashedLedBits = 0;
-    bool allOff;
+    unsigned long duration;
     do {
-        // TODO Remove yield call? It's probably not required on ATmega8.
-        yield();
-
-        int p = (millis() - millis0) / 100;
+        duration = millis() - millis0;
+        int p = duration / INIT_BLINK_OFFSET_MILLIS;
         if (p < LED_COUNT) {
-            blinkers[p].blink(500);
+            blinkers[p].blink(INIT_BLINK_PERIOD_MILLIS);
         }
 
-        allOff = true;
         for (uint8_t i = 0; i < LED_COUNT; i++) {
             blinkers[i].update(micros());
             if (!blinkers[i].isOff()) {
-                allOff = false;
-                flashedLedBits |= 1 << i;
                 blinkers[i].off();
             }
         }
-    } while (flashedLedBits != ALL_LED_BITS || !allOff);
+    } while (duration < LED_COUNT * INIT_BLINK_OFFSET_MILLIS + INIT_BLINK_PERIOD_MILLIS);
+
+    Serial.begin(115200);
 }
 
 class Parser {
