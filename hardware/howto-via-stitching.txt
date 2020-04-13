@@ -5,4 +5,4 @@ copy all files except __init__.py from kicad-action-scripts/ViaStitching to /App
 In PcbNew: Tools > Scripting Console
 
 import FillArea
-FillArea.FillArea().SetDebug().SetStepMM(2.54).SetSizeMM(0.6).SetDrillMM(0.3).SetClearanceMM(0.2).Run()
+FillArea.FillArea().SetDebug().SetStepMM(5.08).SetSizeMM(0.6).SetDrillMM(0.3).SetClearanceMM(0.2).Run()
