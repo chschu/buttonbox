@@ -28,6 +28,13 @@ public:
         _pca9685 = pca9685;
         _pin = pin;
         _prev = UINT16_MAX;
+        // The PWM registers of PCA9685 may still hold their old values after an AVR reset or brief power-down.
+        // Perform an initial update to turn them off. Otherwise there might be a short flicker once ~OE is pulled low.
+        update();
+    }
+
+    void update() {
+        Blinker::update(micros());
     }
 
 protected:
@@ -72,6 +79,7 @@ PCA9685Blinker blinkers[LED_COUNT];
 MCP23017Debouncer debouncers[LED_COUNT];
 
 void setup() {
+    // initialize MCP23017 and PCA9685
     mcp23017.begin();
     pca9685.begin();
 
@@ -88,6 +96,10 @@ void setup() {
         debouncers[i].attach(&mcp23017, i);
     }
 
+    // pull ~OE low to enable LEDs
+    DDRC |= (1 << PC2);
+    PORTC &= ~(1 << PC2);
+
     // perform initialization animation
     unsigned long millis0 = millis();
     unsigned long duration;
@@ -99,7 +111,7 @@ void setup() {
         }
 
         for (uint8_t i = 0; i < LED_COUNT; i++) {
-            blinkers[i].update(micros());
+            blinkers[i].update();
             if (!blinkers[i].isOff()) {
                 blinkers[i].off();
             }
@@ -190,7 +202,7 @@ void loop() {
     }
 
     // minimize time between UART RX polls by updating one blinker and debouncer at a time
-    blinkers[i].update(micros());
+    blinkers[i].update();
 
     if (debouncers[i].update()) {
         if (debouncers[i].get()) {
