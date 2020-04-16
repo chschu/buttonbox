@@ -10,6 +10,19 @@
 
 #define LED_COUNT 16
 
+// splitting macros for first byte (command + led) of the serial protocol
+#define CMD(b) ((b) & 0xF0)
+#define LED(b) ((b) & 0x0F)
+
+// 0x4N: LED N off / button N up
+const uint8_t CMD_OFF = 0x40;
+
+// 0x5N: LED N on / BUTTON N down
+const uint8_t CMD_ON = 0x50;
+
+// 0x6N 0xHH 0xLL: LED N blink a period of 0xHHLL milliseconds
+const uint8_t CMD_BLINK = 0x60;
+
 #if LED_COUNT >= 1 && LED_COUNT <= 16
 const uint16_t ALL_LED_BITS = (1L << LED_COUNT) - 1;
 #else
@@ -19,8 +32,6 @@ const uint16_t ALL_LED_BITS = (1L << LED_COUNT) - 1;
 // configuration for initialization animation
 const unsigned long long INIT_BLINK_OFFSET_MILLIS = 50;
 const uint16_t INIT_BLINK_PERIOD_MILLIS = 500;
-
-const char *LED_CHARS = "0123456789ABCDEF";
 
 class PCA9685Blinker : public Blinker {
 public:
@@ -123,73 +134,47 @@ void setup() {
 
 class Parser {
 public:
-    bool process(const char ch) {
-        if (_state == STATE_LED_SELECT) {
-            const char *p = strchr(LED_CHARS, ch);
-            if (p) {
-                uint8_t tmp = p - LED_CHARS;
-                if (tmp >= LED_COUNT) {
-                    _reset();
-                    return false;
+    void process(const uint8_t b) {
+        switch (_state) {
+        case STATE_EXPECT_COMMAND:
+            _led = LED(b);
+            if (_led < LED_COUNT) {
+                switch (CMD(b)) {
+                case CMD_ON:
+                    blinkers[_led].on();
+                    break;
+                case CMD_OFF:
+                    blinkers[_led].off();
+                    break;
+                case CMD_BLINK:
+                    _state = STATE_EXPECT_BLINK_PERIOD_HIGH;
+                    break;
                 }
-                _led = tmp;
-                return true;
             }
-            if (ch == '+') {
-                blinkers[_led].on();
-                _reset();
-                return true;
+            break;
+        case STATE_EXPECT_BLINK_PERIOD_HIGH:
+            _blink_period = b << 8;
+            _state = STATE_EXPECT_BLINK_PERIOD_LOW;
+            break;
+        case STATE_EXPECT_BLINK_PERIOD_LOW:
+            _blink_period |= b;
+            if (_blink_period > 0) {
+                blinkers[_led].blink(_blink_period);
             }
-            if (ch == '-') {
-                blinkers[_led].off();
-                _reset();
-                return true;
-            }
-            if (ch == '*') {
-                _state = STATE_BLINK_PERIOD_SELECT;
-                return true;
-            }
-            _reset();
-            return false;
+            _state = STATE_EXPECT_COMMAND;
+            break;
         }
-
-        if (_state == STATE_BLINK_PERIOD_SELECT) {
-            if (ch >= '0' && ch <= '9') {
-                uint16_t tmp = 10 * _blink_period_millis + (ch - '0');
-                if (tmp < _blink_period_millis) {
-                    _reset();
-                    return false;
-                }
-                _blink_period_millis = tmp;
-                return true;
-            }
-            if (ch == '*') {
-                blinkers[_led].blink(_blink_period_millis);
-                _reset();
-                return true;
-            }
-            _reset();
-            return false;
-        }
-
-        _reset();
-        return false;
     }
 
 private:
     enum {
-        STATE_LED_SELECT,
-        STATE_BLINK_PERIOD_SELECT
-    } _state = STATE_LED_SELECT;
+        STATE_EXPECT_COMMAND,
+        STATE_EXPECT_BLINK_PERIOD_HIGH,
+        STATE_EXPECT_BLINK_PERIOD_LOW
+    } _state = STATE_EXPECT_COMMAND;
 
-    uint8_t _led = 0;
-    uint16_t _blink_period_millis = 0;
-
-    void _reset() {
-        _state = STATE_LED_SELECT;
-        _led = 0;
-        _blink_period_millis = 0;
-    }
+    uint8_t _led;
+    uint16_t _blink_period;
 };
 
 void loop() {
@@ -206,11 +191,11 @@ void loop() {
 
     if (debouncers[i].update()) {
         if (debouncers[i].get()) {
-            Serial.print(LED_CHARS[i]);
-            Serial.print('-');
+            // button up (-> HIGH)
+            Serial.write(CMD_OFF | i);
         } else {
-            Serial.print(LED_CHARS[i]);
-            Serial.print('+');
+            // button down (-> LOW)
+            Serial.write(CMD_ON | i);
         }
     }
 
