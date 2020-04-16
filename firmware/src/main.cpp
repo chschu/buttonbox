@@ -39,7 +39,7 @@ public:
 
 protected:
     void render(float value) override {
-        uint16_t cur = 4095 * Transform::gamma<9, 4>(value);
+        uint16_t cur = 4095 * Transform::gamma<11, 4>(value);
         if (cur != _prev) {
             _pca9685->setPin(_pin, cur);
             _prev = cur;
