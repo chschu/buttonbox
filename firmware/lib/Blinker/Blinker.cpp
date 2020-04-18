@@ -33,6 +33,8 @@ void Blinker::update(unsigned long micros) {
     unsigned long deltaMicros = micros - _phaseUpdatedAtMicros;
     _phaseUpdatedAtMicros += deltaMicros;
 
+    float prev_phase = _phase;
+
     if (_next_on) {
         if (!_blinking || deltaMicros >= fmodf(1.5f - _phase, 1.0f) * _periodMicros) {
             _next_on = false;
@@ -51,7 +53,9 @@ void Blinker::update(unsigned long micros) {
         _phase = fmodf(_phase + 1.0f * deltaMicros / _periodMicros, 1.0f);
     }
 
-    render(1.0f - fabsf(2.0f * _phase - 1.0f));
+    if (_phase != prev_phase) {
+        render(1.0f - fabsf(2.0f * _phase - 1.0f));
+    }
 }
 
 bool Blinker::isOff() {
