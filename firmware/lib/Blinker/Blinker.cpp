@@ -34,23 +34,20 @@ void Blinker::update(unsigned long micros) {
     _phaseUpdatedAtMicros += deltaMicros;
 
     float prev_phase = _phase;
+    float unused;
 
-    if (_next_on) {
-        if (!_blinking || deltaMicros >= fmodf(1.5f - _phase, 1.0f) * _periodMicros) {
+    if (_next_on || _next_off) {
+        float target_phase = _next_on ? 0.5f : 0.0f;
+        if (!_blinking || deltaMicros >= modff(target_phase + 1.0f - _phase, &unused) * _periodMicros) {
             _next_on = false;
+            _next_off = false;
             _blinking = false;
-            _phase = 0.5f;
-        }
-    } else if (_next_off) {
-        if (!_blinking || deltaMicros >= fmodf(1.0f - _phase, 1.0f) * _periodMicros) {
-            _next_on = false;
-            _blinking = false;
-            _phase = 0.0f;
+            _phase = target_phase;
         }
     }
 
     if (_blinking) {
-        _phase = fmodf(_phase + 1.0f * deltaMicros / _periodMicros, 1.0f);
+        _phase = modff(_phase + 1.0f * deltaMicros / _periodMicros, &unused);
     }
 
     if (_phase != prev_phase) {
