@@ -24,8 +24,7 @@ private:
 
     unsigned long _periodMicros;
 
-    bool _next_on;
-    bool _next_off;
+    uint8_t _next;
     bool _blinking;
 };
 

@@ -3,27 +3,27 @@
 
 #include "Blinker.h"
 
+static const uint8_t _NEXT_KEEP = 0;
+static const uint8_t _NEXT_ON = 1;
+static const uint8_t _NEXT_OFF = 2;
+
 void Blinker::on() {
-    _next_on = true;
-    _next_off = false;
+    _next = _NEXT_ON;
 }
 
 void Blinker::off() {
-    _next_on = false;
-    _next_off = true;
+    _next = _NEXT_OFF;
 }
 
 void Blinker::blink(uint16_t periodMillis) {
     assert(periodMillis > 0);
-    _next_on = false;
-    _next_off = false;
+    _next = _NEXT_KEEP;
     _blinking = true;
     _periodMicros = 1000L * periodMillis;
 }
 
 void Blinker::begin(unsigned long micros) {
-    _next_on = false;
-    _next_off = false;
+    _next = _NEXT_KEEP;
     _blinking = false;
     _phase = 0.0;
     _phaseUpdatedAtMicros = micros;
@@ -36,11 +36,10 @@ void Blinker::update(unsigned long micros) {
     float prev_phase = _phase;
     float unused;
 
-    if (_next_on || _next_off) {
-        float target_phase = _next_on ? 0.5f : 0.0f;
+    if (_next != _NEXT_KEEP) {
+        float target_phase = _next == _NEXT_ON ? 0.5f : 0.0f;
         if (!_blinking || deltaMicros >= modff(target_phase + 1.0f - _phase, &unused) * _periodMicros) {
-            _next_on = false;
-            _next_off = false;
+            _next = _NEXT_KEEP;
             _blinking = false;
             _phase = target_phase;
         }
