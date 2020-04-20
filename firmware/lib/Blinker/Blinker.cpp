@@ -25,8 +25,9 @@ void Blinker::blink(uint16_t periodMillis) {
 void Blinker::begin(unsigned long micros) {
     _next = _NEXT_KEEP;
     _blinking = false;
-    _phase = 0.0;
+    _phase = 0.0f;
     _phaseUpdatedAtMicros = micros;
+    render(0.0f);
 }
 
 void Blinker::update(unsigned long micros) {

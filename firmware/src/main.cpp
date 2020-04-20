@@ -38,10 +38,6 @@ public:
     void attach(Adafruit_PWMServoDriver *pca9685, uint8_t pin) {
         _pca9685 = pca9685;
         _pin = pin;
-        _prev = UINT16_MAX;
-        // The PWM registers of PCA9685 may still hold their old values after an AVR reset or brief power-down.
-        // Perform an initial update to turn them off. Otherwise there might be a short flicker once ~OE is pulled low.
-        update();
     }
 
     void update() {
@@ -52,13 +48,11 @@ protected:
     void render(float value) override {
         uint16_t cur = 4095 * Transform::gamma<11, 4>(value);
         _pca9685->setPin(_pin, cur);
-        _prev = cur;
     }
 
 private:
     Adafruit_PWMServoDriver *_pca9685;
     uint8_t _pin;
-    uint16_t _prev;
 };
 
 class MCP23017Debouncer : public Debouncer {
