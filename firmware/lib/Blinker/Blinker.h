@@ -13,6 +13,8 @@ public:
     void off();
     void blink(uint16_t periodMillis);
 
+    bool isBlinking();
+
     bool isOff();
 
 protected:

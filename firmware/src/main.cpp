@@ -15,14 +15,14 @@
 #define CMD(b) ((b) & 0xF0)
 #define LED(b) ((b) & 0x0F)
 
-// 0x4N: LED N off / button N up
-const uint8_t CMD_OFF = 0x40;
+// 0x0N: Button N activated (on release)
+const uint8_t CMD_BUTTON = 0x00;
 
-// 0x5N: LED N on / BUTTON N down
-const uint8_t CMD_ON = 0x50;
+// 0x0N: LED N off
+const uint8_t CMD_OFF = 0x00;
 
-// 0x6N 0xHH 0xLL: LED N blink a period of 0xHHLL milliseconds
-const uint8_t CMD_BLINK = 0x60;
+// 0x1N: LED N on
+const uint8_t CMD_ON = 0x10;
 
 #if LED_COUNT >= 1 && LED_COUNT <= 16
 const uint16_t ALL_LED_BITS = (1L << LED_COUNT) - 1;
@@ -122,70 +122,28 @@ void setup() {
     Serial.begin(115200);
 }
 
-class Parser {
-public:
-    void process(const uint8_t b) {
-        switch (_state) {
-        case STATE_EXPECT_COMMAND:
-            _led = LED(b);
-            if (_led < LED_COUNT) {
-                switch (CMD(b)) {
-                case CMD_ON:
-                    blinkers[_led].on();
-                    break;
-                case CMD_OFF:
-                    blinkers[_led].off();
-                    break;
-                case CMD_BLINK:
-                    _state = STATE_EXPECT_BLINK_PERIOD_HIGH;
-                    break;
-                }
-            }
-            break;
-        case STATE_EXPECT_BLINK_PERIOD_HIGH:
-            _blink_period = b << 8;
-            _state = STATE_EXPECT_BLINK_PERIOD_LOW;
-            break;
-        case STATE_EXPECT_BLINK_PERIOD_LOW:
-            _blink_period |= b;
-            if (_blink_period > 0) {
-                blinkers[_led].blink(_blink_period);
-            }
-            _state = STATE_EXPECT_COMMAND;
-            break;
-        }
-    }
-
-private:
-    enum {
-        STATE_EXPECT_COMMAND,
-        STATE_EXPECT_BLINK_PERIOD_HIGH,
-        STATE_EXPECT_BLINK_PERIOD_LOW
-    } _state = STATE_EXPECT_COMMAND;
-
-    uint8_t _led;
-    uint16_t _blink_period;
-};
-
 void loop() {
-    static Parser parser;
     static int i = 0;
 
     int c;
     while ((c = Serial.read()) >= 0) {
-        parser.process(c);
+        switch (CMD(c)) {
+        case CMD_OFF:
+            blinkers[LED(c)].off();
+            break;
+        case CMD_ON:
+            blinkers[LED(c)].on();
+            break;
+        }
     }
 
     // minimize time between UART RX polls by updating one blinker and debouncer at a time
     blinkers[i].update();
 
     if (debouncers[i].update()) {
-        if (debouncers[i].get()) {
-            // button up (-> HIGH)
-            Serial.write(CMD_OFF | i);
-        } else {
-            // button down (-> LOW)
-            Serial.write(CMD_ON | i);
+        if (!blinkers[i].isBlinking() && debouncers[i].get()) {
+            blinkers[i].blink(500);
+            Serial.write(CMD_BUTTON | i);
         }
     }
 

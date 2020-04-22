@@ -55,6 +55,10 @@ void Blinker::update(unsigned long micros) {
     }
 }
 
+bool Blinker::isBlinking() {
+    return _blinking;
+}
+
 bool Blinker::isOff() {
     return _phase == 0.0f;
 }
