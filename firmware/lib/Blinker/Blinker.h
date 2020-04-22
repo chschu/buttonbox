@@ -5,13 +5,13 @@
 
 class Blinker {
 public:
+    // micros passed as parameter to avoid Arduino dependency
+    void begin(unsigned long micros);
+    void update(unsigned long micros);
+
     void on();
     void off();
     void blink(uint16_t periodMillis);
-
-    // micros passes as parameter to avoid Arduino dependency
-    void begin(unsigned long micros);
-    void update(unsigned long micros);
 
     bool isOff();
 

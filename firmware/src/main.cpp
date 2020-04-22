@@ -9,6 +9,7 @@
 #include "transform.h"
 
 #define LED_COUNT 16
+#define BOUNCE_MILLIS 10
 
 // splitting macros for first byte (command + led) of the serial protocol
 #define CMD(b) ((b) & 0xF0)
@@ -35,9 +36,10 @@ const uint16_t INIT_BLINK_PERIOD_MILLIS = 500;
 
 class PCA9685Blinker : public Blinker {
 public:
-    void attach(Adafruit_PWMServoDriver *pca9685, uint8_t pin) {
+    void begin(Adafruit_PWMServoDriver *pca9685, uint8_t pin) {
         _pca9685 = pca9685;
         _pin = pin;
+        Blinker::begin(micros());
     }
 
     void update() {
@@ -57,17 +59,14 @@ private:
 
 class MCP23017Debouncer : public Debouncer {
 public:
-    MCP23017Debouncer() : Debouncer(10), _mcp23017(nullptr), _pin(0) {
-    }
-
-    void attach(Adafruit_MCP23017 *mcp23017, uint8_t pin) {
+    void begin(Adafruit_MCP23017 *mcp23017, uint8_t pin, uint16_t bounceMillis) {
         _mcp23017 = mcp23017;
         _pin = pin;
-        update();
+        Debouncer::begin(_mcp23017->digitalRead(_pin), bounceMillis);
     }
 
     bool update() {
-        return Debouncer::update(_mcp23017->digitalRead(_pin));
+        return Debouncer::update(_mcp23017->digitalRead(_pin), micros());
     }
 
 private:
@@ -91,12 +90,11 @@ void setup() {
 
     // initialize output blinkers and input debouncers
     for (int i = 0; i < LED_COUNT; i++) {
-        blinkers[i].attach(&pca9685, i);
-        blinkers[i].begin(micros());
+        blinkers[i].begin(&pca9685, i);
 
         mcp23017.pinMode(i, INPUT);
         mcp23017.pullUp(i, HIGH);
-        debouncers[i].attach(&mcp23017, i);
+        debouncers[i].begin(&mcp23017, i, BOUNCE_MILLIS);
     }
 
     // pull ~OE low to enable LEDs
