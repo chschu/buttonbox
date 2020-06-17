@@ -548,46 +548,46 @@ $EndComp
 $Comp
 L Mechanical:MountingHole H1
 U 1 1 5E44F561
-P 12950 7650
-F 0 "H1" V 12904 7800 50  0000 L CNN
-F 1 "MountingHole" V 12995 7800 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.5mm" H 12950 7650 50  0001 C CNN
-F 3 "~" H 12950 7650 50  0001 C CNN
-	1    12950 7650
+P 13800 7550
+F 0 "H1" V 13754 7700 50  0000 L CNN
+F 1 "MountingHole" V 13845 7700 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.5mm" H 13800 7550 50  0001 C CNN
+F 3 "~" H 13800 7550 50  0001 C CNN
+	1    13800 7550
 	0    1    1    0   
 $EndComp
 NoConn ~ 5350 1850
 $Comp
 L Mechanical:MountingHole H2
 U 1 1 626C4181
-P 12950 7850
-F 0 "H2" V 12904 8000 50  0000 L CNN
-F 1 "MountingHole" V 12995 8000 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.5mm" H 12950 7850 50  0001 C CNN
-F 3 "~" H 12950 7850 50  0001 C CNN
-	1    12950 7850
+P 13800 7750
+F 0 "H2" V 13754 7900 50  0000 L CNN
+F 1 "MountingHole" V 13845 7900 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.5mm" H 13800 7750 50  0001 C CNN
+F 3 "~" H 13800 7750 50  0001 C CNN
+	1    13800 7750
 	0    1    1    0   
 $EndComp
 $Comp
 L Mechanical:MountingHole H3
 U 1 1 626C44A6
-P 12950 8050
-F 0 "H3" V 12904 8200 50  0000 L CNN
-F 1 "MountingHole" V 12995 8200 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.5mm" H 12950 8050 50  0001 C CNN
-F 3 "~" H 12950 8050 50  0001 C CNN
-	1    12950 8050
+P 13800 7950
+F 0 "H3" V 13754 8100 50  0000 L CNN
+F 1 "MountingHole" V 13845 8100 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.5mm" H 13800 7950 50  0001 C CNN
+F 3 "~" H 13800 7950 50  0001 C CNN
+	1    13800 7950
 	0    1    1    0   
 $EndComp
 $Comp
 L Mechanical:MountingHole H4
 U 1 1 626C47BA
-P 12950 8250
-F 0 "H4" V 12904 8400 50  0000 L CNN
-F 1 "MountingHole" V 12995 8400 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.5mm" H 12950 8250 50  0001 C CNN
-F 3 "~" H 12950 8250 50  0001 C CNN
-	1    12950 8250
+P 13800 8150
+F 0 "H4" V 13754 8300 50  0000 L CNN
+F 1 "MountingHole" V 13845 8300 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.5mm" H 13800 8150 50  0001 C CNN
+F 3 "~" H 13800 8150 50  0001 C CNN
+	1    13800 8150
 	0    1    1    0   
 $EndComp
 Wire Wire Line
@@ -764,60 +764,60 @@ Connection ~ 7600 3800
 Wire Wire Line
 	7550 3800 7600 3800
 Wire Wire Line
-	12850 5900 12850 5850
+	12950 5500 12950 5450
 Wire Wire Line
-	12850 5500 12850 5550
+	12950 5100 12950 5150
 $Comp
 L Device:R R5
 U 1 1 6151708C
-P 12850 5700
-F 0 "R5" H 12780 5654 50  0000 R CNN
-F 1 "10k" H 12780 5745 50  0000 R CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 12780 5700 50  0001 C CNN
-F 3 "~" H 12850 5700 50  0001 C CNN
-	1    12850 5700
+P 12950 5300
+F 0 "R5" H 12880 5254 50  0000 R CNN
+F 1 "10k" H 12880 5345 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 12880 5300 50  0001 C CNN
+F 3 "~" H 12950 5300 50  0001 C CNN
+	1    12950 5300
 	-1   0    0    1   
 $EndComp
-Text GLabel 12850 5900 3    33   UnSpc ~ 0
+Text GLabel 12950 5500 3    33   UnSpc ~ 0
 PCA9685.~OE
 Wire Wire Line
-	12250 5850 12250 5900
+	12350 5450 12350 5500
 $Comp
 L power:+5V #PWR035
 U 1 1 612ED41C
-P 12850 5500
-F 0 "#PWR035" H 12850 5350 50  0001 C CNN
-F 1 "+5V" H 12865 5673 50  0000 C CNN
-F 2 "" H 12850 5500 50  0001 C CNN
-F 3 "" H 12850 5500 50  0001 C CNN
-	1    12850 5500
+P 12950 5100
+F 0 "#PWR035" H 12950 4950 50  0001 C CNN
+F 1 "+5V" H 12965 5273 50  0000 C CNN
+F 2 "" H 12950 5100 50  0001 C CNN
+F 3 "" H 12950 5100 50  0001 C CNN
+	1    12950 5100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	12250 5500 12250 5550
+	12350 5100 12350 5150
 $Comp
 L power:+5V #PWR033
 U 1 1 612AD1C8
-P 12250 5500
-F 0 "#PWR033" H 12250 5350 50  0001 C CNN
-F 1 "+5V" H 12265 5673 50  0000 C CNN
-F 2 "" H 12250 5500 50  0001 C CNN
-F 3 "" H 12250 5500 50  0001 C CNN
-	1    12250 5500
+P 12350 5100
+F 0 "#PWR033" H 12350 4950 50  0001 C CNN
+F 1 "+5V" H 12365 5273 50  0000 C CNN
+F 2 "" H 12350 5100 50  0001 C CNN
+F 3 "" H 12350 5100 50  0001 C CNN
+	1    12350 5100
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R R3
 U 1 1 61212D3B
-P 12250 5700
-F 0 "R3" H 12180 5654 50  0000 R CNN
-F 1 "10k" H 12180 5745 50  0000 R CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 12180 5700 50  0001 C CNN
-F 3 "~" H 12250 5700 50  0001 C CNN
-	1    12250 5700
+P 12350 5300
+F 0 "R3" H 12280 5254 50  0000 R CNN
+F 1 "10k" H 12280 5345 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 12280 5300 50  0001 C CNN
+F 3 "~" H 12350 5300 50  0001 C CNN
+	1    12350 5300
 	-1   0    0    1   
 $EndComp
-Text GLabel 12250 5900 3    33   UnSpc ~ 0
+Text GLabel 12350 5500 3    33   UnSpc ~ 0
 ~RST
 $Comp
 L Device:C_Small C9
@@ -841,94 +841,94 @@ Wire Wire Line
 $Comp
 L Device:R R2
 U 1 1 5E2A6C3C
-P 11950 5700
-F 0 "R2" H 11880 5654 50  0000 R CNN
-F 1 "1k5" H 11880 5745 50  0000 R CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 11880 5700 50  0001 C CNN
-F 3 "~" H 11950 5700 50  0001 C CNN
-	1    11950 5700
+P 12050 5300
+F 0 "R2" H 11980 5254 50  0000 R CNN
+F 1 "1k5" H 11980 5345 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 11980 5300 50  0001 C CNN
+F 3 "~" H 12050 5300 50  0001 C CNN
+	1    12050 5300
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R R1
 U 1 1 5E2A77F2
-P 11650 5700
-F 0 "R1" H 11580 5654 50  0000 R CNN
-F 1 "1k5" H 11580 5745 50  0000 R CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 11580 5700 50  0001 C CNN
-F 3 "~" H 11650 5700 50  0001 C CNN
-	1    11650 5700
+P 11750 5300
+F 0 "R1" H 11680 5254 50  0000 R CNN
+F 1 "1k5" H 11680 5345 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 11680 5300 50  0001 C CNN
+F 3 "~" H 11750 5300 50  0001 C CNN
+	1    11750 5300
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	11950 5500 11950 5550
+	12050 5100 12050 5150
 Wire Wire Line
-	11650 5500 11650 5550
-Text GLabel 11650 5900 3    50   UnSpc ~ 0
+	11750 5100 11750 5150
+Text GLabel 11750 5500 3    50   UnSpc ~ 0
 SCL
-Text GLabel 11950 5900 3    50   UnSpc ~ 0
+Text GLabel 12050 5500 3    50   UnSpc ~ 0
 SDA
 $Comp
 L power:+5V #PWR032
 U 1 1 5ED51F9D
-P 11950 5500
-F 0 "#PWR032" H 11950 5350 50  0001 C CNN
-F 1 "+5V" H 11965 5673 50  0000 C CNN
-F 2 "" H 11950 5500 50  0001 C CNN
-F 3 "" H 11950 5500 50  0001 C CNN
-	1    11950 5500
+P 12050 5100
+F 0 "#PWR032" H 12050 4950 50  0001 C CNN
+F 1 "+5V" H 12065 5273 50  0000 C CNN
+F 2 "" H 12050 5100 50  0001 C CNN
+F 3 "" H 12050 5100 50  0001 C CNN
+	1    12050 5100
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR031
 U 1 1 5ED52F54
-P 11650 5500
-F 0 "#PWR031" H 11650 5350 50  0001 C CNN
-F 1 "+5V" H 11665 5673 50  0000 C CNN
-F 2 "" H 11650 5500 50  0001 C CNN
-F 3 "" H 11650 5500 50  0001 C CNN
-	1    11650 5500
+P 11750 5100
+F 0 "#PWR031" H 11750 4950 50  0001 C CNN
+F 1 "+5V" H 11765 5273 50  0000 C CNN
+F 2 "" H 11750 5100 50  0001 C CNN
+F 3 "" H 11750 5100 50  0001 C CNN
+	1    11750 5100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	11950 5850 11950 5900
+	12050 5450 12050 5500
 Wire Wire Line
-	11650 5850 11650 5900
+	11750 5450 11750 5500
 Text GLabel 6600 2950 2    33   Output ~ 0
 PCA9685.~OE
 Wire Wire Line
-	12550 5500 12550 5550
+	12650 5100 12650 5150
 Wire Wire Line
-	12550 5900 12550 5850
+	12650 5500 12650 5450
 $Comp
 L Device:R R4
 U 1 1 612CD065
-P 12550 5700
-F 0 "R4" H 12480 5654 50  0000 R CNN
-F 1 "10k" H 12480 5745 50  0000 R CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 12480 5700 50  0001 C CNN
-F 3 "~" H 12550 5700 50  0001 C CNN
-	1    12550 5700
+P 12650 5300
+F 0 "R4" H 12580 5254 50  0000 R CNN
+F 1 "10k" H 12580 5345 50  0000 R CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 12580 5300 50  0001 C CNN
+F 3 "~" H 12650 5300 50  0001 C CNN
+	1    12650 5300
 	-1   0    0    -1  
 $EndComp
-Text GLabel 12550 5900 3    33   UnSpc ~ 0
+Text GLabel 12650 5500 3    33   UnSpc ~ 0
 MCP23017.~RESET
 $Comp
 L power:+5V #PWR034
 U 1 1 5EA7F4C0
-P 12550 5500
-F 0 "#PWR034" H 12550 5350 50  0001 C CNN
-F 1 "+5V" H 12565 5673 50  0000 C CNN
-F 2 "" H 12550 5500 50  0001 C CNN
-F 3 "" H 12550 5500 50  0001 C CNN
-	1    12550 5500
+P 12650 5100
+F 0 "#PWR034" H 12650 4950 50  0001 C CNN
+F 1 "+5V" H 12665 5273 50  0000 C CNN
+F 2 "" H 12650 5100 50  0001 C CNN
+F 3 "" H 12650 5100 50  0001 C CNN
+	1    12650 5100
 	1    0    0    -1  
 $EndComp
 NoConn ~ 6550 3050
 $Comp
 L Device:Q_NMOS_GSD Q1
 U 1 1 5EF296C7
-P 1500 6750
+P 1300 7400
 AR Path="/5EF296C7" Ref="Q1"  Part="1" 
 AR Path="/5EB75C50/5EF296C7" Ref="Q?"  Part="1" 
 AR Path="/5EDE50D7/5EF296C7" Ref="Q?"  Part="1" 
@@ -949,1726 +949,30 @@ AR Path="/5EEDC471/5EF296C7" Ref="Q?"  Part="1"
 AR Path="/5EEDC47B/5EF296C7" Ref="Q?"  Part="1" 
 AR Path="/5EEDC485/5EF296C7" Ref="Q?"  Part="1" 
 AR Path="/5EEDC48F/5EF296C7" Ref="Q?"  Part="1" 
-F 0 "Q1" H 1704 6796 50  0000 L CNN
-F 1 "AO3402" H 1704 6705 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 1700 6850 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 1500 6750 50  0001 C CNN
-	1    1500 6750
+F 0 "Q1" H 1504 7446 50  0000 L CNN
+F 1 "AO3402" H 1504 7355 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 1500 7500 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 1300 7400 50  0001 C CNN
+	1    1300 7400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1250 6750 1300 6750
-Wire Wire Line
-	1600 7000 1600 6950
+	1050 7400 1100 7400
 $Comp
-L power:GND #PWR044
+L power:GND #PWR052
 U 1 1 5EF3CFBF
-P 1600 7000
-F 0 "#PWR044" H 1600 6750 50  0001 C CNN
-F 1 "GND" H 1605 6827 50  0000 C CNN
-F 2 "" H 1600 7000 50  0001 C CNN
-F 3 "" H 1600 7000 50  0001 C CNN
-	1    1600 7000
+P 1400 7700
+F 0 "#PWR052" H 1400 7450 50  0001 C CNN
+F 1 "GND" H 1405 7527 50  0000 C CNN
+F 2 "" H 1400 7700 50  0001 C CNN
+F 3 "" H 1400 7700 50  0001 C CNN
+	1    1400 7700
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+5V #PWR036
-U 1 1 5EF3D4C0
-P 1800 6250
-F 0 "#PWR036" H 1800 6100 50  0001 C CNN
-F 1 "+5V" H 1815 6423 50  0000 C CNN
-F 2 "" H 1800 6250 50  0001 C CNN
-F 3 "" H 1800 6250 50  0001 C CNN
-	1    1800 6250
-	1    0    0    -1  
-$EndComp
-Text GLabel 1250 6750 0    50   Input ~ 0
+Text GLabel 1050 7400 0    50   Input ~ 0
 LEDx0
-Wire Wire Line
-	1600 6500 1600 6550
-$Comp
-L Connector:Conn_01x02_Male J3
-U 1 1 5F05DCB5
-P 1600 6300
-F 0 "J3" V 1662 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 1753 6344 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 1600 6300 50  0001 C CNN
-F 3 "~" H 1600 6300 50  0001 C CNN
-	1    1600 6300
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	1700 6550 1800 6550
-Wire Wire Line
-	1800 6250 1800 6550
-Wire Wire Line
-	1700 6550 1700 6500
-$Comp
-L Device:Q_NMOS_GSD Q2
-U 1 1 5F14DC0E
-P 2650 6750
-AR Path="/5F14DC0E" Ref="Q2"  Part="1" 
-AR Path="/5EB75C50/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F14DC0E" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F14DC0E" Ref="Q?"  Part="1" 
-F 0 "Q2" H 2854 6796 50  0000 L CNN
-F 1 "AO3402" H 2854 6705 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 2850 6850 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 2650 6750 50  0001 C CNN
-	1    2650 6750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2400 6750 2450 6750
-Wire Wire Line
-	2750 7000 2750 6950
-$Comp
-L power:GND #PWR045
-U 1 1 5F14DC16
-P 2750 7000
-F 0 "#PWR045" H 2750 6750 50  0001 C CNN
-F 1 "GND" H 2755 6827 50  0000 C CNN
-F 2 "" H 2750 7000 50  0001 C CNN
-F 3 "" H 2750 7000 50  0001 C CNN
-	1    2750 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR037
-U 1 1 5F14DC1C
-P 2950 6250
-F 0 "#PWR037" H 2950 6100 50  0001 C CNN
-F 1 "+5V" H 2965 6423 50  0000 C CNN
-F 2 "" H 2950 6250 50  0001 C CNN
-F 3 "" H 2950 6250 50  0001 C CNN
-	1    2950 6250
-	1    0    0    -1  
-$EndComp
-Text GLabel 2400 6750 0    50   Input ~ 0
-LEDx1
-Wire Wire Line
-	2750 6500 2750 6550
-$Comp
-L Connector:Conn_01x02_Male J4
-U 1 1 5F14DC24
-P 2750 6300
-F 0 "J4" V 2812 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 2903 6344 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 2750 6300 50  0001 C CNN
-F 3 "~" H 2750 6300 50  0001 C CNN
-	1    2750 6300
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	2850 6550 2950 6550
-Wire Wire Line
-	2950 6250 2950 6550
-Wire Wire Line
-	2850 6550 2850 6500
-$Comp
-L Device:Q_NMOS_GSD Q3
-U 1 1 5F16F3F7
-P 3800 6750
-AR Path="/5F16F3F7" Ref="Q3"  Part="1" 
-AR Path="/5EB75C50/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F16F3F7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F16F3F7" Ref="Q?"  Part="1" 
-F 0 "Q3" H 4004 6796 50  0000 L CNN
-F 1 "AO3402" H 4004 6705 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 4000 6850 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 3800 6750 50  0001 C CNN
-	1    3800 6750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3550 6750 3600 6750
-Wire Wire Line
-	3900 7000 3900 6950
-$Comp
-L power:GND #PWR046
-U 1 1 5F16F3FF
-P 3900 7000
-F 0 "#PWR046" H 3900 6750 50  0001 C CNN
-F 1 "GND" H 3905 6827 50  0000 C CNN
-F 2 "" H 3900 7000 50  0001 C CNN
-F 3 "" H 3900 7000 50  0001 C CNN
-	1    3900 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR038
-U 1 1 5F16F405
-P 4100 6250
-F 0 "#PWR038" H 4100 6100 50  0001 C CNN
-F 1 "+5V" H 4115 6423 50  0000 C CNN
-F 2 "" H 4100 6250 50  0001 C CNN
-F 3 "" H 4100 6250 50  0001 C CNN
-	1    4100 6250
-	1    0    0    -1  
-$EndComp
-Text GLabel 3550 6750 0    50   Input ~ 0
-LEDx2
-Wire Wire Line
-	3900 6500 3900 6550
-$Comp
-L Connector:Conn_01x02_Male J5
-U 1 1 5F16F40D
-P 3900 6300
-F 0 "J5" V 3962 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 4053 6344 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 3900 6300 50  0001 C CNN
-F 3 "~" H 3900 6300 50  0001 C CNN
-	1    3900 6300
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	4000 6550 4100 6550
-Wire Wire Line
-	4100 6250 4100 6550
-Wire Wire Line
-	4000 6550 4000 6500
-$Comp
-L Device:Q_NMOS_GSD Q4
-U 1 1 5F16F416
-P 4950 6750
-AR Path="/5F16F416" Ref="Q4"  Part="1" 
-AR Path="/5EB75C50/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F16F416" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F16F416" Ref="Q?"  Part="1" 
-F 0 "Q4" H 5154 6796 50  0000 L CNN
-F 1 "AO3402" H 5154 6705 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 5150 6850 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 4950 6750 50  0001 C CNN
-	1    4950 6750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4700 6750 4750 6750
-Wire Wire Line
-	5050 7000 5050 6950
-$Comp
-L power:GND #PWR047
-U 1 1 5F16F41E
-P 5050 7000
-F 0 "#PWR047" H 5050 6750 50  0001 C CNN
-F 1 "GND" H 5055 6827 50  0000 C CNN
-F 2 "" H 5050 7000 50  0001 C CNN
-F 3 "" H 5050 7000 50  0001 C CNN
-	1    5050 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR039
-U 1 1 5F16F424
-P 5250 6250
-F 0 "#PWR039" H 5250 6100 50  0001 C CNN
-F 1 "+5V" H 5265 6423 50  0000 C CNN
-F 2 "" H 5250 6250 50  0001 C CNN
-F 3 "" H 5250 6250 50  0001 C CNN
-	1    5250 6250
-	1    0    0    -1  
-$EndComp
-Text GLabel 4700 6750 0    50   Input ~ 0
-LEDx3
-Wire Wire Line
-	5050 6500 5050 6550
-$Comp
-L Connector:Conn_01x02_Male J6
-U 1 1 5F16F42C
-P 5050 6300
-F 0 "J6" V 5112 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 5203 6344 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 5050 6300 50  0001 C CNN
-F 3 "~" H 5050 6300 50  0001 C CNN
-	1    5050 6300
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	5150 6550 5250 6550
-Wire Wire Line
-	5250 6250 5250 6550
-Wire Wire Line
-	5150 6550 5150 6500
-$Comp
-L Device:Q_NMOS_GSD Q5
-U 1 1 5F18E107
-P 6100 6750
-AR Path="/5F18E107" Ref="Q5"  Part="1" 
-AR Path="/5EB75C50/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F18E107" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F18E107" Ref="Q?"  Part="1" 
-F 0 "Q5" H 6304 6796 50  0000 L CNN
-F 1 "AO3402" H 6304 6705 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6300 6850 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 6100 6750 50  0001 C CNN
-	1    6100 6750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5850 6750 5900 6750
-Wire Wire Line
-	6200 7000 6200 6950
-$Comp
-L power:GND #PWR048
-U 1 1 5F18E10F
-P 6200 7000
-F 0 "#PWR048" H 6200 6750 50  0001 C CNN
-F 1 "GND" H 6205 6827 50  0000 C CNN
-F 2 "" H 6200 7000 50  0001 C CNN
-F 3 "" H 6200 7000 50  0001 C CNN
-	1    6200 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR040
-U 1 1 5F18E115
-P 6400 6250
-F 0 "#PWR040" H 6400 6100 50  0001 C CNN
-F 1 "+5V" H 6415 6423 50  0000 C CNN
-F 2 "" H 6400 6250 50  0001 C CNN
-F 3 "" H 6400 6250 50  0001 C CNN
-	1    6400 6250
-	1    0    0    -1  
-$EndComp
-Text GLabel 5850 6750 0    50   Input ~ 0
-LEDx4
-Wire Wire Line
-	6200 6500 6200 6550
-$Comp
-L Connector:Conn_01x02_Male J7
-U 1 1 5F18E11D
-P 6200 6300
-F 0 "J7" V 6262 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 6353 6344 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 6200 6300 50  0001 C CNN
-F 3 "~" H 6200 6300 50  0001 C CNN
-	1    6200 6300
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	6300 6550 6400 6550
-Wire Wire Line
-	6400 6250 6400 6550
-Wire Wire Line
-	6300 6550 6300 6500
-$Comp
-L Device:Q_NMOS_GSD Q6
-U 1 1 5F18E126
-P 7250 6750
-AR Path="/5F18E126" Ref="Q6"  Part="1" 
-AR Path="/5EB75C50/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F18E126" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F18E126" Ref="Q?"  Part="1" 
-F 0 "Q6" H 7454 6796 50  0000 L CNN
-F 1 "AO3402" H 7454 6705 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 7450 6850 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 7250 6750 50  0001 C CNN
-	1    7250 6750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7000 6750 7050 6750
-Wire Wire Line
-	7350 7000 7350 6950
-$Comp
-L power:GND #PWR049
-U 1 1 5F18E12E
-P 7350 7000
-F 0 "#PWR049" H 7350 6750 50  0001 C CNN
-F 1 "GND" H 7355 6827 50  0000 C CNN
-F 2 "" H 7350 7000 50  0001 C CNN
-F 3 "" H 7350 7000 50  0001 C CNN
-	1    7350 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR041
-U 1 1 5F18E134
-P 7550 6250
-F 0 "#PWR041" H 7550 6100 50  0001 C CNN
-F 1 "+5V" H 7565 6423 50  0000 C CNN
-F 2 "" H 7550 6250 50  0001 C CNN
-F 3 "" H 7550 6250 50  0001 C CNN
-	1    7550 6250
-	1    0    0    -1  
-$EndComp
-Text GLabel 7000 6750 0    50   Input ~ 0
-LEDx5
-Wire Wire Line
-	7350 6500 7350 6550
-$Comp
-L Connector:Conn_01x02_Male J8
-U 1 1 5F18E13C
-P 7350 6300
-F 0 "J8" V 7412 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 7503 6344 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 7350 6300 50  0001 C CNN
-F 3 "~" H 7350 6300 50  0001 C CNN
-	1    7350 6300
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	7450 6550 7550 6550
-Wire Wire Line
-	7550 6250 7550 6550
-Wire Wire Line
-	7450 6550 7450 6500
-$Comp
-L Device:Q_NMOS_GSD Q7
-U 1 1 5F18E145
-P 8400 6750
-AR Path="/5F18E145" Ref="Q7"  Part="1" 
-AR Path="/5EB75C50/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F18E145" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F18E145" Ref="Q?"  Part="1" 
-F 0 "Q7" H 8604 6796 50  0000 L CNN
-F 1 "AO3402" H 8604 6705 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 8600 6850 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 8400 6750 50  0001 C CNN
-	1    8400 6750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8150 6750 8200 6750
-Wire Wire Line
-	8500 7000 8500 6950
-$Comp
-L power:GND #PWR050
-U 1 1 5F18E14D
-P 8500 7000
-F 0 "#PWR050" H 8500 6750 50  0001 C CNN
-F 1 "GND" H 8505 6827 50  0000 C CNN
-F 2 "" H 8500 7000 50  0001 C CNN
-F 3 "" H 8500 7000 50  0001 C CNN
-	1    8500 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR042
-U 1 1 5F18E153
-P 8700 6250
-F 0 "#PWR042" H 8700 6100 50  0001 C CNN
-F 1 "+5V" H 8715 6423 50  0000 C CNN
-F 2 "" H 8700 6250 50  0001 C CNN
-F 3 "" H 8700 6250 50  0001 C CNN
-	1    8700 6250
-	1    0    0    -1  
-$EndComp
-Text GLabel 8150 6750 0    50   Input ~ 0
-LEDx6
-Wire Wire Line
-	8500 6500 8500 6550
-$Comp
-L Connector:Conn_01x02_Male J9
-U 1 1 5F18E15B
-P 8500 6300
-F 0 "J9" V 8562 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 8653 6344 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 8500 6300 50  0001 C CNN
-F 3 "~" H 8500 6300 50  0001 C CNN
-	1    8500 6300
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	8600 6550 8700 6550
-Wire Wire Line
-	8700 6250 8700 6550
-Wire Wire Line
-	8600 6550 8600 6500
-$Comp
-L Device:Q_NMOS_GSD Q8
-U 1 1 5F18E164
-P 9550 6750
-AR Path="/5F18E164" Ref="Q8"  Part="1" 
-AR Path="/5EB75C50/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F18E164" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F18E164" Ref="Q?"  Part="1" 
-F 0 "Q8" H 9754 6796 50  0000 L CNN
-F 1 "AO3402" H 9754 6705 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 9750 6850 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 9550 6750 50  0001 C CNN
-	1    9550 6750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9300 6750 9350 6750
-Wire Wire Line
-	9650 7000 9650 6950
-$Comp
-L power:GND #PWR051
-U 1 1 5F18E16C
-P 9650 7000
-F 0 "#PWR051" H 9650 6750 50  0001 C CNN
-F 1 "GND" H 9655 6827 50  0000 C CNN
-F 2 "" H 9650 7000 50  0001 C CNN
-F 3 "" H 9650 7000 50  0001 C CNN
-	1    9650 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR043
-U 1 1 5F18E172
-P 9850 6250
-F 0 "#PWR043" H 9850 6100 50  0001 C CNN
-F 1 "+5V" H 9865 6423 50  0000 C CNN
-F 2 "" H 9850 6250 50  0001 C CNN
-F 3 "" H 9850 6250 50  0001 C CNN
-	1    9850 6250
-	1    0    0    -1  
-$EndComp
-Text GLabel 9300 6750 0    50   Input ~ 0
-LEDx7
-Wire Wire Line
-	9650 6500 9650 6550
-$Comp
-L Connector:Conn_01x02_Male J10
-U 1 1 5F18E17A
-P 9650 6300
-F 0 "J10" V 9712 6344 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 9803 6344 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 9650 6300 50  0001 C CNN
-F 3 "~" H 9650 6300 50  0001 C CNN
-	1    9650 6300
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	9750 6550 9850 6550
-Wire Wire Line
-	9850 6250 9850 6550
-Wire Wire Line
-	9750 6550 9750 6500
-$Comp
-L Device:Q_NMOS_GSD Q9
-U 1 1 5F1E630D
-P 1500 8050
-AR Path="/5F1E630D" Ref="Q9"  Part="1" 
-AR Path="/5EB75C50/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F1E630D" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F1E630D" Ref="Q?"  Part="1" 
-F 0 "Q9" H 1704 8096 50  0000 L CNN
-F 1 "AO3402" H 1704 8005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 1700 8150 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 1500 8050 50  0001 C CNN
-	1    1500 8050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1250 8050 1300 8050
-Wire Wire Line
-	1600 8300 1600 8250
-$Comp
-L power:GND #PWR060
-U 1 1 5F1E6315
-P 1600 8300
-F 0 "#PWR060" H 1600 8050 50  0001 C CNN
-F 1 "GND" H 1605 8127 50  0000 C CNN
-F 2 "" H 1600 8300 50  0001 C CNN
-F 3 "" H 1600 8300 50  0001 C CNN
-	1    1600 8300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR052
-U 1 1 5F1E631B
-P 1800 7550
-F 0 "#PWR052" H 1800 7400 50  0001 C CNN
-F 1 "+5V" H 1815 7723 50  0000 C CNN
-F 2 "" H 1800 7550 50  0001 C CNN
-F 3 "" H 1800 7550 50  0001 C CNN
-	1    1800 7550
-	1    0    0    -1  
-$EndComp
-Text GLabel 1250 8050 0    50   Input ~ 0
-LEDx8
-Wire Wire Line
-	1600 7800 1600 7850
-$Comp
-L Connector:Conn_01x02_Male J11
-U 1 1 5F1E6323
-P 1600 7600
-F 0 "J11" V 1662 7644 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 1753 7644 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 1600 7600 50  0001 C CNN
-F 3 "~" H 1600 7600 50  0001 C CNN
-	1    1600 7600
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	1700 7850 1800 7850
-Wire Wire Line
-	1800 7550 1800 7850
-Wire Wire Line
-	1700 7850 1700 7800
-$Comp
-L Device:Q_NMOS_GSD Q10
-U 1 1 5F1E632C
-P 2650 8050
-AR Path="/5F1E632C" Ref="Q10"  Part="1" 
-AR Path="/5EB75C50/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F1E632C" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F1E632C" Ref="Q?"  Part="1" 
-F 0 "Q10" H 2854 8096 50  0000 L CNN
-F 1 "AO3402" H 2854 8005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 2850 8150 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 2650 8050 50  0001 C CNN
-	1    2650 8050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2400 8050 2450 8050
-Wire Wire Line
-	2750 8300 2750 8250
-$Comp
-L power:GND #PWR061
-U 1 1 5F1E6334
-P 2750 8300
-F 0 "#PWR061" H 2750 8050 50  0001 C CNN
-F 1 "GND" H 2755 8127 50  0000 C CNN
-F 2 "" H 2750 8300 50  0001 C CNN
-F 3 "" H 2750 8300 50  0001 C CNN
-	1    2750 8300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR053
-U 1 1 5F1E633A
-P 2950 7550
-F 0 "#PWR053" H 2950 7400 50  0001 C CNN
-F 1 "+5V" H 2965 7723 50  0000 C CNN
-F 2 "" H 2950 7550 50  0001 C CNN
-F 3 "" H 2950 7550 50  0001 C CNN
-	1    2950 7550
-	1    0    0    -1  
-$EndComp
-Text GLabel 2400 8050 0    50   Input ~ 0
-LEDx9
-Wire Wire Line
-	2750 7800 2750 7850
-$Comp
-L Connector:Conn_01x02_Male J12
-U 1 1 5F1E6342
-P 2750 7600
-F 0 "J12" V 2812 7644 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 2903 7644 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 2750 7600 50  0001 C CNN
-F 3 "~" H 2750 7600 50  0001 C CNN
-	1    2750 7600
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	2850 7850 2950 7850
-Wire Wire Line
-	2950 7550 2950 7850
-Wire Wire Line
-	2850 7850 2850 7800
-$Comp
-L Device:Q_NMOS_GSD Q11
-U 1 1 5F1E634B
-P 3800 8050
-AR Path="/5F1E634B" Ref="Q11"  Part="1" 
-AR Path="/5EB75C50/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F1E634B" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F1E634B" Ref="Q?"  Part="1" 
-F 0 "Q11" H 4004 8096 50  0000 L CNN
-F 1 "AO3402" H 4004 8005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 4000 8150 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 3800 8050 50  0001 C CNN
-	1    3800 8050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3550 8050 3600 8050
-Wire Wire Line
-	3900 8300 3900 8250
-$Comp
-L power:GND #PWR062
-U 1 1 5F1E6353
-P 3900 8300
-F 0 "#PWR062" H 3900 8050 50  0001 C CNN
-F 1 "GND" H 3905 8127 50  0000 C CNN
-F 2 "" H 3900 8300 50  0001 C CNN
-F 3 "" H 3900 8300 50  0001 C CNN
-	1    3900 8300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR054
-U 1 1 5F1E6359
-P 4100 7550
-F 0 "#PWR054" H 4100 7400 50  0001 C CNN
-F 1 "+5V" H 4115 7723 50  0000 C CNN
-F 2 "" H 4100 7550 50  0001 C CNN
-F 3 "" H 4100 7550 50  0001 C CNN
-	1    4100 7550
-	1    0    0    -1  
-$EndComp
-Text GLabel 3550 8050 0    50   Input ~ 0
-LEDxA
-Wire Wire Line
-	3900 7800 3900 7850
-$Comp
-L Connector:Conn_01x02_Male J13
-U 1 1 5F1E6361
-P 3900 7600
-F 0 "J13" V 3962 7644 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 4053 7644 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 3900 7600 50  0001 C CNN
-F 3 "~" H 3900 7600 50  0001 C CNN
-	1    3900 7600
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	4000 7850 4100 7850
-Wire Wire Line
-	4100 7550 4100 7850
-Wire Wire Line
-	4000 7850 4000 7800
-$Comp
-L Device:Q_NMOS_GSD Q12
-U 1 1 5F1E636A
-P 4950 8050
-AR Path="/5F1E636A" Ref="Q12"  Part="1" 
-AR Path="/5EB75C50/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F1E636A" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F1E636A" Ref="Q?"  Part="1" 
-F 0 "Q12" H 5154 8096 50  0000 L CNN
-F 1 "AO3402" H 5154 8005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 5150 8150 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 4950 8050 50  0001 C CNN
-	1    4950 8050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4700 8050 4750 8050
-Wire Wire Line
-	5050 8300 5050 8250
-$Comp
-L power:GND #PWR063
-U 1 1 5F1E6372
-P 5050 8300
-F 0 "#PWR063" H 5050 8050 50  0001 C CNN
-F 1 "GND" H 5055 8127 50  0000 C CNN
-F 2 "" H 5050 8300 50  0001 C CNN
-F 3 "" H 5050 8300 50  0001 C CNN
-	1    5050 8300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR055
-U 1 1 5F1E6378
-P 5250 7550
-F 0 "#PWR055" H 5250 7400 50  0001 C CNN
-F 1 "+5V" H 5265 7723 50  0000 C CNN
-F 2 "" H 5250 7550 50  0001 C CNN
-F 3 "" H 5250 7550 50  0001 C CNN
-	1    5250 7550
-	1    0    0    -1  
-$EndComp
-Text GLabel 4700 8050 0    50   Input ~ 0
-LEDxB
-Wire Wire Line
-	5050 7800 5050 7850
-$Comp
-L Connector:Conn_01x02_Male J14
-U 1 1 5F1E6380
-P 5050 7600
-F 0 "J14" V 5112 7644 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 5203 7644 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 5050 7600 50  0001 C CNN
-F 3 "~" H 5050 7600 50  0001 C CNN
-	1    5050 7600
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	5150 7850 5250 7850
-Wire Wire Line
-	5250 7550 5250 7850
-Wire Wire Line
-	5150 7850 5150 7800
-$Comp
-L Device:Q_NMOS_GSD Q13
-U 1 1 5F1E6389
-P 6100 8050
-AR Path="/5F1E6389" Ref="Q13"  Part="1" 
-AR Path="/5EB75C50/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F1E6389" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F1E6389" Ref="Q?"  Part="1" 
-F 0 "Q13" H 6304 8096 50  0000 L CNN
-F 1 "AO3402" H 6304 8005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6300 8150 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 6100 8050 50  0001 C CNN
-	1    6100 8050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5850 8050 5900 8050
-Wire Wire Line
-	6200 8300 6200 8250
-$Comp
-L power:GND #PWR064
-U 1 1 5F1E6391
-P 6200 8300
-F 0 "#PWR064" H 6200 8050 50  0001 C CNN
-F 1 "GND" H 6205 8127 50  0000 C CNN
-F 2 "" H 6200 8300 50  0001 C CNN
-F 3 "" H 6200 8300 50  0001 C CNN
-	1    6200 8300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR056
-U 1 1 5F1E6397
-P 6400 7550
-F 0 "#PWR056" H 6400 7400 50  0001 C CNN
-F 1 "+5V" H 6415 7723 50  0000 C CNN
-F 2 "" H 6400 7550 50  0001 C CNN
-F 3 "" H 6400 7550 50  0001 C CNN
-	1    6400 7550
-	1    0    0    -1  
-$EndComp
-Text GLabel 5850 8050 0    50   Input ~ 0
-LEDxC
-Wire Wire Line
-	6200 7800 6200 7850
-$Comp
-L Connector:Conn_01x02_Male J15
-U 1 1 5F1E639F
-P 6200 7600
-F 0 "J15" V 6262 7644 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 6353 7644 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 6200 7600 50  0001 C CNN
-F 3 "~" H 6200 7600 50  0001 C CNN
-	1    6200 7600
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	6300 7850 6400 7850
-Wire Wire Line
-	6400 7550 6400 7850
-Wire Wire Line
-	6300 7850 6300 7800
-$Comp
-L Device:Q_NMOS_GSD Q14
-U 1 1 5F1E63A8
-P 7250 8050
-AR Path="/5F1E63A8" Ref="Q14"  Part="1" 
-AR Path="/5EB75C50/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F1E63A8" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F1E63A8" Ref="Q?"  Part="1" 
-F 0 "Q14" H 7454 8096 50  0000 L CNN
-F 1 "AO3402" H 7454 8005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 7450 8150 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 7250 8050 50  0001 C CNN
-	1    7250 8050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7000 8050 7050 8050
-Wire Wire Line
-	7350 8300 7350 8250
-$Comp
-L power:GND #PWR065
-U 1 1 5F1E63B0
-P 7350 8300
-F 0 "#PWR065" H 7350 8050 50  0001 C CNN
-F 1 "GND" H 7355 8127 50  0000 C CNN
-F 2 "" H 7350 8300 50  0001 C CNN
-F 3 "" H 7350 8300 50  0001 C CNN
-	1    7350 8300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR057
-U 1 1 5F1E63B6
-P 7550 7550
-F 0 "#PWR057" H 7550 7400 50  0001 C CNN
-F 1 "+5V" H 7565 7723 50  0000 C CNN
-F 2 "" H 7550 7550 50  0001 C CNN
-F 3 "" H 7550 7550 50  0001 C CNN
-	1    7550 7550
-	1    0    0    -1  
-$EndComp
-Text GLabel 7000 8050 0    50   Input ~ 0
-LEDxD
-Wire Wire Line
-	7350 7800 7350 7850
-$Comp
-L Connector:Conn_01x02_Male J16
-U 1 1 5F1E63BE
-P 7350 7600
-F 0 "J16" V 7412 7644 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 7503 7644 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 7350 7600 50  0001 C CNN
-F 3 "~" H 7350 7600 50  0001 C CNN
-	1    7350 7600
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	7450 7850 7550 7850
-Wire Wire Line
-	7550 7550 7550 7850
-Wire Wire Line
-	7450 7850 7450 7800
-$Comp
-L Device:Q_NMOS_GSD Q15
-U 1 1 5F1E63C7
-P 8400 8050
-AR Path="/5F1E63C7" Ref="Q15"  Part="1" 
-AR Path="/5EB75C50/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F1E63C7" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F1E63C7" Ref="Q?"  Part="1" 
-F 0 "Q15" H 8604 8096 50  0000 L CNN
-F 1 "AO3402" H 8604 8005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 8600 8150 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 8400 8050 50  0001 C CNN
-	1    8400 8050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8150 8050 8200 8050
-Wire Wire Line
-	8500 8300 8500 8250
-$Comp
-L power:GND #PWR066
-U 1 1 5F1E63CF
-P 8500 8300
-F 0 "#PWR066" H 8500 8050 50  0001 C CNN
-F 1 "GND" H 8505 8127 50  0000 C CNN
-F 2 "" H 8500 8300 50  0001 C CNN
-F 3 "" H 8500 8300 50  0001 C CNN
-	1    8500 8300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR058
-U 1 1 5F1E63D5
-P 8700 7550
-F 0 "#PWR058" H 8700 7400 50  0001 C CNN
-F 1 "+5V" H 8715 7723 50  0000 C CNN
-F 2 "" H 8700 7550 50  0001 C CNN
-F 3 "" H 8700 7550 50  0001 C CNN
-	1    8700 7550
-	1    0    0    -1  
-$EndComp
-Text GLabel 8150 8050 0    50   Input ~ 0
-LEDxE
-Wire Wire Line
-	8500 7800 8500 7850
-$Comp
-L Connector:Conn_01x02_Male J17
-U 1 1 5F1E63DD
-P 8500 7600
-F 0 "J17" V 8562 7644 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 8653 7644 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 8500 7600 50  0001 C CNN
-F 3 "~" H 8500 7600 50  0001 C CNN
-	1    8500 7600
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	8600 7850 8700 7850
-Wire Wire Line
-	8700 7550 8700 7850
-Wire Wire Line
-	8600 7850 8600 7800
-$Comp
-L Device:Q_NMOS_GSD Q16
-U 1 1 5F1E63E6
-P 9550 8050
-AR Path="/5F1E63E6" Ref="Q16"  Part="1" 
-AR Path="/5EB75C50/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EDE50D7/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EDEC9E5/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EDF5973/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EDFE285/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EE06984/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EE0FA78/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEA2161/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEA216B/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEA2175/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEA217F/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEDC439/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEDC443/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEDC44D/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEDC457/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEDC471/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEDC47B/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEDC485/5F1E63E6" Ref="Q?"  Part="1" 
-AR Path="/5EEDC48F/5F1E63E6" Ref="Q?"  Part="1" 
-F 0 "Q16" H 9754 8096 50  0000 L CNN
-F 1 "AO3402" H 9754 8005 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 9750 8150 50  0001 C CNN
-F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 9550 8050 50  0001 C CNN
-	1    9550 8050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9300 8050 9350 8050
-Wire Wire Line
-	9650 8300 9650 8250
-$Comp
-L power:GND #PWR067
-U 1 1 5F1E63EE
-P 9650 8300
-F 0 "#PWR067" H 9650 8050 50  0001 C CNN
-F 1 "GND" H 9655 8127 50  0000 C CNN
-F 2 "" H 9650 8300 50  0001 C CNN
-F 3 "" H 9650 8300 50  0001 C CNN
-	1    9650 8300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR059
-U 1 1 5F1E63F4
-P 9850 7550
-F 0 "#PWR059" H 9850 7400 50  0001 C CNN
-F 1 "+5V" H 9865 7723 50  0000 C CNN
-F 2 "" H 9850 7550 50  0001 C CNN
-F 3 "" H 9850 7550 50  0001 C CNN
-	1    9850 7550
-	1    0    0    -1  
-$EndComp
-Text GLabel 9300 8050 0    50   Input ~ 0
-LEDxF
-Wire Wire Line
-	9650 7800 9650 7850
-$Comp
-L Connector:Conn_01x02_Male J18
-U 1 1 5F1E63FC
-P 9650 7600
-F 0 "J18" V 9712 7644 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 9803 7644 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" H 9650 7600 50  0001 C CNN
-F 3 "~" H 9650 7600 50  0001 C CNN
-	1    9650 7600
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	9750 7850 9850 7850
-Wire Wire Line
-	9850 7550 9850 7850
-Wire Wire Line
-	9750 7850 9750 7800
-$Comp
-L Connector:Conn_01x03_Male J19
-U 1 1 5F1F93F1
-P 1450 9100
-F 0 "J19" V 1512 8912 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 1603 8912 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 1450 9100 50  0001 C CNN
-F 3 "~" H 1450 9100 50  0001 C CNN
-	1    1450 9100
-	0    -1   1    0   
-$EndComp
-Text GLabel 1600 9400 2    50   Output ~ 0
+Text GLabel 1800 7100 2    50   Output ~ 0
 BTNx0
-Wire Wire Line
-	1600 9400 1450 9400
-Wire Wire Line
-	1450 9400 1450 9300
-NoConn ~ 1550 9300
-$Comp
-L power:GND #PWR069
-U 1 1 5F23239F
-P 1350 9350
-F 0 "#PWR069" H 1350 9100 50  0001 C CNN
-F 1 "GND" H 1355 9177 50  0000 C CNN
-F 2 "" H 1350 9350 50  0001 C CNN
-F 3 "" H 1350 9350 50  0001 C CNN
-	1    1350 9350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1350 9350 1350 9300
-$Comp
-L Connector:Conn_01x03_Male J20
-U 1 1 5F28424F
-P 2600 9100
-F 0 "J20" V 2662 8912 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 2753 8912 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 2600 9100 50  0001 C CNN
-F 3 "~" H 2600 9100 50  0001 C CNN
-	1    2600 9100
-	0    -1   1    0   
-$EndComp
-Text GLabel 2750 9400 2    50   Output ~ 0
-BTNx1
-Wire Wire Line
-	2750 9400 2600 9400
-Wire Wire Line
-	2600 9400 2600 9300
-NoConn ~ 2700 9300
-$Comp
-L power:GND #PWR070
-U 1 1 5F284259
-P 2500 9350
-F 0 "#PWR070" H 2500 9100 50  0001 C CNN
-F 1 "GND" H 2505 9177 50  0000 C CNN
-F 2 "" H 2500 9350 50  0001 C CNN
-F 3 "" H 2500 9350 50  0001 C CNN
-	1    2500 9350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2500 9350 2500 9300
-$Comp
-L Connector:Conn_01x03_Male J21
-U 1 1 5F29C647
-P 3750 9100
-F 0 "J21" V 3812 8912 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 3903 8912 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 3750 9100 50  0001 C CNN
-F 3 "~" H 3750 9100 50  0001 C CNN
-	1    3750 9100
-	0    -1   1    0   
-$EndComp
-Text GLabel 3900 9400 2    50   Output ~ 0
-BTNx2
-Wire Wire Line
-	3900 9400 3750 9400
-Wire Wire Line
-	3750 9400 3750 9300
-NoConn ~ 3850 9300
-$Comp
-L power:GND #PWR071
-U 1 1 5F29C651
-P 3650 9350
-F 0 "#PWR071" H 3650 9100 50  0001 C CNN
-F 1 "GND" H 3655 9177 50  0000 C CNN
-F 2 "" H 3650 9350 50  0001 C CNN
-F 3 "" H 3650 9350 50  0001 C CNN
-	1    3650 9350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3650 9350 3650 9300
-$Comp
-L Connector:Conn_01x03_Male J22
-U 1 1 5F29C658
-P 4900 9100
-F 0 "J22" V 4962 8912 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 5053 8912 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 4900 9100 50  0001 C CNN
-F 3 "~" H 4900 9100 50  0001 C CNN
-	1    4900 9100
-	0    -1   1    0   
-$EndComp
-Text GLabel 5050 9400 2    50   Output ~ 0
-BTNx3
-Wire Wire Line
-	5050 9400 4900 9400
-Wire Wire Line
-	4900 9400 4900 9300
-NoConn ~ 5000 9300
-$Comp
-L power:GND #PWR072
-U 1 1 5F29C662
-P 4800 9350
-F 0 "#PWR072" H 4800 9100 50  0001 C CNN
-F 1 "GND" H 4805 9177 50  0000 C CNN
-F 2 "" H 4800 9350 50  0001 C CNN
-F 3 "" H 4800 9350 50  0001 C CNN
-	1    4800 9350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4800 9350 4800 9300
-$Comp
-L Connector:Conn_01x03_Male J23
-U 1 1 5F2BCC3F
-P 6050 9100
-F 0 "J23" V 6112 8912 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 6203 8912 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 6050 9100 50  0001 C CNN
-F 3 "~" H 6050 9100 50  0001 C CNN
-	1    6050 9100
-	0    -1   1    0   
-$EndComp
-Text GLabel 6200 9400 2    50   Output ~ 0
-BTNx4
-Wire Wire Line
-	6200 9400 6050 9400
-Wire Wire Line
-	6050 9400 6050 9300
-NoConn ~ 6150 9300
-$Comp
-L power:GND #PWR073
-U 1 1 5F2BCC49
-P 5950 9350
-F 0 "#PWR073" H 5950 9100 50  0001 C CNN
-F 1 "GND" H 5955 9177 50  0000 C CNN
-F 2 "" H 5950 9350 50  0001 C CNN
-F 3 "" H 5950 9350 50  0001 C CNN
-	1    5950 9350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5950 9350 5950 9300
-$Comp
-L Connector:Conn_01x03_Male J24
-U 1 1 5F2BCC50
-P 7200 9100
-F 0 "J24" V 7262 8912 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 7353 8912 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 7200 9100 50  0001 C CNN
-F 3 "~" H 7200 9100 50  0001 C CNN
-	1    7200 9100
-	0    -1   1    0   
-$EndComp
-Text GLabel 7350 9400 2    50   Output ~ 0
-BTNx5
-Wire Wire Line
-	7350 9400 7200 9400
-Wire Wire Line
-	7200 9400 7200 9300
-NoConn ~ 7300 9300
-$Comp
-L power:GND #PWR074
-U 1 1 5F2BCC5A
-P 7100 9350
-F 0 "#PWR074" H 7100 9100 50  0001 C CNN
-F 1 "GND" H 7105 9177 50  0000 C CNN
-F 2 "" H 7100 9350 50  0001 C CNN
-F 3 "" H 7100 9350 50  0001 C CNN
-	1    7100 9350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7100 9350 7100 9300
-$Comp
-L Connector:Conn_01x03_Male J25
-U 1 1 5F2BCC61
-P 8350 9100
-F 0 "J25" V 8412 8912 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 8503 8912 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 8350 9100 50  0001 C CNN
-F 3 "~" H 8350 9100 50  0001 C CNN
-	1    8350 9100
-	0    -1   1    0   
-$EndComp
-Text GLabel 8500 9400 2    50   Output ~ 0
-BTNx6
-Wire Wire Line
-	8500 9400 8350 9400
-Wire Wire Line
-	8350 9400 8350 9300
-NoConn ~ 8450 9300
-$Comp
-L power:GND #PWR075
-U 1 1 5F2BCC6B
-P 8250 9350
-F 0 "#PWR075" H 8250 9100 50  0001 C CNN
-F 1 "GND" H 8255 9177 50  0000 C CNN
-F 2 "" H 8250 9350 50  0001 C CNN
-F 3 "" H 8250 9350 50  0001 C CNN
-	1    8250 9350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8250 9350 8250 9300
-$Comp
-L Connector:Conn_01x03_Male J26
-U 1 1 5F2BCC72
-P 9500 9100
-F 0 "J26" V 9562 8912 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 9653 8912 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 9500 9100 50  0001 C CNN
-F 3 "~" H 9500 9100 50  0001 C CNN
-	1    9500 9100
-	0    -1   1    0   
-$EndComp
-Text GLabel 9650 9400 2    50   Output ~ 0
-BTNx7
-Wire Wire Line
-	9650 9400 9500 9400
-Wire Wire Line
-	9500 9400 9500 9300
-NoConn ~ 9600 9300
-$Comp
-L power:GND #PWR076
-U 1 1 5F2BCC7C
-P 9400 9350
-F 0 "#PWR076" H 9400 9100 50  0001 C CNN
-F 1 "GND" H 9405 9177 50  0000 C CNN
-F 2 "" H 9400 9350 50  0001 C CNN
-F 3 "" H 9400 9350 50  0001 C CNN
-	1    9400 9350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9400 9350 9400 9300
-$Comp
-L Connector:Conn_01x03_Male J27
-U 1 1 5F305491
-P 1450 9700
-F 0 "J27" V 1512 9512 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 1603 9512 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 1450 9700 50  0001 C CNN
-F 3 "~" H 1450 9700 50  0001 C CNN
-	1    1450 9700
-	0    -1   1    0   
-$EndComp
-Text GLabel 1600 10000 2    50   Output ~ 0
-BTNx8
-Wire Wire Line
-	1600 10000 1450 10000
-Wire Wire Line
-	1450 10000 1450 9900
-NoConn ~ 1550 9900
-$Comp
-L power:GND #PWR077
-U 1 1 5F30549B
-P 1350 9950
-F 0 "#PWR077" H 1350 9700 50  0001 C CNN
-F 1 "GND" H 1355 9777 50  0000 C CNN
-F 2 "" H 1350 9950 50  0001 C CNN
-F 3 "" H 1350 9950 50  0001 C CNN
-	1    1350 9950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1350 9950 1350 9900
-$Comp
-L Connector:Conn_01x03_Male J28
-U 1 1 5F3054A2
-P 2600 9700
-F 0 "J28" V 2662 9512 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 2753 9512 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 2600 9700 50  0001 C CNN
-F 3 "~" H 2600 9700 50  0001 C CNN
-	1    2600 9700
-	0    -1   1    0   
-$EndComp
-Text GLabel 2750 10000 2    50   Output ~ 0
-BTNx9
-Wire Wire Line
-	2750 10000 2600 10000
-Wire Wire Line
-	2600 10000 2600 9900
-NoConn ~ 2700 9900
-$Comp
-L power:GND #PWR078
-U 1 1 5F3054AC
-P 2500 9950
-F 0 "#PWR078" H 2500 9700 50  0001 C CNN
-F 1 "GND" H 2505 9777 50  0000 C CNN
-F 2 "" H 2500 9950 50  0001 C CNN
-F 3 "" H 2500 9950 50  0001 C CNN
-	1    2500 9950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2500 9950 2500 9900
-$Comp
-L Connector:Conn_01x03_Male J29
-U 1 1 5F3054B3
-P 3750 9700
-F 0 "J29" V 3812 9512 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 3903 9512 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 3750 9700 50  0001 C CNN
-F 3 "~" H 3750 9700 50  0001 C CNN
-	1    3750 9700
-	0    -1   1    0   
-$EndComp
-Text GLabel 3900 10000 2    50   Output ~ 0
-BTNxA
-Wire Wire Line
-	3900 10000 3750 10000
-Wire Wire Line
-	3750 10000 3750 9900
-NoConn ~ 3850 9900
-$Comp
-L power:GND #PWR079
-U 1 1 5F3054BD
-P 3650 9950
-F 0 "#PWR079" H 3650 9700 50  0001 C CNN
-F 1 "GND" H 3655 9777 50  0000 C CNN
-F 2 "" H 3650 9950 50  0001 C CNN
-F 3 "" H 3650 9950 50  0001 C CNN
-	1    3650 9950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3650 9950 3650 9900
-$Comp
-L Connector:Conn_01x03_Male J30
-U 1 1 5F3054C4
-P 4900 9700
-F 0 "J30" V 4962 9512 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 5053 9512 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 4900 9700 50  0001 C CNN
-F 3 "~" H 4900 9700 50  0001 C CNN
-	1    4900 9700
-	0    -1   1    0   
-$EndComp
-Text GLabel 5050 10000 2    50   Output ~ 0
-BTNxB
-Wire Wire Line
-	5050 10000 4900 10000
-Wire Wire Line
-	4900 10000 4900 9900
-NoConn ~ 5000 9900
-$Comp
-L power:GND #PWR080
-U 1 1 5F3054CE
-P 4800 9950
-F 0 "#PWR080" H 4800 9700 50  0001 C CNN
-F 1 "GND" H 4805 9777 50  0000 C CNN
-F 2 "" H 4800 9950 50  0001 C CNN
-F 3 "" H 4800 9950 50  0001 C CNN
-	1    4800 9950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4800 9950 4800 9900
-$Comp
-L Connector:Conn_01x03_Male J31
-U 1 1 5F3054D5
-P 6050 9700
-F 0 "J31" V 6112 9512 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 6203 9512 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 6050 9700 50  0001 C CNN
-F 3 "~" H 6050 9700 50  0001 C CNN
-	1    6050 9700
-	0    -1   1    0   
-$EndComp
-Text GLabel 6200 10000 2    50   Output ~ 0
-BTNxC
-Wire Wire Line
-	6200 10000 6050 10000
-Wire Wire Line
-	6050 10000 6050 9900
-NoConn ~ 6150 9900
-$Comp
-L power:GND #PWR081
-U 1 1 5F3054DF
-P 5950 9950
-F 0 "#PWR081" H 5950 9700 50  0001 C CNN
-F 1 "GND" H 5955 9777 50  0000 C CNN
-F 2 "" H 5950 9950 50  0001 C CNN
-F 3 "" H 5950 9950 50  0001 C CNN
-	1    5950 9950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5950 9950 5950 9900
-$Comp
-L Connector:Conn_01x03_Male J32
-U 1 1 5F3054E6
-P 7200 9700
-F 0 "J32" V 7262 9512 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 7353 9512 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 7200 9700 50  0001 C CNN
-F 3 "~" H 7200 9700 50  0001 C CNN
-	1    7200 9700
-	0    -1   1    0   
-$EndComp
-Text GLabel 7350 10000 2    50   Output ~ 0
-BTNxD
-Wire Wire Line
-	7350 10000 7200 10000
-Wire Wire Line
-	7200 10000 7200 9900
-NoConn ~ 7300 9900
-$Comp
-L power:GND #PWR082
-U 1 1 5F3054F0
-P 7100 9950
-F 0 "#PWR082" H 7100 9700 50  0001 C CNN
-F 1 "GND" H 7105 9777 50  0000 C CNN
-F 2 "" H 7100 9950 50  0001 C CNN
-F 3 "" H 7100 9950 50  0001 C CNN
-	1    7100 9950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7100 9950 7100 9900
-$Comp
-L Connector:Conn_01x03_Male J33
-U 1 1 5F3054F7
-P 8350 9700
-F 0 "J33" V 8412 9512 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 8503 9512 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 8350 9700 50  0001 C CNN
-F 3 "~" H 8350 9700 50  0001 C CNN
-	1    8350 9700
-	0    -1   1    0   
-$EndComp
-Text GLabel 8500 10000 2    50   Output ~ 0
-BTNxE
-Wire Wire Line
-	8500 10000 8350 10000
-Wire Wire Line
-	8350 10000 8350 9900
-NoConn ~ 8450 9900
-$Comp
-L power:GND #PWR083
-U 1 1 5F305501
-P 8250 9950
-F 0 "#PWR083" H 8250 9700 50  0001 C CNN
-F 1 "GND" H 8255 9777 50  0000 C CNN
-F 2 "" H 8250 9950 50  0001 C CNN
-F 3 "" H 8250 9950 50  0001 C CNN
-	1    8250 9950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8250 9950 8250 9900
-$Comp
-L Connector:Conn_01x03_Male J34
-U 1 1 5F305508
-P 9500 9700
-F 0 "J34" V 9562 9512 50  0000 R CNN
-F 1 "Conn_01x03_Male" V 9653 9512 50  0000 R CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0310_1x03_P1.25mm_Vertical" H 9500 9700 50  0001 C CNN
-F 3 "~" H 9500 9700 50  0001 C CNN
-	1    9500 9700
-	0    -1   1    0   
-$EndComp
-Text GLabel 9650 10000 2    50   Output ~ 0
-BTNxF
-Wire Wire Line
-	9650 10000 9500 10000
-Wire Wire Line
-	9500 10000 9500 9900
-NoConn ~ 9600 9900
-$Comp
-L power:GND #PWR084
-U 1 1 5F305512
-P 9400 9950
-F 0 "#PWR084" H 9400 9700 50  0001 C CNN
-F 1 "GND" H 9405 9777 50  0000 C CNN
-F 2 "" H 9400 9950 50  0001 C CNN
-F 3 "" H 9400 9950 50  0001 C CNN
-	1    9400 9950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9400 9950 9400 9900
 Wire Wire Line
 	2100 1850 2100 1750
 Wire Wire Line
@@ -2900,4 +1204,1524 @@ Wire Wire Line
 	3400 2050 3450 2050
 Wire Wire Line
 	3400 2150 3450 2150
+$Comp
+L power:+5V #PWR036
+U 1 1 5EF3D4C0
+P 1900 6700
+F 0 "#PWR036" H 1900 6550 50  0001 C CNN
+F 1 "+5V" H 1915 6873 50  0000 C CNN
+F 2 "" H 1900 6700 50  0001 C CNN
+F 3 "" H 1900 6700 50  0001 C CNN
+	1    1900 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1800 6950 1800 7000
+Wire Wire Line
+	1800 7000 1900 7000
+Wire Wire Line
+	1900 7000 1900 6700
+Wire Wire Line
+	1700 6950 1700 7100
+Wire Wire Line
+	1700 7100 1800 7100
+Wire Wire Line
+	1400 6950 1400 7200
+NoConn ~ 1500 6950
+Wire Wire Line
+	1400 7600 1400 7700
+$Comp
+L power:GND #PWR044
+U 1 1 5EDB64A8
+P 1600 7050
+F 0 "#PWR044" H 1600 6800 50  0001 C CNN
+F 1 "GND" H 1605 6877 50  0000 C CNN
+F 2 "" H 1600 7050 50  0001 C CNN
+F 3 "" H 1600 7050 50  0001 C CNN
+	1    1600 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 7050 1600 6950
+$Comp
+L Connector:Conn_01x05_Male J3
+U 1 1 5F1F93F1
+P 1600 6750
+F 0 "J3" V 1400 7200 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 1500 7200 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 1600 6750 50  0001 C CNN
+F 3 "~" H 1600 6750 50  0001 C CNN
+	1    1600 6750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q2
+U 1 1 5EDE0563
+P 2800 7400
+AR Path="/5EDE0563" Ref="Q2"  Part="1" 
+AR Path="/5EB75C50/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EDE0563" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EDE0563" Ref="Q?"  Part="1" 
+F 0 "Q2" H 3004 7446 50  0000 L CNN
+F 1 "AO3402" H 3004 7355 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 3000 7500 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 2800 7400 50  0001 C CNN
+	1    2800 7400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2550 7400 2600 7400
+$Comp
+L power:GND #PWR053
+U 1 1 5EDE056A
+P 2900 7700
+F 0 "#PWR053" H 2900 7450 50  0001 C CNN
+F 1 "GND" H 2905 7527 50  0000 C CNN
+F 2 "" H 2900 7700 50  0001 C CNN
+F 3 "" H 2900 7700 50  0001 C CNN
+	1    2900 7700
+	1    0    0    -1  
+$EndComp
+Text GLabel 2550 7400 0    50   Input ~ 0
+LEDx1
+Text GLabel 3300 7100 2    50   Output ~ 0
+BTNx1
+$Comp
+L power:+5V #PWR037
+U 1 1 5EDE0572
+P 3400 6700
+F 0 "#PWR037" H 3400 6550 50  0001 C CNN
+F 1 "+5V" H 3415 6873 50  0000 C CNN
+F 2 "" H 3400 6700 50  0001 C CNN
+F 3 "" H 3400 6700 50  0001 C CNN
+	1    3400 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 6950 3300 7000
+Wire Wire Line
+	3300 7000 3400 7000
+Wire Wire Line
+	3400 7000 3400 6700
+Wire Wire Line
+	3200 6950 3200 7100
+Wire Wire Line
+	3200 7100 3300 7100
+Wire Wire Line
+	2900 6950 2900 7200
+NoConn ~ 3000 6950
+Wire Wire Line
+	2900 7600 2900 7700
+$Comp
+L power:GND #PWR045
+U 1 1 5EDE0580
+P 3100 7050
+F 0 "#PWR045" H 3100 6800 50  0001 C CNN
+F 1 "GND" H 3105 6877 50  0000 C CNN
+F 2 "" H 3100 7050 50  0001 C CNN
+F 3 "" H 3100 7050 50  0001 C CNN
+	1    3100 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 7050 3100 6950
+$Comp
+L Connector:Conn_01x05_Male J4
+U 1 1 5EDE0587
+P 3100 6750
+F 0 "J4" V 2900 7200 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 3000 7200 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 3100 6750 50  0001 C CNN
+F 3 "~" H 3100 6750 50  0001 C CNN
+	1    3100 6750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q3
+U 1 1 5EDFDBEA
+P 4300 7400
+AR Path="/5EDFDBEA" Ref="Q3"  Part="1" 
+AR Path="/5EB75C50/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EDFDBEA" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EDFDBEA" Ref="Q?"  Part="1" 
+F 0 "Q3" H 4504 7446 50  0000 L CNN
+F 1 "AO3402" H 4504 7355 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 4500 7500 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 4300 7400 50  0001 C CNN
+	1    4300 7400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 7400 4100 7400
+$Comp
+L power:GND #PWR054
+U 1 1 5EDFDBF1
+P 4400 7700
+F 0 "#PWR054" H 4400 7450 50  0001 C CNN
+F 1 "GND" H 4405 7527 50  0000 C CNN
+F 2 "" H 4400 7700 50  0001 C CNN
+F 3 "" H 4400 7700 50  0001 C CNN
+	1    4400 7700
+	1    0    0    -1  
+$EndComp
+Text GLabel 4050 7400 0    50   Input ~ 0
+LEDx2
+Text GLabel 4800 7100 2    50   Output ~ 0
+BTNx2
+$Comp
+L power:+5V #PWR038
+U 1 1 5EDFDBF9
+P 4900 6700
+F 0 "#PWR038" H 4900 6550 50  0001 C CNN
+F 1 "+5V" H 4915 6873 50  0000 C CNN
+F 2 "" H 4900 6700 50  0001 C CNN
+F 3 "" H 4900 6700 50  0001 C CNN
+	1    4900 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 6950 4800 7000
+Wire Wire Line
+	4800 7000 4900 7000
+Wire Wire Line
+	4900 7000 4900 6700
+Wire Wire Line
+	4700 6950 4700 7100
+Wire Wire Line
+	4700 7100 4800 7100
+Wire Wire Line
+	4400 6950 4400 7200
+NoConn ~ 4500 6950
+Wire Wire Line
+	4400 7600 4400 7700
+$Comp
+L power:GND #PWR046
+U 1 1 5EDFDC07
+P 4600 7050
+F 0 "#PWR046" H 4600 6800 50  0001 C CNN
+F 1 "GND" H 4605 6877 50  0000 C CNN
+F 2 "" H 4600 7050 50  0001 C CNN
+F 3 "" H 4600 7050 50  0001 C CNN
+	1    4600 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 7050 4600 6950
+$Comp
+L Connector:Conn_01x05_Male J5
+U 1 1 5EDFDC0E
+P 4600 6750
+F 0 "J5" V 4400 7200 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 4500 7200 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 4600 6750 50  0001 C CNN
+F 3 "~" H 4600 6750 50  0001 C CNN
+	1    4600 6750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q4
+U 1 1 5EDFDC14
+P 5800 7400
+AR Path="/5EDFDC14" Ref="Q4"  Part="1" 
+AR Path="/5EB75C50/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EDFDC14" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EDFDC14" Ref="Q?"  Part="1" 
+F 0 "Q4" H 6004 7446 50  0000 L CNN
+F 1 "AO3402" H 6004 7355 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 6000 7500 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 5800 7400 50  0001 C CNN
+	1    5800 7400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 7400 5600 7400
+$Comp
+L power:GND #PWR055
+U 1 1 5EDFDC1B
+P 5900 7700
+F 0 "#PWR055" H 5900 7450 50  0001 C CNN
+F 1 "GND" H 5905 7527 50  0000 C CNN
+F 2 "" H 5900 7700 50  0001 C CNN
+F 3 "" H 5900 7700 50  0001 C CNN
+	1    5900 7700
+	1    0    0    -1  
+$EndComp
+Text GLabel 5550 7400 0    50   Input ~ 0
+LEDx3
+Text GLabel 6300 7100 2    50   Output ~ 0
+BTNx3
+$Comp
+L power:+5V #PWR039
+U 1 1 5EDFDC23
+P 6400 6700
+F 0 "#PWR039" H 6400 6550 50  0001 C CNN
+F 1 "+5V" H 6415 6873 50  0000 C CNN
+F 2 "" H 6400 6700 50  0001 C CNN
+F 3 "" H 6400 6700 50  0001 C CNN
+	1    6400 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 6950 6300 7000
+Wire Wire Line
+	6300 7000 6400 7000
+Wire Wire Line
+	6400 7000 6400 6700
+Wire Wire Line
+	6200 6950 6200 7100
+Wire Wire Line
+	6200 7100 6300 7100
+Wire Wire Line
+	5900 6950 5900 7200
+NoConn ~ 6000 6950
+Wire Wire Line
+	5900 7600 5900 7700
+$Comp
+L power:GND #PWR047
+U 1 1 5EDFDC31
+P 6100 7050
+F 0 "#PWR047" H 6100 6800 50  0001 C CNN
+F 1 "GND" H 6105 6877 50  0000 C CNN
+F 2 "" H 6100 7050 50  0001 C CNN
+F 3 "" H 6100 7050 50  0001 C CNN
+	1    6100 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6100 7050 6100 6950
+$Comp
+L Connector:Conn_01x05_Male J6
+U 1 1 5EDFDC38
+P 6100 6750
+F 0 "J6" V 5900 7200 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 6000 7200 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 6100 6750 50  0001 C CNN
+F 3 "~" H 6100 6750 50  0001 C CNN
+	1    6100 6750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q9
+U 1 1 5EE6201E
+P 1300 8900
+AR Path="/5EE6201E" Ref="Q9"  Part="1" 
+AR Path="/5EB75C50/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EE6201E" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EE6201E" Ref="Q?"  Part="1" 
+F 0 "Q9" H 1504 8946 50  0000 L CNN
+F 1 "AO3402" H 1504 8855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 1500 9000 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 1300 8900 50  0001 C CNN
+	1    1300 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1050 8900 1100 8900
+$Comp
+L power:GND #PWR076
+U 1 1 5EE62025
+P 1400 9200
+F 0 "#PWR076" H 1400 8950 50  0001 C CNN
+F 1 "GND" H 1405 9027 50  0000 C CNN
+F 2 "" H 1400 9200 50  0001 C CNN
+F 3 "" H 1400 9200 50  0001 C CNN
+	1    1400 9200
+	1    0    0    -1  
+$EndComp
+Text GLabel 1050 8900 0    50   Input ~ 0
+LEDx8
+Text GLabel 1800 8600 2    50   Output ~ 0
+BTNx8
+$Comp
+L power:+5V #PWR060
+U 1 1 5EE6202D
+P 1900 8200
+F 0 "#PWR060" H 1900 8050 50  0001 C CNN
+F 1 "+5V" H 1915 8373 50  0000 C CNN
+F 2 "" H 1900 8200 50  0001 C CNN
+F 3 "" H 1900 8200 50  0001 C CNN
+	1    1900 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1800 8450 1800 8500
+Wire Wire Line
+	1800 8500 1900 8500
+Wire Wire Line
+	1900 8500 1900 8200
+Wire Wire Line
+	1700 8450 1700 8600
+Wire Wire Line
+	1700 8600 1800 8600
+Wire Wire Line
+	1400 8450 1400 8700
+NoConn ~ 1500 8450
+Wire Wire Line
+	1400 9100 1400 9200
+$Comp
+L power:GND #PWR068
+U 1 1 5EE6203B
+P 1600 8550
+F 0 "#PWR068" H 1600 8300 50  0001 C CNN
+F 1 "GND" H 1605 8377 50  0000 C CNN
+F 2 "" H 1600 8550 50  0001 C CNN
+F 3 "" H 1600 8550 50  0001 C CNN
+	1    1600 8550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 8550 1600 8450
+$Comp
+L Connector:Conn_01x05_Male J11
+U 1 1 5EE62042
+P 1600 8250
+F 0 "J11" V 1400 8700 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 1500 8700 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 1600 8250 50  0001 C CNN
+F 3 "~" H 1600 8250 50  0001 C CNN
+	1    1600 8250
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q10
+U 1 1 5EE62048
+P 2800 8900
+AR Path="/5EE62048" Ref="Q10"  Part="1" 
+AR Path="/5EB75C50/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EE62048" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EE62048" Ref="Q?"  Part="1" 
+F 0 "Q10" H 3004 8946 50  0000 L CNN
+F 1 "AO3402" H 3004 8855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 3000 9000 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 2800 8900 50  0001 C CNN
+	1    2800 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2550 8900 2600 8900
+$Comp
+L power:GND #PWR077
+U 1 1 5EE6204F
+P 2900 9200
+F 0 "#PWR077" H 2900 8950 50  0001 C CNN
+F 1 "GND" H 2905 9027 50  0000 C CNN
+F 2 "" H 2900 9200 50  0001 C CNN
+F 3 "" H 2900 9200 50  0001 C CNN
+	1    2900 9200
+	1    0    0    -1  
+$EndComp
+Text GLabel 2550 8900 0    50   Input ~ 0
+LEDx9
+Text GLabel 3300 8600 2    50   Output ~ 0
+BTNx9
+$Comp
+L power:+5V #PWR061
+U 1 1 5EE62057
+P 3400 8200
+F 0 "#PWR061" H 3400 8050 50  0001 C CNN
+F 1 "+5V" H 3415 8373 50  0000 C CNN
+F 2 "" H 3400 8200 50  0001 C CNN
+F 3 "" H 3400 8200 50  0001 C CNN
+	1    3400 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 8450 3300 8500
+Wire Wire Line
+	3300 8500 3400 8500
+Wire Wire Line
+	3400 8500 3400 8200
+Wire Wire Line
+	3200 8450 3200 8600
+Wire Wire Line
+	3200 8600 3300 8600
+Wire Wire Line
+	2900 8450 2900 8700
+NoConn ~ 3000 8450
+Wire Wire Line
+	2900 9100 2900 9200
+$Comp
+L power:GND #PWR069
+U 1 1 5EE62065
+P 3100 8550
+F 0 "#PWR069" H 3100 8300 50  0001 C CNN
+F 1 "GND" H 3105 8377 50  0000 C CNN
+F 2 "" H 3100 8550 50  0001 C CNN
+F 3 "" H 3100 8550 50  0001 C CNN
+	1    3100 8550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 8550 3100 8450
+$Comp
+L Connector:Conn_01x05_Male J12
+U 1 1 5EE6206C
+P 3100 8250
+F 0 "J12" V 2900 8700 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 3000 8700 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 3100 8250 50  0001 C CNN
+F 3 "~" H 3100 8250 50  0001 C CNN
+	1    3100 8250
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q11
+U 1 1 5EE62072
+P 4300 8900
+AR Path="/5EE62072" Ref="Q11"  Part="1" 
+AR Path="/5EB75C50/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EE62072" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EE62072" Ref="Q?"  Part="1" 
+F 0 "Q11" H 4504 8946 50  0000 L CNN
+F 1 "AO3402" H 4504 8855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 4500 9000 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 4300 8900 50  0001 C CNN
+	1    4300 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 8900 4100 8900
+$Comp
+L power:GND #PWR078
+U 1 1 5EE62079
+P 4400 9200
+F 0 "#PWR078" H 4400 8950 50  0001 C CNN
+F 1 "GND" H 4405 9027 50  0000 C CNN
+F 2 "" H 4400 9200 50  0001 C CNN
+F 3 "" H 4400 9200 50  0001 C CNN
+	1    4400 9200
+	1    0    0    -1  
+$EndComp
+Text GLabel 4050 8900 0    50   Input ~ 0
+LEDxA
+Text GLabel 4800 8600 2    50   Output ~ 0
+BTNxA
+$Comp
+L power:+5V #PWR062
+U 1 1 5EE62081
+P 4900 8200
+F 0 "#PWR062" H 4900 8050 50  0001 C CNN
+F 1 "+5V" H 4915 8373 50  0000 C CNN
+F 2 "" H 4900 8200 50  0001 C CNN
+F 3 "" H 4900 8200 50  0001 C CNN
+	1    4900 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 8450 4800 8500
+Wire Wire Line
+	4800 8500 4900 8500
+Wire Wire Line
+	4900 8500 4900 8200
+Wire Wire Line
+	4700 8450 4700 8600
+Wire Wire Line
+	4700 8600 4800 8600
+Wire Wire Line
+	4400 8450 4400 8700
+NoConn ~ 4500 8450
+Wire Wire Line
+	4400 9100 4400 9200
+$Comp
+L power:GND #PWR070
+U 1 1 5EE6208F
+P 4600 8550
+F 0 "#PWR070" H 4600 8300 50  0001 C CNN
+F 1 "GND" H 4605 8377 50  0000 C CNN
+F 2 "" H 4600 8550 50  0001 C CNN
+F 3 "" H 4600 8550 50  0001 C CNN
+	1    4600 8550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 8550 4600 8450
+$Comp
+L Connector:Conn_01x05_Male J13
+U 1 1 5EE62096
+P 4600 8250
+F 0 "J13" V 4400 8700 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 4500 8700 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 4600 8250 50  0001 C CNN
+F 3 "~" H 4600 8250 50  0001 C CNN
+	1    4600 8250
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q12
+U 1 1 5EE6209C
+P 5800 8900
+AR Path="/5EE6209C" Ref="Q12"  Part="1" 
+AR Path="/5EB75C50/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EE6209C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EE6209C" Ref="Q?"  Part="1" 
+F 0 "Q12" H 6004 8946 50  0000 L CNN
+F 1 "AO3402" H 6004 8855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 6000 9000 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 5800 8900 50  0001 C CNN
+	1    5800 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 8900 5600 8900
+$Comp
+L power:GND #PWR079
+U 1 1 5EE620A3
+P 5900 9200
+F 0 "#PWR079" H 5900 8950 50  0001 C CNN
+F 1 "GND" H 5905 9027 50  0000 C CNN
+F 2 "" H 5900 9200 50  0001 C CNN
+F 3 "" H 5900 9200 50  0001 C CNN
+	1    5900 9200
+	1    0    0    -1  
+$EndComp
+Text GLabel 5550 8900 0    50   Input ~ 0
+LEDxB
+Text GLabel 6300 8600 2    50   Output ~ 0
+BTNxB
+$Comp
+L power:+5V #PWR063
+U 1 1 5EE620AB
+P 6400 8200
+F 0 "#PWR063" H 6400 8050 50  0001 C CNN
+F 1 "+5V" H 6415 8373 50  0000 C CNN
+F 2 "" H 6400 8200 50  0001 C CNN
+F 3 "" H 6400 8200 50  0001 C CNN
+	1    6400 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 8450 6300 8500
+Wire Wire Line
+	6300 8500 6400 8500
+Wire Wire Line
+	6400 8500 6400 8200
+Wire Wire Line
+	6200 8450 6200 8600
+Wire Wire Line
+	6200 8600 6300 8600
+Wire Wire Line
+	5900 8450 5900 8700
+NoConn ~ 6000 8450
+Wire Wire Line
+	5900 9100 5900 9200
+$Comp
+L power:GND #PWR071
+U 1 1 5EE620B9
+P 6100 8550
+F 0 "#PWR071" H 6100 8300 50  0001 C CNN
+F 1 "GND" H 6105 8377 50  0000 C CNN
+F 2 "" H 6100 8550 50  0001 C CNN
+F 3 "" H 6100 8550 50  0001 C CNN
+	1    6100 8550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6100 8550 6100 8450
+$Comp
+L Connector:Conn_01x05_Male J14
+U 1 1 5EE620C0
+P 6100 8250
+F 0 "J14" V 5900 8700 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 6000 8700 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 6100 8250 50  0001 C CNN
+F 3 "~" H 6100 8250 50  0001 C CNN
+	1    6100 8250
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q5
+U 1 1 5EECF230
+P 7300 7400
+AR Path="/5EECF230" Ref="Q5"  Part="1" 
+AR Path="/5EB75C50/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EECF230" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EECF230" Ref="Q?"  Part="1" 
+F 0 "Q5" H 7504 7446 50  0000 L CNN
+F 1 "AO3402" H 7504 7355 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7500 7500 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 7300 7400 50  0001 C CNN
+	1    7300 7400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7050 7400 7100 7400
+$Comp
+L power:GND #PWR056
+U 1 1 5EECF237
+P 7400 7700
+F 0 "#PWR056" H 7400 7450 50  0001 C CNN
+F 1 "GND" H 7405 7527 50  0000 C CNN
+F 2 "" H 7400 7700 50  0001 C CNN
+F 3 "" H 7400 7700 50  0001 C CNN
+	1    7400 7700
+	1    0    0    -1  
+$EndComp
+Text GLabel 7050 7400 0    50   Input ~ 0
+LEDx4
+Text GLabel 7800 7100 2    50   Output ~ 0
+BTNx4
+$Comp
+L power:+5V #PWR040
+U 1 1 5EECF23F
+P 7900 6700
+F 0 "#PWR040" H 7900 6550 50  0001 C CNN
+F 1 "+5V" H 7915 6873 50  0000 C CNN
+F 2 "" H 7900 6700 50  0001 C CNN
+F 3 "" H 7900 6700 50  0001 C CNN
+	1    7900 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7800 6950 7800 7000
+Wire Wire Line
+	7800 7000 7900 7000
+Wire Wire Line
+	7900 7000 7900 6700
+Wire Wire Line
+	7700 6950 7700 7100
+Wire Wire Line
+	7700 7100 7800 7100
+Wire Wire Line
+	7400 6950 7400 7200
+NoConn ~ 7500 6950
+Wire Wire Line
+	7400 7600 7400 7700
+$Comp
+L power:GND #PWR048
+U 1 1 5EECF24D
+P 7600 7050
+F 0 "#PWR048" H 7600 6800 50  0001 C CNN
+F 1 "GND" H 7605 6877 50  0000 C CNN
+F 2 "" H 7600 7050 50  0001 C CNN
+F 3 "" H 7600 7050 50  0001 C CNN
+	1    7600 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7600 7050 7600 6950
+$Comp
+L Connector:Conn_01x05_Male J7
+U 1 1 5EECF254
+P 7600 6750
+F 0 "J7" V 7400 7200 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 7500 7200 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 7600 6750 50  0001 C CNN
+F 3 "~" H 7600 6750 50  0001 C CNN
+	1    7600 6750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q6
+U 1 1 5EECF25A
+P 8800 7400
+AR Path="/5EECF25A" Ref="Q6"  Part="1" 
+AR Path="/5EB75C50/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EECF25A" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EECF25A" Ref="Q?"  Part="1" 
+F 0 "Q6" H 9004 7446 50  0000 L CNN
+F 1 "AO3402" H 9004 7355 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 9000 7500 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 8800 7400 50  0001 C CNN
+	1    8800 7400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 7400 8600 7400
+$Comp
+L power:GND #PWR057
+U 1 1 5EECF261
+P 8900 7700
+F 0 "#PWR057" H 8900 7450 50  0001 C CNN
+F 1 "GND" H 8905 7527 50  0000 C CNN
+F 2 "" H 8900 7700 50  0001 C CNN
+F 3 "" H 8900 7700 50  0001 C CNN
+	1    8900 7700
+	1    0    0    -1  
+$EndComp
+Text GLabel 8550 7400 0    50   Input ~ 0
+LEDx5
+Text GLabel 9300 7100 2    50   Output ~ 0
+BTNx5
+$Comp
+L power:+5V #PWR041
+U 1 1 5EECF269
+P 9400 6700
+F 0 "#PWR041" H 9400 6550 50  0001 C CNN
+F 1 "+5V" H 9415 6873 50  0000 C CNN
+F 2 "" H 9400 6700 50  0001 C CNN
+F 3 "" H 9400 6700 50  0001 C CNN
+	1    9400 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9300 6950 9300 7000
+Wire Wire Line
+	9300 7000 9400 7000
+Wire Wire Line
+	9400 7000 9400 6700
+Wire Wire Line
+	9200 6950 9200 7100
+Wire Wire Line
+	9200 7100 9300 7100
+Wire Wire Line
+	8900 6950 8900 7200
+NoConn ~ 9000 6950
+Wire Wire Line
+	8900 7600 8900 7700
+$Comp
+L power:GND #PWR049
+U 1 1 5EECF277
+P 9100 7050
+F 0 "#PWR049" H 9100 6800 50  0001 C CNN
+F 1 "GND" H 9105 6877 50  0000 C CNN
+F 2 "" H 9100 7050 50  0001 C CNN
+F 3 "" H 9100 7050 50  0001 C CNN
+	1    9100 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 7050 9100 6950
+$Comp
+L Connector:Conn_01x05_Male J8
+U 1 1 5EECF27E
+P 9100 6750
+F 0 "J8" V 8900 7200 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 9000 7200 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 9100 6750 50  0001 C CNN
+F 3 "~" H 9100 6750 50  0001 C CNN
+	1    9100 6750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q7
+U 1 1 5EECF284
+P 10300 7400
+AR Path="/5EECF284" Ref="Q7"  Part="1" 
+AR Path="/5EB75C50/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EECF284" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EECF284" Ref="Q?"  Part="1" 
+F 0 "Q7" H 10504 7446 50  0000 L CNN
+F 1 "AO3402" H 10504 7355 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 10500 7500 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 10300 7400 50  0001 C CNN
+	1    10300 7400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10050 7400 10100 7400
+$Comp
+L power:GND #PWR058
+U 1 1 5EECF28B
+P 10400 7700
+F 0 "#PWR058" H 10400 7450 50  0001 C CNN
+F 1 "GND" H 10405 7527 50  0000 C CNN
+F 2 "" H 10400 7700 50  0001 C CNN
+F 3 "" H 10400 7700 50  0001 C CNN
+	1    10400 7700
+	1    0    0    -1  
+$EndComp
+Text GLabel 10050 7400 0    50   Input ~ 0
+LEDx6
+Text GLabel 10800 7100 2    50   Output ~ 0
+BTNx6
+$Comp
+L power:+5V #PWR042
+U 1 1 5EECF293
+P 10900 6700
+F 0 "#PWR042" H 10900 6550 50  0001 C CNN
+F 1 "+5V" H 10915 6873 50  0000 C CNN
+F 2 "" H 10900 6700 50  0001 C CNN
+F 3 "" H 10900 6700 50  0001 C CNN
+	1    10900 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10800 6950 10800 7000
+Wire Wire Line
+	10800 7000 10900 7000
+Wire Wire Line
+	10900 7000 10900 6700
+Wire Wire Line
+	10700 6950 10700 7100
+Wire Wire Line
+	10700 7100 10800 7100
+Wire Wire Line
+	10400 6950 10400 7200
+NoConn ~ 10500 6950
+Wire Wire Line
+	10400 7600 10400 7700
+$Comp
+L power:GND #PWR050
+U 1 1 5EECF2A1
+P 10600 7050
+F 0 "#PWR050" H 10600 6800 50  0001 C CNN
+F 1 "GND" H 10605 6877 50  0000 C CNN
+F 2 "" H 10600 7050 50  0001 C CNN
+F 3 "" H 10600 7050 50  0001 C CNN
+	1    10600 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10600 7050 10600 6950
+$Comp
+L Connector:Conn_01x05_Male J9
+U 1 1 5EECF2A8
+P 10600 6750
+F 0 "J9" V 10400 7200 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 10500 7200 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 10600 6750 50  0001 C CNN
+F 3 "~" H 10600 6750 50  0001 C CNN
+	1    10600 6750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q8
+U 1 1 5EECF2AE
+P 11800 7400
+AR Path="/5EECF2AE" Ref="Q8"  Part="1" 
+AR Path="/5EB75C50/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EECF2AE" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EECF2AE" Ref="Q?"  Part="1" 
+F 0 "Q8" H 12004 7446 50  0000 L CNN
+F 1 "AO3402" H 12004 7355 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 7500 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 11800 7400 50  0001 C CNN
+	1    11800 7400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11550 7400 11600 7400
+$Comp
+L power:GND #PWR059
+U 1 1 5EECF2B5
+P 11900 7700
+F 0 "#PWR059" H 11900 7450 50  0001 C CNN
+F 1 "GND" H 11905 7527 50  0000 C CNN
+F 2 "" H 11900 7700 50  0001 C CNN
+F 3 "" H 11900 7700 50  0001 C CNN
+	1    11900 7700
+	1    0    0    -1  
+$EndComp
+Text GLabel 11550 7400 0    50   Input ~ 0
+LEDx7
+Text GLabel 12300 7100 2    50   Output ~ 0
+BTNx7
+$Comp
+L power:+5V #PWR043
+U 1 1 5EECF2BD
+P 12400 6700
+F 0 "#PWR043" H 12400 6550 50  0001 C CNN
+F 1 "+5V" H 12415 6873 50  0000 C CNN
+F 2 "" H 12400 6700 50  0001 C CNN
+F 3 "" H 12400 6700 50  0001 C CNN
+	1    12400 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12300 6950 12300 7000
+Wire Wire Line
+	12300 7000 12400 7000
+Wire Wire Line
+	12400 7000 12400 6700
+Wire Wire Line
+	12200 6950 12200 7100
+Wire Wire Line
+	12200 7100 12300 7100
+Wire Wire Line
+	11900 6950 11900 7200
+NoConn ~ 12000 6950
+Wire Wire Line
+	11900 7600 11900 7700
+$Comp
+L power:GND #PWR051
+U 1 1 5EECF2CB
+P 12100 7050
+F 0 "#PWR051" H 12100 6800 50  0001 C CNN
+F 1 "GND" H 12105 6877 50  0000 C CNN
+F 2 "" H 12100 7050 50  0001 C CNN
+F 3 "" H 12100 7050 50  0001 C CNN
+	1    12100 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12100 7050 12100 6950
+$Comp
+L Connector:Conn_01x05_Male J10
+U 1 1 5EECF2D2
+P 12100 6750
+F 0 "J10" V 11900 7200 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 12000 7200 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 12100 6750 50  0001 C CNN
+F 3 "~" H 12100 6750 50  0001 C CNN
+	1    12100 6750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q13
+U 1 1 5EECF2D8
+P 7300 8900
+AR Path="/5EECF2D8" Ref="Q13"  Part="1" 
+AR Path="/5EB75C50/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EECF2D8" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EECF2D8" Ref="Q?"  Part="1" 
+F 0 "Q13" H 7504 8946 50  0000 L CNN
+F 1 "AO3402" H 7504 8855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7500 9000 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 7300 8900 50  0001 C CNN
+	1    7300 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7050 8900 7100 8900
+$Comp
+L power:GND #PWR080
+U 1 1 5EECF2DF
+P 7400 9200
+F 0 "#PWR080" H 7400 8950 50  0001 C CNN
+F 1 "GND" H 7405 9027 50  0000 C CNN
+F 2 "" H 7400 9200 50  0001 C CNN
+F 3 "" H 7400 9200 50  0001 C CNN
+	1    7400 9200
+	1    0    0    -1  
+$EndComp
+Text GLabel 7050 8900 0    50   Input ~ 0
+LEDxC
+Text GLabel 7800 8600 2    50   Output ~ 0
+BTNxC
+$Comp
+L power:+5V #PWR064
+U 1 1 5EECF2E7
+P 7900 8200
+F 0 "#PWR064" H 7900 8050 50  0001 C CNN
+F 1 "+5V" H 7915 8373 50  0000 C CNN
+F 2 "" H 7900 8200 50  0001 C CNN
+F 3 "" H 7900 8200 50  0001 C CNN
+	1    7900 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7800 8450 7800 8500
+Wire Wire Line
+	7800 8500 7900 8500
+Wire Wire Line
+	7900 8500 7900 8200
+Wire Wire Line
+	7700 8450 7700 8600
+Wire Wire Line
+	7700 8600 7800 8600
+Wire Wire Line
+	7400 8450 7400 8700
+NoConn ~ 7500 8450
+Wire Wire Line
+	7400 9100 7400 9200
+$Comp
+L power:GND #PWR072
+U 1 1 5EECF2F5
+P 7600 8550
+F 0 "#PWR072" H 7600 8300 50  0001 C CNN
+F 1 "GND" H 7605 8377 50  0000 C CNN
+F 2 "" H 7600 8550 50  0001 C CNN
+F 3 "" H 7600 8550 50  0001 C CNN
+	1    7600 8550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7600 8550 7600 8450
+$Comp
+L Connector:Conn_01x05_Male J15
+U 1 1 5EECF2FC
+P 7600 8250
+F 0 "J15" V 7400 8700 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 7500 8700 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 7600 8250 50  0001 C CNN
+F 3 "~" H 7600 8250 50  0001 C CNN
+	1    7600 8250
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q14
+U 1 1 5EECF302
+P 8800 8900
+AR Path="/5EECF302" Ref="Q14"  Part="1" 
+AR Path="/5EB75C50/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EECF302" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EECF302" Ref="Q?"  Part="1" 
+F 0 "Q14" H 9004 8946 50  0000 L CNN
+F 1 "AO3402" H 9004 8855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 9000 9000 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 8800 8900 50  0001 C CNN
+	1    8800 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 8900 8600 8900
+$Comp
+L power:GND #PWR081
+U 1 1 5EECF309
+P 8900 9200
+F 0 "#PWR081" H 8900 8950 50  0001 C CNN
+F 1 "GND" H 8905 9027 50  0000 C CNN
+F 2 "" H 8900 9200 50  0001 C CNN
+F 3 "" H 8900 9200 50  0001 C CNN
+	1    8900 9200
+	1    0    0    -1  
+$EndComp
+Text GLabel 8550 8900 0    50   Input ~ 0
+LEDxD
+Text GLabel 9300 8600 2    50   Output ~ 0
+BTNxD
+$Comp
+L power:+5V #PWR065
+U 1 1 5EECF311
+P 9400 8200
+F 0 "#PWR065" H 9400 8050 50  0001 C CNN
+F 1 "+5V" H 9415 8373 50  0000 C CNN
+F 2 "" H 9400 8200 50  0001 C CNN
+F 3 "" H 9400 8200 50  0001 C CNN
+	1    9400 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9300 8450 9300 8500
+Wire Wire Line
+	9300 8500 9400 8500
+Wire Wire Line
+	9400 8500 9400 8200
+Wire Wire Line
+	9200 8450 9200 8600
+Wire Wire Line
+	9200 8600 9300 8600
+Wire Wire Line
+	8900 8450 8900 8700
+NoConn ~ 9000 8450
+Wire Wire Line
+	8900 9100 8900 9200
+$Comp
+L power:GND #PWR073
+U 1 1 5EECF31F
+P 9100 8550
+F 0 "#PWR073" H 9100 8300 50  0001 C CNN
+F 1 "GND" H 9105 8377 50  0000 C CNN
+F 2 "" H 9100 8550 50  0001 C CNN
+F 3 "" H 9100 8550 50  0001 C CNN
+	1    9100 8550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 8550 9100 8450
+$Comp
+L Connector:Conn_01x05_Male J16
+U 1 1 5EECF326
+P 9100 8250
+F 0 "J16" V 8900 8700 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 9000 8700 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 9100 8250 50  0001 C CNN
+F 3 "~" H 9100 8250 50  0001 C CNN
+	1    9100 8250
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q15
+U 1 1 5EECF32C
+P 10300 8900
+AR Path="/5EECF32C" Ref="Q15"  Part="1" 
+AR Path="/5EB75C50/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EECF32C" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EECF32C" Ref="Q?"  Part="1" 
+F 0 "Q15" H 10504 8946 50  0000 L CNN
+F 1 "AO3402" H 10504 8855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 10500 9000 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 10300 8900 50  0001 C CNN
+	1    10300 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10050 8900 10100 8900
+$Comp
+L power:GND #PWR082
+U 1 1 5EECF333
+P 10400 9200
+F 0 "#PWR082" H 10400 8950 50  0001 C CNN
+F 1 "GND" H 10405 9027 50  0000 C CNN
+F 2 "" H 10400 9200 50  0001 C CNN
+F 3 "" H 10400 9200 50  0001 C CNN
+	1    10400 9200
+	1    0    0    -1  
+$EndComp
+Text GLabel 10050 8900 0    50   Input ~ 0
+LEDxE
+Text GLabel 10800 8600 2    50   Output ~ 0
+BTNxE
+$Comp
+L power:+5V #PWR066
+U 1 1 5EECF33B
+P 10900 8200
+F 0 "#PWR066" H 10900 8050 50  0001 C CNN
+F 1 "+5V" H 10915 8373 50  0000 C CNN
+F 2 "" H 10900 8200 50  0001 C CNN
+F 3 "" H 10900 8200 50  0001 C CNN
+	1    10900 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10800 8450 10800 8500
+Wire Wire Line
+	10800 8500 10900 8500
+Wire Wire Line
+	10900 8500 10900 8200
+Wire Wire Line
+	10700 8450 10700 8600
+Wire Wire Line
+	10700 8600 10800 8600
+Wire Wire Line
+	10400 8450 10400 8700
+NoConn ~ 10500 8450
+Wire Wire Line
+	10400 9100 10400 9200
+$Comp
+L power:GND #PWR074
+U 1 1 5EECF349
+P 10600 8550
+F 0 "#PWR074" H 10600 8300 50  0001 C CNN
+F 1 "GND" H 10605 8377 50  0000 C CNN
+F 2 "" H 10600 8550 50  0001 C CNN
+F 3 "" H 10600 8550 50  0001 C CNN
+	1    10600 8550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10600 8550 10600 8450
+$Comp
+L Connector:Conn_01x05_Male J17
+U 1 1 5EECF350
+P 10600 8250
+F 0 "J17" V 10400 8700 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 10500 8700 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 10600 8250 50  0001 C CNN
+F 3 "~" H 10600 8250 50  0001 C CNN
+	1    10600 8250
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q16
+U 1 1 5EECF356
+P 11800 8900
+AR Path="/5EECF356" Ref="Q16"  Part="1" 
+AR Path="/5EB75C50/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EDE50D7/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EDEC9E5/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EDF5973/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EDFE285/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EE06984/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EE0FA78/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEA2161/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEA216B/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEA2175/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEA217F/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEDC439/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEDC443/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEDC44D/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEDC457/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEDC471/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEDC47B/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEDC485/5EECF356" Ref="Q?"  Part="1" 
+AR Path="/5EEDC48F/5EECF356" Ref="Q?"  Part="1" 
+F 0 "Q16" H 12004 8946 50  0000 L CNN
+F 1 "AO3402" H 12004 8855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 12000 9000 50  0001 C CNN
+F 3 "http://aosmd.com/res/data_sheets/AO3402.pdf" H 11800 8900 50  0001 C CNN
+	1    11800 8900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11550 8900 11600 8900
+$Comp
+L power:GND #PWR083
+U 1 1 5EECF35D
+P 11900 9200
+F 0 "#PWR083" H 11900 8950 50  0001 C CNN
+F 1 "GND" H 11905 9027 50  0000 C CNN
+F 2 "" H 11900 9200 50  0001 C CNN
+F 3 "" H 11900 9200 50  0001 C CNN
+	1    11900 9200
+	1    0    0    -1  
+$EndComp
+Text GLabel 11550 8900 0    50   Input ~ 0
+LEDxF
+Text GLabel 12300 8600 2    50   Output ~ 0
+BTNxF
+$Comp
+L power:+5V #PWR067
+U 1 1 5EECF365
+P 12400 8200
+F 0 "#PWR067" H 12400 8050 50  0001 C CNN
+F 1 "+5V" H 12415 8373 50  0000 C CNN
+F 2 "" H 12400 8200 50  0001 C CNN
+F 3 "" H 12400 8200 50  0001 C CNN
+	1    12400 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12300 8450 12300 8500
+Wire Wire Line
+	12300 8500 12400 8500
+Wire Wire Line
+	12400 8500 12400 8200
+Wire Wire Line
+	12200 8450 12200 8600
+Wire Wire Line
+	12200 8600 12300 8600
+Wire Wire Line
+	11900 8450 11900 8700
+NoConn ~ 12000 8450
+Wire Wire Line
+	11900 9100 11900 9200
+$Comp
+L power:GND #PWR075
+U 1 1 5EECF373
+P 12100 8550
+F 0 "#PWR075" H 12100 8300 50  0001 C CNN
+F 1 "GND" H 12105 8377 50  0000 C CNN
+F 2 "" H 12100 8550 50  0001 C CNN
+F 3 "" H 12100 8550 50  0001 C CNN
+	1    12100 8550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12100 8550 12100 8450
+$Comp
+L Connector:Conn_01x05_Male J18
+U 1 1 5EECF37A
+P 12100 8250
+F 0 "J18" V 11900 8700 50  0000 R CNN
+F 1 "Conn_01x05_Male" V 12000 8700 50  0000 R CNN
+F 2 "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" H 12100 8250 50  0001 C CNN
+F 3 "~" H 12100 8250 50  0001 C CNN
+	1    12100 8250
+	0    -1   1    0   
+$EndComp
 $EndSCHEMATC
