@@ -1019,7 +1019,7 @@ U 1 1 5DACF6C3
 P 1350 1950
 F 0 "J1" H 1407 2417 50  0000 C CNN
 F 1 "USB_B_Micro" H 1407 2326 50  0000 C CNN
-F 2 "Connector_USB:USB_Micro-B_Amphenol_10103594-0001LF_Horizontal" H 1500 1900 50  0001 C CNN
+F 2 "Connector_USB:USB_Micro-B_Molex-105017-0001" H 1500 1900 50  0001 C CNN
 F 3 "~" H 1500 1900 50  0001 C CNN
 	1    1350 1950
 	1    0    0    -1  
@@ -2724,4 +2724,6 @@ F 3 "~" H 12100 8250 50  0001 C CNN
 	1    12100 8250
 	0    -1   1    0   
 $EndComp
+Text Notes 1250 6300 0    50   ~ 0
+1 - Black (-)\n2 - Green (NC)\n3 - Blue (C)\n4 - White (NO)\n5 - Red (+)\n
 $EndSCHEMATC
