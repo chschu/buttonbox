@@ -414,24 +414,13 @@ F 3 "" H 7850 2000 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7850 2000 7850 2050
-$Comp
-L MCU_Microchip_ATmega:ATmega328-AU U4
-U 1 1 5E9057B7
-P 5950 3050
-F 0 "U4" H 5950 3100 50  0000 C CNN
-F 1 "ATmega328-AU" H 5950 3000 50  0000 C CNN
-F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 5950 3050 50  0001 C CIN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 5950 3050 50  0001 C CNN
-	1    5950 3050
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	10050 2650 10100 2650
-Text GLabel 6600 3150 2    50   BiDi ~ 0
+Text GLabel 6600 3250 2    50   BiDi ~ 0
 SCL
 Wire Wire Line
 	6550 3150 6600 3150
-Text GLabel 6600 3250 2    50   BiDi ~ 0
+Text GLabel 6600 3150 2    50   BiDi ~ 0
 SDA
 Wire Wire Line
 	6550 3250 6600 3250
@@ -2726,4 +2715,15 @@ F 3 "~" H 12100 8250 50  0001 C CNN
 $EndComp
 Text Notes 1250 6300 0    50   ~ 0
 1 - Black (-)\n2 - Green (NC)\n3 - Blue (C)\n4 - White (NO)\n5 - Red (+)\n
+$Comp
+L MCU_Microchip_ATmega:ATmega328P-MU U4
+U 1 1 5E9057B7
+P 5950 3050
+F 0 "U4" H 5950 3100 50  0000 C CNN
+F 1 "ATmega328P-MU" H 5950 3000 50  0000 C CNN
+F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 5950 3050 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf" H 5950 3050 50  0001 C CNN
+	1    5950 3050
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
