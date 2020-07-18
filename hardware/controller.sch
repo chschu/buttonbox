@@ -740,7 +740,7 @@ L Device:C_Small C10
 U 1 1 5EE2A9EB
 P 8000 4000
 F 0 "C10" H 8115 4046 50  0000 L CNN
-F 1 "22p" H 8115 3955 50  0000 L CNN
+F 1 "36p" H 8115 3955 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 8038 3850 50  0001 C CNN
 F 3 "~" H 8000 4000 50  0001 C CNN
 	1    8000 4000
@@ -813,7 +813,7 @@ L Device:C_Small C9
 U 1 1 601D1409
 P 7600 4000
 F 0 "C9" H 7715 4046 50  0000 L CNN
-F 1 "22p" H 7715 3955 50  0000 L CNN
+F 1 "36p" H 7715 3955 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 7638 3850 50  0001 C CNN
 F 3 "~" H 7600 4000 50  0001 C CNN
 	1    7600 4000
@@ -2716,11 +2716,11 @@ $EndComp
 Text Notes 1250 6300 0    50   ~ 0
 1 - Black (-)\n2 - Green (NC)\n3 - Blue (C)\n4 - White (NO)\n5 - Red (+)\n
 $Comp
-L MCU_Microchip_ATmega:ATmega328P-MU U4
+L MCU_Microchip_ATmega:ATmega328P-AU U4
 U 1 1 5E9057B7
 P 5950 3050
 F 0 "U4" H 5950 3100 50  0000 C CNN
-F 1 "ATmega328P-MU" H 5950 3000 50  0000 C CNN
+F 1 "ATmega328P-AU" H 5950 3000 50  0000 C CNN
 F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 5950 3050 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf" H 5950 3050 50  0001 C CNN
 	1    5950 3050
