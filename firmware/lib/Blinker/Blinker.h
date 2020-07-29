@@ -11,6 +11,7 @@ public:
 
     void on();
     void off();
+    void stopAtPhase(float phase);
     void blink(uint16_t periodMillis);
 
     bool isBlinking();
@@ -26,7 +27,7 @@ private:
 
     unsigned long _periodMicros;
 
-    uint8_t _next;
+    float _stopAtPhase;
     bool _blinking;
 };
 

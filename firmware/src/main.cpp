@@ -34,6 +34,11 @@ const uint16_t ALL_LED_BITS = (1L << LED_COUNT) - 1;
 const unsigned long long INIT_BLINK_OFFSET_MILLIS = 50;
 const uint16_t INIT_BLINK_PERIOD_MILLIS = 500;
 
+// configure blinking
+const float BRIGHT_PHASE = 0.5f;
+const float DARK_PHASE = 0.9f;
+const uint16_t BLINK_PERIOD_MILLIS = 500;
+
 class PCA9685Blinker : public Blinker {
 public:
     void begin(Adafruit_PWMServoDriver *pca9685, uint8_t pin) {
@@ -114,7 +119,7 @@ void setup() {
         for (uint8_t i = 0; i < LED_COUNT; i++) {
             blinkers[i].update();
             if (!blinkers[i].isOff()) {
-                blinkers[i].off();
+                blinkers[i].stopAtPhase(DARK_PHASE);
             }
         }
     } while (duration < LED_COUNT * INIT_BLINK_OFFSET_MILLIS + INIT_BLINK_PERIOD_MILLIS);
@@ -129,10 +134,10 @@ void loop() {
     while ((c = Serial.read()) >= 0) {
         switch (CMD(c)) {
         case CMD_OFF:
-            blinkers[LED(c)].off();
+            blinkers[LED(c)].stopAtPhase(DARK_PHASE);
             break;
         case CMD_ON:
-            blinkers[LED(c)].on();
+            blinkers[LED(c)].stopAtPhase(BRIGHT_PHASE);
             break;
         }
     }
@@ -142,7 +147,7 @@ void loop() {
 
     if (debouncers[i].update()) {
         if (!blinkers[i].isBlinking() && debouncers[i].get()) {
-            blinkers[i].blink(500);
+            blinkers[i].blink(BLINK_PERIOD_MILLIS);
             Serial.write(CMD_BUTTON | i);
         }
     }
