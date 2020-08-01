@@ -91,7 +91,7 @@ void setup() {
     pca9685.begin();
 
     // clock must be set after the above "begin" calls, because they set it to 100 kHz
-    Wire.setClock(400000);
+    Wire.setClock(800000);
 
     // initialize output blinkers and input debouncers
     for (int i = 0; i < LED_COUNT; i++) {
