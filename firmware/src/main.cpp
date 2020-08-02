@@ -91,8 +91,8 @@ void setup() {
     }
 
     // pull ~OE low to enable LEDs
-    DDRC |= (1 << PC2);
-    PORTC &= ~(1 << PC2);
+    DDRC |= (1 << DDC2);
+    PORTC &= ~(1 << PORTC2);
 
     // perform initialization animation
     unsigned long millis0 = millis();
