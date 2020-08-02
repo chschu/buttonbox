@@ -62,28 +62,11 @@ private:
     uint8_t _pin;
 };
 
-class MCP23017Debouncer : public Debouncer {
-public:
-    void begin(Adafruit_MCP23017 *mcp23017, uint8_t pin, uint16_t bounceMillis) {
-        _mcp23017 = mcp23017;
-        _pin = pin;
-        Debouncer::begin(_mcp23017->digitalRead(_pin), bounceMillis);
-    }
-
-    bool update() {
-        return Debouncer::update(_mcp23017->digitalRead(_pin), micros());
-    }
-
-private:
-    Adafruit_MCP23017 *_mcp23017;
-    uint8_t _pin;
-};
-
 Adafruit_PWMServoDriver pca9685;
 Adafruit_MCP23017 mcp23017;
 
 PCA9685Blinker blinkers[LED_COUNT];
-MCP23017Debouncer debouncers[LED_COUNT];
+Debouncer debouncers[LED_COUNT];
 
 void setup() {
     // initialize MCP23017 and PCA9685
@@ -93,13 +76,18 @@ void setup() {
     // clock must be set after the above "begin" calls, because they set it to 100 kHz
     Wire.setClock(800000);
 
-    // initialize output blinkers and input debouncers
+    // initialize output blinkers
     for (int i = 0; i < LED_COUNT; i++) {
         blinkers[i].begin(&pca9685, i);
 
         mcp23017.pinMode(i, INPUT);
         mcp23017.pullUp(i, HIGH);
-        debouncers[i].begin(&mcp23017, i, BOUNCE_MILLIS);
+    }
+
+    // initialize input debouncers
+    uint16_t inputs = mcp23017.readGPIOAB();
+    for (int i = 0; i < LED_COUNT; i++) {
+        debouncers[i].begin((inputs >> i) & 1, BOUNCE_MILLIS);
     }
 
     // pull ~OE low to enable LEDs
@@ -128,8 +116,6 @@ void setup() {
 }
 
 void loop() {
-    static int i = 0;
-
     int c;
     while ((c = Serial.read()) >= 0) {
         switch (CMD(c)) {
@@ -142,15 +128,15 @@ void loop() {
         }
     }
 
-    // minimize time between UART RX polls by updating one blinker and debouncer at a time
-    blinkers[i].update();
-
-    if (debouncers[i].update()) {
-        if (!blinkers[i].isBlinking() && debouncers[i].get()) {
-            blinkers[i].blink(BLINK_PERIOD_MILLIS);
-            Serial.write(CMD_BUTTON | i);
+    // read inputs, update blinkers and update debouncers and trigger actions
+    uint16_t inputs = mcp23017.readGPIOAB();
+    for (int i = 0; i < LED_COUNT; i++) {
+        blinkers[i].update();
+        if (debouncers[i].update((inputs >> i) & 1, micros())) {
+            if (!blinkers[i].isBlinking() && debouncers[i].get()) {
+                blinkers[i].blink(BLINK_PERIOD_MILLIS);
+                Serial.write(CMD_BUTTON | i);
+            }
         }
     }
-
-    i = (i + 1) % LED_COUNT;
 }
