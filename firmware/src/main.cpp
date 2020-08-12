@@ -128,15 +128,12 @@ void loop() {
         }
     }
 
-    // read inputs, update blinkers and update debouncers and trigger actions
     uint16_t inputs = mcp23017.readGPIOAB();
     for (int i = 0; i < LED_COUNT; i++) {
         blinkers[i].update();
-        if (debouncers[i].update((inputs >> i) & 1, micros())) {
-            if (!blinkers[i].isBlinking() && debouncers[i].get()) {
-                blinkers[i].blink(BLINK_PERIOD_MILLIS);
-                Serial.write(CMD_BUTTON | i);
-            }
+        if (debouncers[i].update((inputs >> i) & 1, micros()) && !blinkers[i].isBlinking() && debouncers[i].get()) {
+            blinkers[i].blink(BLINK_PERIOD_MILLIS);
+            Serial.write(CMD_BUTTON | i);
         }
     }
 }
