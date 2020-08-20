@@ -138,7 +138,10 @@ bool checkConfigMode() {
 void setup() {
     configMode = checkConfigMode();
 
-    if (!configMode) {
+    if (configMode) {
+        // clear (i.e. set to 255) all logical value mappings in EEPROM
+        eeprom_update_block(connectorForLogicalValue, eepromConnectorForLogicalValue, sizeof(connectorForLogicalValue));
+    } else {
         // read logical value mapping from EEPROM
         eeprom_read_block(connectorForLogicalValue, eepromConnectorForLogicalValue, sizeof(connectorForLogicalValue));
 
@@ -216,12 +219,13 @@ void loop() {
             if (debouncers[cn].update((inputs >> cn) & 1, micros()) && debouncers[cn].get() && logicalValueForConnector[cn] >= CONNECTOR_COUNT) {
                 logicalValueForConnector[cn] = usedConnectors;
                 connectorForLogicalValue[usedConnectors] = cn;
+
+                // store new logical value mapping in EEPROM
+                eeprom_update_byte(&eepromConnectorForLogicalValue[usedConnectors], cn);
+
                 usedConnectors++;
 
                 blinkers[cn].stopAtPhase(BRIGHT_PHASE);
-
-                // write logical value mapping to EEPROM
-                eeprom_write_block(connectorForLogicalValue, eepromConnectorForLogicalValue, sizeof(connectorForLogicalValue));
             }
         }
     } else {
