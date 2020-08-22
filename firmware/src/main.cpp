@@ -247,14 +247,12 @@ void loop() {
         }
 
         uint16_t inputs = mcp23017.readGPIOAB();
-        for (uint8_t cn = 0; cn < CONNECTOR_COUNT; cn++) {
-            uint8_t lv = logicalValueForConnector[cn];
-            if (lv < usedConnectors) {
-                blinkers[cn].update();
-                if (debouncers[cn].update((inputs >> cn) & 1, micros()) && !blinkers[cn].isBlinking() && debouncers[cn].get()) {
-                    blinkers[cn].blink(BLINK_PERIOD_MILLIS);
-                    Serial.write(CMD_BUTTON | lv);
-                }
+        for (uint8_t lv = 0; lv < usedConnectors; lv++) {
+            uint8_t cn = connectorForLogicalValue[lv];
+            blinkers[cn].update();
+            if (debouncers[cn].update((inputs >> cn) & 1, micros()) && !blinkers[cn].isBlinking() && debouncers[cn].get()) {
+                blinkers[cn].blink(BLINK_PERIOD_MILLIS);
+                Serial.write(CMD_BUTTON | lv);
             }
         }
     }
