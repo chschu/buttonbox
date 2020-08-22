@@ -75,7 +75,7 @@ Debouncer debouncers[CONNECTOR_COUNT];
 // after the first 255 in this array, there may not be any other value
 // all values other than 255 must be unique
 uint8_t eepromConnectorForLogicalValue[CONNECTOR_COUNT] EEMEM = {
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+    255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255
 };
 
 // copy of eepromConnectorForLogicalValue in RAM
@@ -100,7 +100,7 @@ bool configMode;
 uint8_t nextLogicalValue;
 
 // config mode is enabled by bridging the two center pins of the ISP connector (MOSI and SCK) at startup
-bool checkConfigMode() {
+bool checkConfigModePinsBridged() {
     // configure PB3 (MOSI) as input, and enable internal pull-up
     DDRB &= ~(1 << DDB3);
     PORTB |= (1 << PORTB3);
@@ -136,7 +136,8 @@ bool checkConfigMode() {
 }
 
 void setup() {
-    configMode = checkConfigMode();
+    // enter config mode if no connectors have been configured yet or the center ISP pins are bridged
+    configMode = eeprom_read_byte(eepromConnectorForLogicalValue) >= CONNECTOR_COUNT || checkConfigModePinsBridged();
 
     if (configMode) {
         // clear (i.e. set to 255) all logical value mappings in EEPROM
