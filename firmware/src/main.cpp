@@ -207,9 +207,9 @@ void setup() {
                 }
             }
         } while (duration < usedConnectors * INIT_BLINK_OFFSET_MILLIS + INIT_BLINK_PERIOD_MILLIS);
-    }
 
-    Serial.begin(115200);
+        Serial.begin(115200);
+    }
 }
 
 void loop() {
