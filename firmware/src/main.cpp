@@ -116,9 +116,9 @@ bool checkConfigModePinsBridged() {
 
         // output bit on PB5
         if (bit) {
-            PORTB = PORTB | (1 << PB5);
+            PORTB = PORTB | (1 << PORTB5);
         } else {
-            PORTB = PORTB & ~(1 << PB5);
+            PORTB = PORTB & ~(1 << PORTB5);
         }
 
         // wait for one cycle (~67.8ns at 14.7456 MHz)
