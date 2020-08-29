@@ -156,6 +156,13 @@ void setup() {
         }
     }
 
+    Wire.begin();
+
+    // perform reset of I2C devices in case something is stuck
+    Wire.beginTransmission(0x00);
+    Wire.write(0x06);
+    Wire.endTransmission();
+
     // initialize MCP23017 and PCA9685
     mcp23017.begin();
     pca9685.begin();
