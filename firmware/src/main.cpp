@@ -3,6 +3,7 @@
 #include <avr/eeprom.h>
 
 #include <i2cmaster.h>
+#include <uart.h>
 
 #include <Debouncer.h>
 #include <Blinker.h>
@@ -210,7 +211,7 @@ void setup() {
             }
         } while (duration < usedConnectors * INIT_BLINK_OFFSET_MILLIS + INIT_BLINK_PERIOD_MILLIS);
 
-        Serial.begin(115200);
+        uart_init(UART_BAUD_SELECT(115200, F_CPU));
     }
 }
 
@@ -232,8 +233,8 @@ void loop() {
             }
         }
     } else {
-        int c;
-        while ((c = Serial.read()) >= 0) {
+        unsigned int c;
+        while ((c = uart_getc()) != UART_NO_DATA) {
             uint8_t lv = LED(c);
             uint8_t cn = connectorForLogicalValue[lv];
             if (cn < CONNECTOR_COUNT) {
@@ -254,7 +255,7 @@ void loop() {
             blinkers[cn].update();
             if (debouncers[cn].update((inputs >> cn) & 1, micros()) && !blinkers[cn].isBlinking() && debouncers[cn].get()) {
                 blinkers[cn].blink(BLINK_PERIOD_MILLIS);
-                Serial.write(CMD_BUTTON | lv);
+                uart_putc(CMD_BUTTON | lv);
             }
         }
     }
