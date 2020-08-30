@@ -1,12 +1,13 @@
 #include <Arduino.h>
 
-#include <Adafruit_PWMServoDriver.h>
-#include <Adafruit_MCP23017.h>
-#include <Debouncer.h>
-
-#include <Blinker.h>
-
 #include <avr/eeprom.h>
+
+#include <i2cmaster.h>
+
+#include <Debouncer.h>
+#include <Blinker.h>
+#include <PCA9685.h>
+#include <MCP23017.h>
 
 #include "transform.h"
 
@@ -40,7 +41,7 @@ const uint16_t CONFIG_MODE_BLINK_PERIOD_MILLIS = 200;
 
 class PCA9685Blinker : public Blinker {
 public:
-    void begin(Adafruit_PWMServoDriver *pca9685, uint8_t pin) {
+    void begin(PCA9685 *pca9685, uint8_t pin) {
         _pca9685 = pca9685;
         _pin = pin;
         Blinker::begin(micros());
@@ -53,16 +54,16 @@ public:
 protected:
     void render(float value) override {
         uint16_t cur = 4095 * Transform::gamma<11, 4>(value);
-        _pca9685->setPin(_pin, cur);
+        _pca9685->set(_pin, cur);
     }
 
 private:
-    Adafruit_PWMServoDriver *_pca9685;
+    PCA9685 *_pca9685;
     uint8_t _pin;
 };
 
-Adafruit_PWMServoDriver pca9685;
-Adafruit_MCP23017 mcp23017;
+PCA9685 pca9685;
+MCP23017 mcp23017;
 
 // indexes are physical connector numbers
 PCA9685Blinker blinkers[CONNECTOR_COUNT];
@@ -156,30 +157,24 @@ void setup() {
         }
     }
 
-    Wire.begin();
+    i2c_init();
 
-    // perform reset of I2C devices in case something is stuck
-    Wire.beginTransmission(0x00);
-    Wire.write(0x06);
-    Wire.endTransmission();
+    // perform software reset of I2C devices in case something is stuck
+    i2c_start_wait((0x00 << 1) | I2C_WRITE);
+    i2c_write(0x06);
+    i2c_stop();
 
     // initialize MCP23017 and PCA9685
     mcp23017.begin();
     pca9685.begin();
 
-    // clock must be set after the above "begin" calls, because they set it to 100 kHz
-    Wire.setClock(800000);
-
     // initialize output blinkers
     for (int cn = 0; cn < CONNECTOR_COUNT; cn++) {
         blinkers[cn].begin(&pca9685, cn);
-
-        mcp23017.pinMode(cn, INPUT);
-        mcp23017.pullUp(cn, HIGH);
     }
 
     // initialize input debouncers
-    uint16_t inputs = mcp23017.readGPIOAB();
+    uint16_t inputs = mcp23017.read();
     for (int cn = 0; cn < CONNECTOR_COUNT; cn++) {
         debouncers[cn].begin((inputs >> cn) & 1, BOUNCE_MILLIS);
     }
@@ -221,7 +216,7 @@ void setup() {
 
 void loop() {
     if (configMode) {
-        uint16_t inputs = mcp23017.readGPIOAB();
+        uint16_t inputs = mcp23017.read();
         for (uint8_t cn = 0; cn < CONNECTOR_COUNT; cn++) {
             blinkers[cn].update();
             if (debouncers[cn].update((inputs >> cn) & 1, micros()) && debouncers[cn].get() && logicalValueForConnector[cn] >= CONNECTOR_COUNT) {
@@ -253,7 +248,7 @@ void loop() {
             }
         }
 
-        uint16_t inputs = mcp23017.readGPIOAB();
+        uint16_t inputs = mcp23017.read();
         for (uint8_t lv = 0; lv < usedConnectors; lv++) {
             uint8_t cn = connectorForLogicalValue[lv];
             blinkers[cn].update();
