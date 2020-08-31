@@ -16,36 +16,36 @@ void Blinker::stopAtPhase(float phase) {
     _stopAtPhase = phase;
 }
 
-void Blinker::blink(uint16_t periodMillis) {
-    assert(periodMillis > 0);
+void Blinker::blink(uint32_t periodTicks) {
+    assert(periodTicks > 0);
     _stopAtPhase = -1.0f;
     _blinking = true;
-    _periodMicros = 1000L * periodMillis;
+    _periodTicks = periodTicks;
 }
 
-void Blinker::begin(unsigned long micros) {
+void Blinker::begin(uint32_t currentTicks) {
     _phase = 0.0f;
     _stopAtPhase = -1.0f;
     _blinking = false;
-    _phaseUpdatedAtMicros = micros;
+    _phaseUpdatedAtTicks = currentTicks;
     render(0.0f);
 }
 
-void Blinker::update(unsigned long micros) {
-    unsigned long deltaMicros = micros - _phaseUpdatedAtMicros;
-    _phaseUpdatedAtMicros += deltaMicros;
+void Blinker::update(uint32_t currentTicks) {
+    uint32_t deltaTicks = currentTicks - _phaseUpdatedAtTicks;
+    _phaseUpdatedAtTicks += deltaTicks;
 
     float prev_phase = _phase;
     float unused;
 
-    if (_stopAtPhase >= 0.0f && (!_blinking || deltaMicros >= modff(_stopAtPhase + 1.0f - _phase, &unused) * _periodMicros)) {
+    if (_stopAtPhase >= 0.0f && (!_blinking || deltaTicks >= modff(_stopAtPhase + 1.0f - _phase, &unused) * _periodTicks)) {
         _phase = _stopAtPhase;
         _stopAtPhase = -1.0f;
         _blinking = false;
     }
 
     if (_blinking) {
-        _phase = modff(_phase + 1.0f * deltaMicros / _periodMicros, &unused);
+        _phase = modff(_phase + 1.0f * deltaTicks / _periodTicks, &unused);
     }
 
     if (_phase != prev_phase) {

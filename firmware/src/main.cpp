@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include <avr/eeprom.h>
+#include <avr/cpufunc.h>
 
 #include <i2cmaster.h>
 #include <uart.h>
@@ -12,8 +13,8 @@
 
 #include "transform.h"
 
-#define CONNECTOR_COUNT 16
-#define BOUNCE_MILLIS 10
+const uint8_t CONNECTOR_COUNT = 16;
+const uint32_t BOUNCE_MICROS = 10000;
 
 // splitting macros for first byte (command + led) of the serial protocol
 #define CMD(b) ((b) & 0xF0)
@@ -29,16 +30,16 @@ const uint8_t CMD_OFF = 0x00;
 const uint8_t CMD_ON = 0x10;
 
 // configuration for initialization animation
-const unsigned long long INIT_BLINK_OFFSET_MILLIS = 50;
-const uint16_t INIT_BLINK_PERIOD_MILLIS = 500;
+const uint32_t INIT_BLINK_OFFSET_MICROS = 50000;
+const uint32_t INIT_BLINK_PERIOD_MICROS = 500000;
 
 // configure blinking
 const float BRIGHT_PHASE = 0.5f;
 const float DARK_PHASE = 0.9f;
-const uint16_t BLINK_PERIOD_MILLIS = 500;
+const uint32_t BLINK_PERIOD_MICROS = 500000;
 
 // special blink period to indicate config mode
-const uint16_t CONFIG_MODE_BLINK_PERIOD_MILLIS = 200;
+const uint32_t CONFIG_MODE_BLINK_PERIOD_MICROS = 200000;
 
 class PCA9685Blinker : public Blinker {
 public:
@@ -177,7 +178,7 @@ void setup() {
     // initialize input debouncers
     uint16_t inputs = mcp23017.read();
     for (int cn = 0; cn < CONNECTOR_COUNT; cn++) {
-        debouncers[cn].begin((inputs >> cn) & 1, BOUNCE_MILLIS);
+        debouncers[cn].begin((inputs >> cn) & 1, BOUNCE_MICROS);
     }
 
     // pull ~OE low to enable LEDs
@@ -187,19 +188,19 @@ void setup() {
     if (configMode) {
         // indicate config mode
         for (int cn = 0; cn < CONNECTOR_COUNT; cn++) {
-            blinkers[cn].blink(CONFIG_MODE_BLINK_PERIOD_MILLIS);
+            blinkers[cn].blink(CONFIG_MODE_BLINK_PERIOD_MICROS);
         }
     } else {
         // perform initialization animation
-        unsigned long millis0 = millis();
-        unsigned long duration;
+        uint32_t micros0 = micros();
+        uint32_t duration;
         do {
-            duration = millis() - millis0;
+            duration = micros() - micros0;
             // start blinking according to the logical values
-            unsigned long lv = duration / INIT_BLINK_OFFSET_MILLIS;
+            uint32_t lv = duration / INIT_BLINK_OFFSET_MICROS;
             if (lv < usedConnectors) {
                 uint8_t cn = connectorForLogicalValue[lv];
-                blinkers[cn].blink(INIT_BLINK_PERIOD_MILLIS);
+                blinkers[cn].blink(INIT_BLINK_PERIOD_MICROS);
             }
 
             for (uint8_t lv = 0; lv < usedConnectors; lv++) {
@@ -209,7 +210,7 @@ void setup() {
                     blinkers[cn].stopAtPhase(DARK_PHASE);
                 }
             }
-        } while (duration < usedConnectors * INIT_BLINK_OFFSET_MILLIS + INIT_BLINK_PERIOD_MILLIS);
+        } while (duration < usedConnectors * INIT_BLINK_OFFSET_MICROS + INIT_BLINK_PERIOD_MICROS);
 
         uart_init(UART_BAUD_SELECT(115200, F_CPU));
     }
@@ -254,7 +255,7 @@ void loop() {
             uint8_t cn = connectorForLogicalValue[lv];
             blinkers[cn].update();
             if (debouncers[cn].update((inputs >> cn) & 1, micros()) && !blinkers[cn].isBlinking() && debouncers[cn].get()) {
-                blinkers[cn].blink(BLINK_PERIOD_MILLIS);
+                blinkers[cn].blink(BLINK_PERIOD_MICROS);
                 uart_putc(CMD_BUTTON | lv);
             }
         }

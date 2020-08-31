@@ -5,14 +5,13 @@
 
 class Blinker {
 public:
-    // micros passed as parameter to avoid Arduino dependency
-    void begin(unsigned long micros);
-    void update(unsigned long micros);
+    void begin(uint32_t currentTicks);
+    void update(uint32_t currentTicks);
 
     void on();
     void off();
     void stopAtPhase(float phase);
-    void blink(uint16_t periodMillis);
+    void blink(uint32_t periodTicks);
 
     bool isBlinking();
 
@@ -22,10 +21,10 @@ protected:
     virtual void render(float value) = 0;
 
 private:
-    unsigned long _phaseUpdatedAtMicros;
+    uint32_t _phaseUpdatedAtTicks;
     float _phase; // [0.0, 1.0)
 
-    unsigned long _periodMicros;
+    uint32_t _periodTicks;
 
     float _stopAtPhase;
     bool _blinking;
