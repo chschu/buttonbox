@@ -1,11 +1,11 @@
-#include <Arduino.h>
-
+#include <avr/interrupt.h>
 #include <avr/eeprom.h>
 #include <avr/cpufunc.h>
 
 #include <i2cmaster.h>
 #include <uart.h>
 
+#include <Cycles.h>
 #include <Debouncer.h>
 #include <Blinker.h>
 #include <PCA9685.h>
@@ -14,7 +14,7 @@
 #include "transform.h"
 
 const uint8_t CONNECTOR_COUNT = 16;
-const uint32_t BOUNCE_MICROS = 10000;
+const uint32_t BOUNCE_CYCLES = MICROSECONDS_TO_CYCLES(10000);
 
 // splitting macros for first byte (command + led) of the serial protocol
 #define CMD(b) ((b) & 0xF0)
@@ -30,27 +30,27 @@ const uint8_t CMD_OFF = 0x00;
 const uint8_t CMD_ON = 0x10;
 
 // configuration for initialization animation
-const uint32_t INIT_BLINK_OFFSET_MICROS = 50000;
-const uint32_t INIT_BLINK_PERIOD_MICROS = 500000;
+const uint32_t INIT_BLINK_OFFSET_CYCLES = MICROSECONDS_TO_CYCLES(50000);
+const uint32_t INIT_BLINK_PERIOD_CYCLES = MICROSECONDS_TO_CYCLES(500000);
 
 // configure blinking
 const float BRIGHT_PHASE = 0.5f;
 const float DARK_PHASE = 0.9f;
-const uint32_t BLINK_PERIOD_MICROS = 500000;
+const uint32_t BLINK_PERIOD_CYCLES = MICROSECONDS_TO_CYCLES(500000);
 
 // special blink period to indicate config mode
-const uint32_t CONFIG_MODE_BLINK_PERIOD_MICROS = 200000;
+const uint32_t CONFIG_MODE_BLINK_PERIOD_CYCLES = MICROSECONDS_TO_CYCLES(200000);
 
 class PCA9685Blinker : public Blinker {
 public:
     void begin(PCA9685 *pca9685, uint8_t pin) {
         _pca9685 = pca9685;
         _pin = pin;
-        Blinker::begin(micros());
+        Blinker::begin(cycles_get());
     }
 
     void update() {
-        Blinker::update(micros());
+        Blinker::update(cycles_get());
     }
 
 protected:
@@ -138,7 +138,9 @@ bool checkConfigModePinsBridged() {
     return result;
 }
 
-void setup() {
+int main() {
+    cycles_init();
+
     // enter config mode if no connectors have been configured yet or the center ISP pins are bridged
     configMode = eeprom_read_byte(eepromConnectorForLogicalValue) >= CONNECTOR_COUNT || checkConfigModePinsBridged();
 
@@ -178,7 +180,7 @@ void setup() {
     // initialize input debouncers
     uint16_t inputs = mcp23017.read();
     for (int cn = 0; cn < CONNECTOR_COUNT; cn++) {
-        debouncers[cn].begin((inputs >> cn) & 1, BOUNCE_MICROS);
+        debouncers[cn].begin((inputs >> cn) & 1, BOUNCE_CYCLES);
     }
 
     // pull ~OE low to enable LEDs
@@ -188,19 +190,19 @@ void setup() {
     if (configMode) {
         // indicate config mode
         for (int cn = 0; cn < CONNECTOR_COUNT; cn++) {
-            blinkers[cn].blink(CONFIG_MODE_BLINK_PERIOD_MICROS);
+            blinkers[cn].blink(CONFIG_MODE_BLINK_PERIOD_CYCLES);
         }
     } else {
         // perform initialization animation
-        uint32_t micros0 = micros();
+        uint32_t cycles0 = cycles_get();
         uint32_t duration;
         do {
-            duration = micros() - micros0;
+            duration = cycles_get() - cycles0;
             // start blinking according to the logical values
-            uint32_t lv = duration / INIT_BLINK_OFFSET_MICROS;
+            uint32_t lv = duration / INIT_BLINK_OFFSET_CYCLES;
             if (lv < usedConnectors) {
                 uint8_t cn = connectorForLogicalValue[lv];
-                blinkers[cn].blink(INIT_BLINK_PERIOD_MICROS);
+                blinkers[cn].blink(INIT_BLINK_PERIOD_CYCLES);
             }
 
             for (uint8_t lv = 0; lv < usedConnectors; lv++) {
@@ -210,53 +212,55 @@ void setup() {
                     blinkers[cn].stopAtPhase(DARK_PHASE);
                 }
             }
-        } while (duration < usedConnectors * INIT_BLINK_OFFSET_MICROS + INIT_BLINK_PERIOD_MICROS);
+        } while (duration < usedConnectors * INIT_BLINK_OFFSET_CYCLES + INIT_BLINK_PERIOD_CYCLES);
 
         uart_init(UART_BAUD_SELECT(115200, F_CPU));
     }
-}
 
-void loop() {
     if (configMode) {
-        uint16_t inputs = mcp23017.read();
-        for (uint8_t cn = 0; cn < CONNECTOR_COUNT; cn++) {
-            blinkers[cn].update();
-            if (debouncers[cn].update((inputs >> cn) & 1, micros()) && debouncers[cn].get() && logicalValueForConnector[cn] >= CONNECTOR_COUNT) {
-                logicalValueForConnector[cn] = usedConnectors;
-                connectorForLogicalValue[usedConnectors] = cn;
+        for (;;) {
+            uint16_t inputs = mcp23017.read();
+            for (uint8_t cn = 0; cn < CONNECTOR_COUNT; cn++) {
+                blinkers[cn].update();
+                if (debouncers[cn].update((inputs >> cn) & 1, cycles_get()) && debouncers[cn].get() && logicalValueForConnector[cn] >= CONNECTOR_COUNT) {
+                    logicalValueForConnector[cn] = usedConnectors;
+                    connectorForLogicalValue[usedConnectors] = cn;
 
-                // store new logical value mapping in EEPROM
-                eeprom_update_byte(&eepromConnectorForLogicalValue[usedConnectors], cn);
+                    // store new logical value mapping in EEPROM
+                    eeprom_update_byte(&eepromConnectorForLogicalValue[usedConnectors], cn);
 
-                usedConnectors++;
+                    usedConnectors++;
 
-                blinkers[cn].stopAtPhase(BRIGHT_PHASE);
-            }
-        }
-    } else {
-        unsigned int c;
-        while ((c = uart_getc()) != UART_NO_DATA) {
-            uint8_t lv = LED(c);
-            uint8_t cn = connectorForLogicalValue[lv];
-            if (cn < CONNECTOR_COUNT) {
-                switch (CMD(c)) {
-                case CMD_OFF:
-                    blinkers[cn].stopAtPhase(DARK_PHASE);
-                    break;
-                case CMD_ON:
                     blinkers[cn].stopAtPhase(BRIGHT_PHASE);
-                    break;
                 }
             }
         }
+    } else {
+        for (;;) {
+            unsigned int c;
+            while ((c = uart_getc()) != UART_NO_DATA) {
+                uint8_t lv = LED(c);
+                uint8_t cn = connectorForLogicalValue[lv];
+                if (cn < CONNECTOR_COUNT) {
+                    switch (CMD(c)) {
+                    case CMD_OFF:
+                        blinkers[cn].stopAtPhase(DARK_PHASE);
+                        break;
+                    case CMD_ON:
+                        blinkers[cn].stopAtPhase(BRIGHT_PHASE);
+                        break;
+                    }
+                }
+            }
 
-        uint16_t inputs = mcp23017.read();
-        for (uint8_t lv = 0; lv < usedConnectors; lv++) {
-            uint8_t cn = connectorForLogicalValue[lv];
-            blinkers[cn].update();
-            if (debouncers[cn].update((inputs >> cn) & 1, micros()) && !blinkers[cn].isBlinking() && debouncers[cn].get()) {
-                blinkers[cn].blink(BLINK_PERIOD_MICROS);
-                uart_putc(CMD_BUTTON | lv);
+            uint16_t inputs = mcp23017.read();
+            for (uint8_t lv = 0; lv < usedConnectors; lv++) {
+                uint8_t cn = connectorForLogicalValue[lv];
+                blinkers[cn].update();
+                if (debouncers[cn].update((inputs >> cn) & 1, cycles_get()) && !blinkers[cn].isBlinking() && debouncers[cn].get()) {
+                    blinkers[cn].blink(BLINK_PERIOD_CYCLES);
+                    uart_putc(CMD_BUTTON | lv);
+                }
             }
         }
     }

@@ -1,6 +1,8 @@
 #ifndef _MCP23017_H
 #define _MCP23017_H
 
+#include <inttypes.h>
+
 class MCP23017 {
 public:
     // only lower 3 bits of addr are used

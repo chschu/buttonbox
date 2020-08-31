@@ -1,6 +1,8 @@
 #ifndef _PCA9658_H
 #define _PCA9658_H
 
+#include <inttypes.h>
+
 class PCA9685 {
 public:
     // only lower 6 bits of addr are used
