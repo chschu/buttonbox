@@ -30,6 +30,11 @@ uint32_t cycles_get() {
     uint16_t cycles_low = TCNT1;
     uint16_t cycles_high = _cycles_high;
 
+    // check if there is an unhandled timer overflow and TCNT1 had already wrapped around before it was read
+    if ((TIFR1 & (1<<TOV1)) && cycles_low < 0x8000) {
+        cycles_high++;
+    }
+
     // restore interrupt flag
     SREG = prevSREG;
 
