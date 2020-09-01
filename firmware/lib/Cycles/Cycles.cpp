@@ -3,18 +3,18 @@
 
 #include "Cycles.h"
 
-volatile uint32_t _cycles = 0;
+volatile uint16_t _cycles_high = 0;
 
-ISR (TIMER0_OVF_vect) {
-    _cycles += 256;
+ISR (TIMER1_OVF_vect) {
+    _cycles_high++;
 }
 
 void cycles_init() {
-    // make Timer0 run at full CPU frequency
-    TCCR0B = (1<<CS00);
+    // make Timer1 run at full CPU frequency
+    TCCR1B = (1<<CS10);
 
     // enable overflow interrupt
-    TIMSK0 |= (1<<TOIE0);
+    TIMSK1 |= (1<<TOIE1);
 
     // enable global interrupts
     sei();
@@ -23,12 +23,15 @@ void cycles_init() {
 uint32_t cycles_get() {
     uint8_t prevSREG = SREG;
 
-    // disable interrupts for a consistent read of _cycles
+    // disable interrupts for a consistent read of _cycles and TCNT1
     cli();
-    uint32_t result = _cycles + TCNT0;
+
+    // determine low and high word of cycle count
+    uint16_t cycles_low = TCNT1;
+    uint16_t cycles_high = _cycles_high;
 
     // restore interrupt flag
     SREG = prevSREG;
 
-    return result;
+    return ((uint32_t) cycles_high << 16) | cycles_low;
 }
