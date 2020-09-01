@@ -105,30 +105,30 @@ uint8_t nextLogicalValue;
 // config mode is enabled by bridging the two center pins of the ISP connector (MOSI and SCK) at startup
 bool checkConfigModePinsBridged() {
     // configure PB3 (MOSI) as input, and enable internal pull-up
-    DDRB &= ~(1 << DDB3);
-    PORTB |= (1 << PORTB3);
+    DDRB &= ~_BV(DDB3);
+    PORTB |= _BV(PORTB3);
 
     // configure PB5 (SCK) as output
-    DDRB |= (1 << DDB5);
+    DDRB |= _BV(DDB5);
 
     bool result = true;
 
     uint8_t testMask = 0b01011010;
     for (int i = 0; i < 8; i++) {
-        uint8_t bit = (testMask >> i) & 1;
+        uint8_t bit = testMask & _BV(i);
 
         // output bit on PB5
         if (bit) {
-            PORTB = PORTB | (1 << PORTB5);
+            PORTB = PORTB | _BV(PORTB5);
         } else {
-            PORTB = PORTB & ~(1 << PORTB5);
+            PORTB = PORTB & ~_BV(PORTB5);
         }
 
         // wait for one cycle (~67.8ns at 14.7456 MHz)
         _NOP();
 
         // check if bit is available on PB3
-        if (((PINB >> PINB3) & 1) != bit) {
+        if (!(PINB & _BV(PINB3)) != !bit) {
             // no, it's not - we're not in config mode
             result = false;
             break;
@@ -185,8 +185,8 @@ int main() {
     }
 
     // pull ~OE low to enable LEDs
-    DDRC |= (1 << DDC2);
-    PORTC &= ~(1 << PORTC2);
+    DDRC |= _BV(DDC2);
+    PORTC &= ~_BV(PORTC2);
 
     if (configMode) {
         // indicate config mode

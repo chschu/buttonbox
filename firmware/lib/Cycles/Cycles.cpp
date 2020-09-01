@@ -11,10 +11,10 @@ ISR (TIMER1_OVF_vect) {
 
 void cycles_init() {
     // make Timer1 run at full CPU frequency
-    TCCR1B = (1<<CS10);
+    TCCR1B = _BV(CS10);
 
     // enable overflow interrupt
-    TIMSK1 |= (1<<TOIE1);
+    TIMSK1 |= _BV(TOIE1);
 
     // enable global interrupts
     sei();
@@ -31,7 +31,7 @@ uint32_t cycles_get() {
     uint16_t cycles_high = _cycles_high;
 
     // check if there is an unhandled timer overflow and TCNT1 had already wrapped around before it was read
-    if ((TIFR1 & (1<<TOV1)) && cycles_low < 0x8000) {
+    if ((TIFR1 & _BV(TOV1)) && cycles_low < 0x8000) {
         cycles_high++;
     }
 
