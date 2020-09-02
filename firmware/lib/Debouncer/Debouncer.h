@@ -1,5 +1,5 @@
-#ifndef DEBOUNCER_H
-#define DEBOUNCER_H
+#ifndef _DEBOUNCER_H
+#define _DEBOUNCER_H
 
 #include <inttypes.h>
 

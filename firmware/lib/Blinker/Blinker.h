@@ -1,5 +1,5 @@
-#ifndef BLINKER_H
-#define BLINKER_H
+#ifndef _BLINKER_H
+#define _BLINKER_H
 
 #include <inttypes.h>
 
