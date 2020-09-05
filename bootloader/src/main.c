@@ -127,13 +127,12 @@ void block_load(uint16_t size, uint8_t mem_type, union16_t *address) {
     }
 }
 
+extern __attribute__((noreturn)) void app_start();
+
 int main() {
     union16_t address;
     union16_t temp_word;
     uint8_t temp_byte;
-
-    // set up function pointer to RESET vector
-    void (*reset)() = 0x0000; 
 
     // enable pull-up on PB3 (MOSI)
     PORTB |= _BV(PORTB3);
@@ -144,7 +143,7 @@ int main() {
     // enter bootloader iff MOSI is pulled low
     if (PINB & _BV(PINB3)) {
         // jump to application
-        reset();
+        app_start();
     }
 
     // initialize synchronous serial communication
@@ -341,7 +340,7 @@ int main() {
             boot_rww_enable();
 
             // jump to application
-            reset();
+            app_start();
 
             // will never get here
             break;
