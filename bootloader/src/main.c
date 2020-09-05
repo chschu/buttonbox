@@ -31,6 +31,12 @@ void block_read(uint16_t size,uint8_t mem_type, uint16_t *address) {
         break;
 
     case 'F': // flash
+        // wait for previous write/erase to complete
+        boot_spm_busy_wait();
+
+        // enable RWW before reading flash
+        boot_rww_enable();
+
         while (size) {
             // send two flash bytes (address is given in words here)
             sync_serial_putc(pgm_read_byte((*address) << 1));
@@ -56,9 +62,6 @@ void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
             buffer[temp_address] = sync_serial_getc();
         }
 
-        // wait until SPM is done
-        boot_spm_busy_wait();
-
         // copy to EEPROM
         for (temp_address = 0; temp_address < size; temp_address++) {
             // setup EEPROM address
@@ -83,6 +86,9 @@ void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
         // keep initial address for final page write
         temp_address = *address;
 
+        // wait for previous write/erase to complete
+        boot_spm_busy_wait();
+
         // fill page from received words
         while (size) { 
             // create word from received bytes, LSB first
@@ -98,10 +104,7 @@ void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
         }
 
         // write page (address is given in words here)
-        boot_spm_busy_wait();
         boot_page_write(temp_address << 1);
-        boot_spm_busy_wait();
-        boot_rww_enable();
 
         // OK
         sync_serial_putc('\r');
@@ -125,16 +128,14 @@ int main() {
     // enable pull-up on PB3 (MOSI)
     PORTB |= _BV(PORTB3);
 
-    // initialize synchronous serial communication
-    sync_serial_init();
-
     // enter bootloader iff MOSI is pulled low
     if (PINB & _BV(PINB3)) {
         // jump to application
-        boot_spm_busy_wait();
-        boot_rww_enable();
         reset();
     }
+
+    // initialize synchronous serial communication
+    sync_serial_init();
 
     for (;;) {
         // read command byte
@@ -154,10 +155,13 @@ int main() {
 
         case 'e': // chip erase (flash only)
             for (address = 0; address < BOOT_LOADER_START; address += SPM_PAGESIZE) {
+                // wait for previous write/erase to complete
                 boot_spm_busy_wait();
+
+                // erase the page
                 boot_page_erase(address);
             }
-        
+
             // OK
             sync_serial_putc('\r');
             break;
@@ -194,9 +198,10 @@ int main() {
             break;
 
         case 'R': // read program memory
-            // send high and low byte of flash word
-            boot_spm_busy_wait();
+            // enable RWW before reading flash
             boot_rww_enable();
+
+            // send high and low byte of flash word
             sync_serial_putc(pgm_read_byte((address << 1) | 1));
             sync_serial_putc(pgm_read_byte((address << 1)));
 
@@ -216,8 +221,10 @@ int main() {
             // combine high and low byte
             temp_int |= sync_serial_getc() << 8;
 
-            // convert to byte-address and fill
+            // wait for previous write/erase to complete
             boot_spm_busy_wait();
+
+            // convert to byte-address and fill
             boot_page_fill(address << 1, temp_int);
             
             // auto-increment
@@ -233,8 +240,10 @@ int main() {
                 // not OK
                 sync_serial_putc('?');
             } else {
-                // convert to byte-address and write
+                // wait for previous write/erase to complete
                 boot_spm_busy_wait();
+
+                // convert to byte-address and write
                 boot_page_write(address << 1);
 
                 // OK
@@ -243,9 +252,6 @@ int main() {
             break;
 
         case 'D': // write EEPROM
-            // wait until SPM is done
-            boot_spm_busy_wait();
-
             // setup EEPROM address
             EEARL = address;
             EEARH = address >> 8;
@@ -308,11 +314,14 @@ int main() {
             break;
 
         case 'E': // exit boot loader
-            boot_spm_busy_wait();
-            boot_rww_enable();
-
             // OK
             sync_serial_putc('\r');
+
+            // wait for previous write/erase to complete
+            boot_spm_busy_wait();
+
+            // enable RWW before executing flash
+            boot_rww_enable();
 
             // jump to application
             reset();
