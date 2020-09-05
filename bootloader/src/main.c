@@ -4,6 +4,7 @@
 #include <avr/io.h>
 #include <avr/boot.h>
 #include <avr/pgmspace.h>
+#include <avr/cpufunc.h>
 
 #include <sync_serial.h>
 
@@ -136,6 +137,9 @@ int main() {
 
     // enable pull-up on PB3 (MOSI)
     PORTB |= _BV(PORTB3);
+
+    // add nop for synchronization of software-assigned pin value (search for "nop for synchronization" in the ATmega328P datasheet)
+    _NOP();
 
     // enter bootloader iff MOSI is pulled low
     if (PINB & _BV(PINB3)) {
