@@ -11,19 +11,28 @@
 // must be an integer multiple of SPM_PAGESIZE and fit inside 16 bits
 #define BLOCKSIZE SPM_PAGESIZE
 
-void block_read(uint16_t size,uint8_t mem_type, uint16_t *address) {
+typedef union {
+    uint16_t word;
+    struct {
+        // AVR is little-endian
+        uint8_t low_byte;
+        uint8_t high_byte;
+    };
+} union16_t;
+
+void block_read(uint16_t size, uint8_t mem_type, union16_t *address) {
     switch (mem_type) {
     case 'E': // EEPROM
         while (size--) {
             // setup EEPROM address
-            EEARL = *address;
-            EEARH = (*address) >> 8;
-
-            // auto-increment
-            (*address)++;
+            EEARL = address->low_byte;
+            EEARH = address->high_byte;
 
             // read
             EECR |= _BV(EERE);
+
+            // auto-increment
+            address->word++;
 
             // send EEPROM byte
             sync_serial_putc(EEDR);
@@ -39,18 +48,18 @@ void block_read(uint16_t size,uint8_t mem_type, uint16_t *address) {
 
         while (size) {
             // send two flash bytes (address is given in words here)
-            sync_serial_putc(pgm_read_byte((*address) << 1));
-            sync_serial_putc(pgm_read_byte(((*address) << 1) | 1));
+            sync_serial_putc(pgm_read_byte(address->word << 1));
+            sync_serial_putc(pgm_read_byte((address->word << 1) | 1));
 
             // auto-increment
-            (*address)++;
+            address->word++;
 
             size -= 2;
         }
     }
 }
 
-void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
+void block_load(uint16_t size, uint8_t mem_type, union16_t *address) {
     uint8_t buffer[BLOCKSIZE];
     uint16_t data;
     uint16_t temp_address;
@@ -65,8 +74,8 @@ void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
         // copy to EEPROM
         for (temp_address = 0; temp_address < size; temp_address++) {
             // setup EEPROM address
-            EEARL = *address; 
-            EEARH = (*address) >> 8;
+            EEARL = address->low_byte;
+            EEARH = address->high_byte;
             
             // get byte from buffer and write it
             EEDR = buffer[temp_address];
@@ -75,7 +84,7 @@ void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
             while (EECR & _BV(EEPE));
 
             // auto-increment
-            (*address)++;
+            address->word++;
         }
 
         // OK
@@ -84,7 +93,7 @@ void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
     
     case 'F': // flash
         // keep initial address for final page write
-        temp_address = *address;
+        temp_address = address->word;
 
         // wait for previous write/erase to complete
         boot_spm_busy_wait();
@@ -96,10 +105,10 @@ void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
             data |= sync_serial_getc() << 8;
 
             // fill page (address is given in words here)
-            boot_page_fill((*address) << 1, data);
+            boot_page_fill(address->word << 1, data);
 
             // auto-increment
-            (*address)++;
+            address->word++;
             size -= 2;
         }
 
@@ -118,8 +127,8 @@ void block_load(uint16_t size, uint8_t mem_type, uint16_t *address) {
 }
 
 int main() {
-    uint16_t address;
-    uint16_t temp_int;
+    union16_t address;
+    union16_t temp_word;
     uint8_t temp_byte;
 
     // set up function pointer to RESET vector
@@ -147,19 +156,20 @@ int main() {
 
         case 'A': // set address (in words!)
             // receive address, MSB first
-            address = (sync_serial_getc() << 8) | sync_serial_getc();
+            address.high_byte = sync_serial_getc();
+            address.low_byte = sync_serial_getc();
 
             // OK
             sync_serial_putc('\r');
             break;
 
         case 'e': // chip erase (flash only)
-            for (address = 0; address < BOOT_LOADER_START; address += SPM_PAGESIZE) {
+            for (address.word = 0; address.word < BOOT_LOADER_START; address.word += SPM_PAGESIZE) {
                 // wait for previous write/erase to complete
                 boot_spm_busy_wait();
 
                 // erase the page
-                boot_page_erase(address);
+                boot_page_erase(address.word);
             }
 
             // OK
@@ -172,46 +182,49 @@ int main() {
 
             // result must be an integer multiple of SPM_PAGESIZE, two bytes, MSB first
             sync_serial_putc(BLOCKSIZE >> 8);
-            sync_serial_putc(BLOCKSIZE & 0xff);
+            sync_serial_putc(BLOCKSIZE & 0xFF);
             break;
 
         case 'B': // start block load
             // receive block size, MSB first
-            temp_int = (sync_serial_getc() << 8) | sync_serial_getc();
+            temp_word.high_byte = sync_serial_getc();
+            temp_word.low_byte = sync_serial_getc();
 
             // get memtype (E or F)
             temp_byte = sync_serial_getc();
 
             // load block, sending result
-            block_load(temp_int, temp_byte, &address);
+            block_load(temp_word.word, temp_byte, &address);
             break;
 
         case 'g': // start block read
             // receive block size, MSB first
-            temp_int = (sync_serial_getc() << 8) | sync_serial_getc();
+            temp_word.high_byte = sync_serial_getc();
+            temp_word.low_byte = sync_serial_getc();
 
             // get memtype (E or F)
-            temp_byte = sync_serial_getc(); // Get memtype
+            temp_byte = sync_serial_getc();
 
             // read block, sending bytes
-            block_read(temp_int, temp_byte, &address);
+            block_read(temp_word.word, temp_byte, &address);
             break;
 
         case 'R': // read program memory
             // enable RWW before reading flash
             boot_rww_enable();
 
-            // send high and low byte of flash word
-            sync_serial_putc(pgm_read_byte((address << 1) | 1));
-            sync_serial_putc(pgm_read_byte((address << 1)));
+            // send high and low byte of flash word (address is given in words here)
+            temp_word.word = pgm_read_word(address.word << 1);
+            sync_serial_putc(temp_word.high_byte);
+            sync_serial_putc(temp_word.low_byte);
 
             // auto-increment
-            address++;
+            address.word++;
             break;
 
         case 'c': // write program memory, low byte (must be used directly before 'C')
             // store low byte temporarily
-            temp_int = sync_serial_getc();
+            temp_word.low_byte = sync_serial_getc();
 
             // OK
             sync_serial_putc('\r');
@@ -219,16 +232,16 @@ int main() {
 
         case 'C': // write program memory, high byte (must be used directly after 'c')
             // combine high and low byte
-            temp_int |= sync_serial_getc() << 8;
+            temp_word.high_byte = sync_serial_getc();
 
             // wait for previous write/erase to complete
             boot_spm_busy_wait();
 
-            // convert to byte-address and fill
-            boot_page_fill(address << 1, temp_int);
+            // convert to byte-address and fill (address is given in words here)
+            boot_page_fill(address.word << 1, temp_word.word);
             
             // auto-increment
-            address++;
+            address.word++;
 
             // OK
             sync_serial_putc('\r');
@@ -236,15 +249,15 @@ int main() {
     
         case 'm': // write page
             // block boot loader writes
-            if (address >= (BOOT_LOADER_START >> 1)) {
+            if (address.word >= (BOOT_LOADER_START >> 1)) {
                 // not OK
                 sync_serial_putc('?');
             } else {
                 // wait for previous write/erase to complete
                 boot_spm_busy_wait();
 
-                // convert to byte-address and write
-                boot_page_write(address << 1);
+                // convert to byte-address and write (address is given in words here)
+                boot_page_write(address.word << 1);
 
                 // OK
                 sync_serial_putc('\r');
@@ -253,8 +266,8 @@ int main() {
 
         case 'D': // write EEPROM
             // setup EEPROM address
-            EEARL = address;
-            EEARH = address >> 8;
+            EEARL = address.low_byte;
+            EEARH = address.high_byte;
 
             // get and write byte
             EEDR = sync_serial_getc();
@@ -263,7 +276,7 @@ int main() {
             while (EECR & _BV(EEPE));
                 
             // auto-increment
-            address++;
+            address.word++;
 
             // OK
             sync_serial_putc('\r');
@@ -271,8 +284,8 @@ int main() {
 
         case 'd': // read EEPROM
             // setup EEPROM address
-            EEARL = address;
-            EEARH = address >> 8;
+            EEARL = address.low_byte;
+            EEARH = address.high_byte;
 
             // prepare read
             EECR |= _BV(EERE);
@@ -281,7 +294,7 @@ int main() {
             sync_serial_putc(EEDR);
 
             // auto-increment
-            address++;
+            address.word++;
             break;
 
         case 'l': // write lock bits
