@@ -12,6 +12,14 @@ void sync_serial_init() {
     UCSR0B = _BV(RXEN0) | _BV(TXEN0);
 }
 
+void sync_serial_reset() {
+    // reset modified registers (all writable bits have a default of 0)
+    UCSR0A = 0;
+    UCSR0B = 0;
+    UBRR0L = 0;
+    UDR0 = 0;
+}
+
 void sync_serial_putc(uint8_t c) {
     // write data to be send
     UDR0 = c;

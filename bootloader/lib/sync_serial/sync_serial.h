@@ -6,6 +6,9 @@
 // initialize synchronous serial communication
 void sync_serial_init();
 
+// reset modified registers
+void sync_serial_reset();
+
 // send a byte
 void sync_serial_putc(uint8_t data);
 

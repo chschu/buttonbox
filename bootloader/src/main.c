@@ -142,9 +142,14 @@ int main() {
     _NOP();
     _NOP();
 
+    temp_byte = PINB;
+
+    // reset PORTB
+    PORTB = 0;
+
     // enter bootloader iff MOSI is pulled low
-    if (PINB & _BV(PINB3)) {
-        // jump to application
+    if (temp_byte & _BV(PINB3)) {
+        // MOSI is high, jump to application
         app_start();
     }
 
@@ -340,6 +345,9 @@ int main() {
 
             // enable RWW before executing flash
             boot_rww_enable();
+
+            // reset serial
+            sync_serial_reset();
 
             // jump to application
             app_start();
