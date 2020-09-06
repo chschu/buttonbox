@@ -138,6 +138,8 @@ int main() {
     PORTB |= _BV(PORTB3);
 
     // add nop for synchronization of software-assigned pin value (search for "nop for synchronization" in the ATmega328P datasheet)
+    // single nop doesn't always work, adding a second nop seems more robust
+    _NOP();
     _NOP();
 
     // enter bootloader iff MOSI is pulled low
