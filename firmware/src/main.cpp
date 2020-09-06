@@ -148,6 +148,7 @@ int main() {
     if (configMode) {
         // clear (i.e. set to 255) all logical value mappings in EEPROM
         eeprom_update_block(connectorForLogicalValue, eepromConnectorForLogicalValue, sizeof(connectorForLogicalValue));
+        eeprom_busy_wait();
     } else {
         // read logical value mapping from EEPROM
         eeprom_read_block(connectorForLogicalValue, eepromConnectorForLogicalValue, sizeof(connectorForLogicalValue));
@@ -204,6 +205,7 @@ int main() {
 
                     // store new logical value mapping in EEPROM
                     eeprom_update_byte(&eepromConnectorForLogicalValue[usedConnectors], cn);
+                    eeprom_busy_wait();
 
                     usedConnectors++;
 
