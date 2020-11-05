@@ -391,9 +391,9 @@ int main() {
             break;
 
         case 's': // get signature bytes (reverse order)
-            sync_serial_putc(0x0F);
-            sync_serial_putc(0x95);
-            sync_serial_putc(0x1E);
+            sync_serial_putc(SIGNATURE_2);
+            sync_serial_putc(SIGNATURE_1);
+            sync_serial_putc(SIGNATURE_0);
             break;
 
         case 0x1b: // escape (sync)
